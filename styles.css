@@ -207,3 +207,11 @@ body.sleepy #pet{background:linear-gradient(145deg,#f3edff,#fcecf5)}
 @keyframes plushBlink{0%,91%,100%{scale:1 1}94%{scale:1 .08}}
 body.sleepy #pet{background:linear-gradient(180deg,#dcdcf4 0%,#e8d9ef 76%,#c7b3d2 100%)}
 @media(prefers-reduced-motion:reduce){#pet,#pet #bunny,#pet #bunny #earL,#pet #bunny #earR,#pet #bunny #bow,#pet #bunny .eye{animation:none!important}}
+
+
+/* Kawaii pastel bunny character refresh */
+#pet #bunny{width:min(285px,88%);max-height:54vh;filter:drop-shadow(0 13px 13px rgba(166,111,139,.19));}
+#pet #bunny path,#pet #bunny ellipse{vector-effect:non-scaling-stroke}
+#pet #bunny{animation:softKawaiiBob 3.8s ease-in-out infinite}
+@keyframes softKawaiiBob{0%,100%{transform:translateY(1px) rotate(-.7deg)}50%{transform:translateY(-6px) rotate(.7deg)}}
+@media(prefers-reduced-motion:reduce){#pet #bunny{animation:none!important}}
