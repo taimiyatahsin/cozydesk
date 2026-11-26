@@ -102,7 +102,11 @@ nav.addEventListener('click', (e) => {
 const SPOTS = { bed: [320, 174], desk: [200, 200], shelf: [170, 200], plant: [75, 205], window: [100, 205], toys: [150, 238], center: [200, 225] };
 const THEMES = [['pink', 1], ['maroon', 1], ['night', 1], ['autumn', 2], ['winter', 3], ['nature', 4], ['minimal', 5], ['cozy', 6]];
 const rb = $('#rb');
-function goto(n) { const [x, y] = SPOTS[n]; rb.style.transform = `translate(${x}px,${y}px)`; }
+function goto(n) {
+  const spot = SPOTS[n] || SPOTS.center;
+  rb.setAttribute('transform', `translate(${spot[0]} ${spot[1]})`);
+  rb.dataset.spot = n;
+}
 goto('center');
 function unlocked() {
   const done = S.tasks.filter((t) => t.done).length;
@@ -125,9 +129,15 @@ function renderRoom() {
 }
 $('#roomTheme').onchange = (e) => { X.theme = e.target.value; sv(); $('#room').dataset.theme = X.theme; };
 $('#tab-room').addEventListener('click', (e) => {
-  const g = e.target.dataset.go; if (!g || S.mode.sleepy) return;
-  const n = g === 'any' ? ['desk', 'shelf', 'plant', 'window', 'toys'][Math.floor(Math.random() * 5)] : g;
-  goto(n); mood(n === 'toys' ? 'playful' : n === 'shelf' ? 'focused' : 'curious'); setTimeout(applyMood, 3000);
+  const action = e.target.closest('[data-go]');
+  if (!action || S.mode.sleepy) return;
+  const g = action.dataset.go;
+  const choices = ['bed', 'desk', 'shelf', 'plant', 'window', 'toys'];
+  const n = g === 'any' ? choices.filter((spot) => spot !== rb.dataset.spot)[Math.floor(Math.random() * (choices.filter((spot) => spot !== rb.dataset.spot).length))] : g;
+  goto(n);
+  shout(({bed:'Time for a cozy rest! 💤',desk:'A little study time! 📚',shelf:'Story time! 📖',plant:'Hello, little plant! 🌿',window:'Look at the pretty sky! ☁️',toys:'Play time! 🧸'})[n] || 'Surprise! ✨', 2600);
+  mood(n === 'toys' ? 'playful' : n === 'shelf' || n === 'desk' ? 'focused' : 'curious');
+  setTimeout(applyMood, 3000);
 });
 setInterval(() => { // gentle wandering, only while the Room tab is visible
   if (document.hidden || !$('#tab-room').classList.contains('active') || S.mode.sleepy || S.mode.quiet || S.mode.focus) return;
