@@ -186,3 +186,24 @@ body.sleepy #pet{background:linear-gradient(145deg,#f3edff,#fcecf5)}
  #pet{animation:none!important}
  #pet #bunny,#pet #bunny #earL,#pet #bunny #earR,#pet #bunny #bow,#pet #bunny .eye{animation:none!important}
 }
+
+
+/* Full cozy bedroom backdrop + softer plush companion */
+#pet{isolation:isolate;position:relative;overflow:hidden;background:linear-gradient(180deg,transparent 0 76%,rgba(196,139,160,.16) 76.2%,rgba(242,210,220,.7) 100%),repeating-linear-gradient(90deg,rgba(255,255,255,.14) 0 2px,transparent 2px 34px),radial-gradient(ellipse at 50% 35%,rgba(255,255,255,.18),transparent 58%),linear-gradient(155deg,#f8dce8 0%,#e9dcfa 48%,#f9e7dc 100%);background-size:auto,auto,auto,220% 220%;animation:bedroomColorDrift 24s ease-in-out infinite alternate}
+#pet:before{content:"";position:absolute;z-index:0;pointer-events:none;width:34%;height:24%;left:8%;top:9%;border:9px solid #fff4f8;border-radius:17px;background:radial-gradient(circle at 72% 25%,#fff2b8 0 10%,transparent 11%),linear-gradient(180deg,#b9d9f3 0%,#e8dafa 64%,#fff3f8 65%);box-shadow:0 0 0 3px #d6a5bd,0 10px 20px #9e6e8b33,inset 0 0 0 2px #fff}
+#pet:after{content:"";position:absolute;z-index:0;pointer-events:none;width:49%;height:24%;right:-3%;bottom:5%;border-radius:24px 24px 10px 10px;background:radial-gradient(ellipse at 18% 30%,#fff 0 13%,transparent 14%),linear-gradient(180deg,#fdf6fb 0 27%,#efb9d0 28% 76%,#b985a1 77%);box-shadow:0 -8px 0 #fff5f9,0 10px 20px #95647f30;opacity:.96}
+#pet #bunny{z-index:1;position:relative;width:min(270px,88%);max-height:52vh;filter:drop-shadow(0 14px 13px rgba(119,76,101,.22));animation:plushBunnyFloat 3.7s ease-in-out infinite}
+#pet #bunny #earL{transform-box:fill-box;transform-origin:72% 95%;animation:plushEarL 5.6s ease-in-out infinite}
+#pet #bunny #earR{transform-box:fill-box;transform-origin:24% 95%;animation:plushEarR 6.1s ease-in-out infinite}
+#pet #bunny #bow{transform-box:fill-box;transform-origin:center;animation:plushBow 3.4s ease-in-out infinite}
+#pet #bunny .eye{transform-box:fill-box;transform-origin:center;animation:plushBlink 5.4s infinite}
+#pet #bubble{z-index:2;position:relative;background:#fffaf2ed;border-color:#edc4d4}
+#pet #stats{z-index:2;position:relative}
+@keyframes bedroomColorDrift{0%{background-position:center,center,center,0% 20%}100%{background-position:center,center,center,100% 80%}}
+@keyframes plushBunnyFloat{0%,100%{transform:translateY(1px) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+@keyframes plushEarL{0%,88%,100%{rotate:0deg}92%{rotate:-8deg}96%{rotate:2deg}}
+@keyframes plushEarR{0%,90%,100%{rotate:0deg}94%{rotate:8deg}97%{rotate:-2deg}}
+@keyframes plushBow{0%,100%{scale:1}50%{scale:1.07}}
+@keyframes plushBlink{0%,91%,100%{scale:1 1}94%{scale:1 .08}}
+body.sleepy #pet{background:linear-gradient(180deg,#dcdcf4 0%,#e8d9ef 76%,#c7b3d2 100%)}
+@media(prefers-reduced-motion:reduce){#pet,#pet #bunny,#pet #bunny #earL,#pet #bunny #earR,#pet #bunny #bow,#pet #bunny .eye{animation:none!important}}
