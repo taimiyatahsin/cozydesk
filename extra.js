@@ -21,21 +21,61 @@ const sec = (id, html) => { const d = document.createElement('div'); d.className
 sec('room', `<h2>Pet Room</h2>
 <div class="row wrap"><select id="roomTheme"></select>
 <button data-go="bed">Bed</button><button data-go="desk">Desk</button><button data-go="shelf">Read</button><button data-go="plant">Plant</button><button data-go="window">Window</button><button data-go="toys">Toys</button><button data-go="any">Surprise me</button></div>
-<svg id="room" class="room" viewBox="0 0 400 260" data-theme="maroon">
-<rect class="wall" x="0" y="0" width="400" height="190"/><rect class="floor" x="0" y="190" width="400" height="70"/>
-<rect class="sky" x="40" y="30" width="80" height="70" rx="4"/><circle cx="95" cy="52" r="11" fill="#fff3c4"/>
-<rect x="38" y="28" width="84" height="74" rx="4" fill="none" stroke="#f4a6bb" stroke-width="3"/><line x1="80" y1="30" x2="80" y2="100" stroke="#f4a6bb" stroke-width="2"/>
-<rect x="150" y="70" width="90" height="6" fill="#8a4b5e"/><rect x="156" y="52" width="10" height="18" fill="#f4a6bb"/><rect x="168" y="48" width="9" height="22" fill="#e5b84d"/><rect x="179" y="54" width="10" height="16" fill="#7cc4a0"/>
-<rect x="150" y="150" width="100" height="8" fill="#8a4b5e"/><rect x="156" y="158" width="6" height="40" fill="#8a4b5e"/><rect x="238" y="158" width="6" height="40" fill="#8a4b5e"/>
-<rect x="185" y="118" width="32" height="26" rx="3" fill="#1b0b2e" stroke="#f4a6bb"/><rect x="198" y="144" width="6" height="6" fill="#f4a6bb"/>
-<rect x="270" y="165" width="115" height="30" rx="5" fill="#8a4b5e"/><rect x="274" y="150" width="107" height="22" rx="5" fill="#f4d8e0"/><rect x="276" y="146" width="28" height="14" rx="6" fill="#fff"/>
-<circle id="ball" cx="130" cy="240" r="8" fill="#e5484d"/>
-<g id="plant" class="locked"><rect x="22" y="170" width="20" height="22" fill="#b5654a"/><ellipse cx="32" cy="162" rx="14" ry="12" fill="#5ec27a"/></g>
-<g id="teddy" class="locked"><circle cx="215" cy="236" r="8" fill="#c58a5b"/><circle cx="215" cy="224" r="7" fill="#c58a5b"/><circle cx="209" cy="218" r="3" fill="#c58a5b"/><circle cx="221" cy="218" r="3" fill="#c58a5b"/></g>
-<g id="lamp" class="locked"><rect x="256" y="130" width="4" height="60" fill="#8a4b5e"/><circle cx="258" cy="124" r="10" fill="#fff3c4"/></g>
-<g id="rb"><ellipse cx="-7" cy="-60" rx="4.5" ry="13" fill="#f3d3dc"/><ellipse cx="7" cy="-60" rx="4.5" ry="13" fill="#f3d3dc"/><ellipse cx="-7" cy="-59" rx="2" ry="8" fill="#f7a8bf"/><ellipse cx="7" cy="-59" rx="2" ry="8" fill="#f7a8bf"/><ellipse cx="0" cy="-12" rx="14" ry="12" fill="#f6dfe6"/><ellipse cx="0" cy="-32" rx="17" ry="14" fill="#f9e6ec"/><ellipse cx="-11" cy="-26" rx="3.5" ry="2.2" fill="#ff8fab" opacity=".6"/><ellipse cx="11" cy="-26" rx="3.5" ry="2.2" fill="#ff8fab" opacity=".6"/><circle cx="-6" cy="-32" r="2.8" fill="#3a1220"/><circle cx="6" cy="-32" r="2.8" fill="#3a1220"/><circle cx="-5" cy="-33.2" r="1" fill="#fff"/><circle cx="7" cy="-33.2" r="1" fill="#fff"/><circle cx="0" cy="-28" r="1.5" fill="#e0708d"/><path d="M-3 -25 q1.5 2.5 3 0 q1.5 2.5 3 0" stroke="#a63e5c" stroke-width="1" fill="none"/></g>
-<rect id="blanket" class="hide" x="305" y="160" width="80" height="26" rx="6" fill="#f4a6bb"/>
-<text id="rzzz" class="hide" x="335" y="135" fill="#f4a6bb" font-size="16">Zzz…</text></svg>
+<svg id="room" class="room" viewBox="0 0 400 260" data-theme="pink" role="img" aria-label="A dreamy pastel kitty house room">
+<defs>
+ <linearGradient id="roomGlow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff7fb"/><stop offset="1" stop-color="#f4eaff"/></linearGradient>
+ <linearGradient id="rugGrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffdce9"/><stop offset="1" stop-color="#e7dcff"/></linearGradient>
+ <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="3"/></filter>
+</defs>
+<rect class="wall" width="400" height="190"/><rect class="floor" y="190" width="400" height="70"/>
+<path d="M0 0H400V190H0Z" fill="url(#roomGlow)" opacity=".2"/>
+<!-- dreamy window and curtains -->
+<rect x="28" y="25" width="105" height="91" rx="13" fill="#fff8fc" stroke="#d99bb9" stroke-width="4"/>
+<rect class="sky" x="36" y="33" width="89" height="75" rx="8"/>
+<circle class="sunMoon" cx="103" cy="51" r="12" fill="#fff0ad"/>
+<path d="M38 91q17-18 32 0t32 0t22 0v15H38Z" fill="#fff" opacity=".72"/>
+<path d="M27 25q-13 30 1 83q12-8 15-1V29Z" fill="#f3aeca" opacity=".9"/>
+<path d="M134 25q13 30-1 83q-12-8-15-1V29Z" fill="#f3aeca" opacity=".9"/>
+<path d="M26 24h110" stroke="#bd7d9f" stroke-width="5" stroke-linecap="round"/>
+<!-- wall garland -->
+<path d="M160 26q42 42 84 0t84 0" fill="none" stroke="#d99bb9" stroke-width="2"/>
+<g class="garland"><path d="M172 34l-6 12 12 0Z" fill="#f7b8cf"/><path d="M207 43l-6 12 12 0Z" fill="#d9c7ff"/><path d="M244 34l-6 12 12 0Z" fill="#f7b8cf"/><path d="M281 26l-6 12 12 0Z" fill="#d9c7ff"/><path d="M315 32l-6 12 12 0Z" fill="#f7b8cf"/></g>
+<!-- framed kitty portrait -->
+<rect x="165" y="68" width="54" height="55" rx="7" fill="#fff7fb" stroke="#dba6c1" stroke-width="3"/>
+<rect x="171" y="74" width="42" height="43" rx="4" fill="#f6eaff"/>
+<path d="M181 91l4-9 8 7 8-7 4 9v12q-12 12-24 0Z" fill="#fff" stroke="#d9a7bf" stroke-width="1.5"/>
+<circle cx="188" cy="97" r="1.7" fill="#6f5366"/><circle cx="198" cy="97" r="1.7" fill="#6f5366"/><path d="M191 102q2 3 4 0" fill="none" stroke="#cf829f" stroke-width="1.5"/>
+<!-- floating shelves and books -->
+<rect x="244" y="76" width="105" height="6" rx="3" fill="#bd8ba5"/>
+<rect x="254" y="54" width="12" height="22" rx="2" fill="#f3aeca"/><rect x="269" y="48" width="13" height="28" rx="2" fill="#c9b8f4"/><rect x="285" y="57" width="12" height="19" rx="2" fill="#a9d7c0"/>
+<path d="M305 76q8-22 16 0Z" fill="#f7c9d9"/><circle cx="313" cy="55" r="8" fill="#a8d8b8"/>
+<!-- study desk -->
+<rect x="145" y="155" width="112" height="9" rx="3" fill="#bd8ba5"/><rect x="153" y="164" width="7" height="34" fill="#a97896"/><rect x="243" y="164" width="7" height="34" fill="#a97896"/>
+<rect x="184" y="125" width="39" height="27" rx="4" fill="#fff6fb" stroke="#bd8ba5" stroke-width="2"/><rect x="189" y="130" width="29" height="17" rx="2" fill="#c8c0f2"/><path d="M199 153h9" stroke="#bd8ba5" stroke-width="3"/>
+<!-- bed with canopy -->
+<rect x="278" y="159" width="108" height="37" rx="10" fill="#bd8ba5"/>
+<rect x="274" y="146" width="112" height="31" rx="11" fill="#fff1f7" stroke="#dba6c1" stroke-width="2"/>
+<rect x="282" y="150" width="39" height="19" rx="8" fill="#fff" />
+<path d="M325 148q27 8 57 0v27h-57Z" fill="#f3c7dc"/>
+<path d="M326 152q20 12 42 0" fill="none" stroke="#fff" stroke-width="2" opacity=".8"/>
+<!-- rug -->
+<ellipse cx="192" cy="224" rx="100" ry="23" fill="url(#rugGrad)" opacity=".95"/>
+<ellipse cx="192" cy="224" rx="82" ry="15" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="3 5" opacity=".8"/>
+<!-- plant and lamp -->
+<g id="plant" class="locked"><path d="M25 190h27l-4 27H29Z" fill="#d69a9c"/><path d="M38 190q-23-20-17-30q17 0 19 25q2-27 19-29q7 17-16 34" fill="#86bd9a"/><path d="M38 191q-7-29 5-36" stroke="#649b79" stroke-width="2" fill="none"/></g>
+<g id="teddy" class="locked"><circle cx="94" cy="219" r="10" fill="#c58a74"/><circle cx="94" cy="205" r="8" fill="#d6a18d"/><circle cx="88" cy="199" r="4" fill="#d6a18d"/><circle cx="100" cy="199" r="4" fill="#d6a18d"/><circle cx="91" cy="205" r="1.3" fill="#553b45"/><circle cx="97" cy="205" r="1.3" fill="#553b45"/></g>
+<g id="lamp" class="locked"><path d="M355 143h5v53h-5Z" fill="#b887a2"/><path d="M342 145l15-24 16 24Z" fill="#ffe4a9" stroke="#d5a8bf" stroke-width="2"/><circle cx="358" cy="145" r="19" fill="#ffe8ae" opacity=".16" class="lampGlow"/></g>
+<!-- bunny -->
+<g id="rb">
+<ellipse cx="-7" cy="-60" rx="4.5" ry="13" fill="#f3d3dc"/><ellipse cx="7" cy="-60" rx="4.5" ry="13" fill="#f3d3dc"/><ellipse cx="-7" cy="-59" rx="2" ry="8" fill="#f7a8bf"/><ellipse cx="7" cy="-59" rx="2" ry="8" fill="#f7a8bf"/>
+<ellipse cx="0" cy="-12" rx="14" ry="12" fill="#f6dfe6"/><ellipse cx="0" cy="-32" rx="17" ry="14" fill="#fff5f8" stroke="#e6bfd0" stroke-width="1"/>
+<ellipse cx="-11" cy="-26" rx="3.5" ry="2.2" fill="#ff8fab" opacity=".6"/><ellipse cx="11" cy="-26" rx="3.5" ry="2.2" fill="#ff8fab" opacity=".6"/>
+<circle cx="-6" cy="-32" r="2.8" fill="#3a1220"/><circle cx="6" cy="-32" r="2.8" fill="#3a1220"/><circle cx="-5" cy="-33.2" r="1" fill="#fff"/><circle cx="7" cy="-33.2" r="1" fill="#fff"/><circle cx="0" cy="-28" r="1.5" fill="#e0708d"/><path d="M-3 -25q1.5 2.5 3 0q1.5 2.5 3 0" stroke="#a63e5c" stroke-width="1" fill="none"/>
+</g>
+<circle id="ball" cx="130" cy="240" r="8" fill="#f5a0c1"/>
+<rect id="blanket" class="hide" x="305" y="160" width="80" height="26" rx="6" fill="#f4a6bb"/><text id="rzzz" class="hide" x="335" y="135" fill="#bd83b0" font-size="16">Zzz…</text>
+<g class="roomSparkles" fill="#fff"><circle cx="151" cy="54" r="2"/><circle cx="365" cy="42" r="2.5"/><circle cx="232" cy="142" r="2"/></g>
+</svg>
 <p class="muted" id="unlocks"></p>`);
 
 sec('calendar', `<h2>Calendar</h2><div id="calGrid"></div>
