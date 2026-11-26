@@ -134,3 +134,55 @@ li{border-radius:16px;padding:12px 14px;background:linear-gradient(110deg,rgba(2
 @media(min-width:1200px){#app{padding:20px 28px 26px}main{grid-template-columns:minmax(280px,350px) minmax(0,1fr)}#pet{padding:28px 22px}}
 @media(max-width:900px){#app{padding:12px}#pet{border-radius:24px}#panel{border-radius:24px}}
 @media(max-width:560px){#app{padding:8px}nav{border-radius:18px}#pet,#panel{border-radius:20px}}
+
+
+/* Main companion stage — animated pastel dream garden */
+#pet{
+  isolation:isolate;
+  background:
+    radial-gradient(ellipse at 18% 18%,rgba(255,193,220,.58),transparent 34%),
+    radial-gradient(ellipse at 84% 20%,rgba(202,190,255,.55),transparent 33%),
+    radial-gradient(ellipse at 78% 82%,rgba(255,224,171,.48),transparent 32%),
+    radial-gradient(ellipse at 15% 88%,rgba(178,231,216,.45),transparent 34%),
+    linear-gradient(145deg,#fffafd,#f8efff 48%,#fff4f7);
+  background-size:150% 150%;
+  animation:petDreamShift 13s ease-in-out infinite alternate;
+}
+#pet:before,#pet:after{z-index:0;pointer-events:none}
+#pet:before{
+  content:"✧";
+  top:12%;left:12%;font-size:30px;color:#d99cbd;
+  text-shadow:0 0 16px #fff,0 0 24px #f6b8d6;
+}
+#pet:after{
+  content:"✦";
+  right:12%;top:23%;font-size:24px;color:#b5a2e9;
+  text-shadow:0 0 15px #fff,0 0 22px #d4c5ff;
+}
+#pet #bunny{
+  position:relative;z-index:1;
+  width:min(260px,86%);
+  max-height:50vh;
+  overflow:visible;
+  transform-origin:50% 90%;
+  animation:mainBunnyFloat 3.4s ease-in-out infinite;
+  filter:drop-shadow(0 17px 17px rgba(177,111,148,.2));
+}
+#pet #bunny #earL{transform-box:fill-box;transform-origin:75% 95%;animation:mainEarWiggle 5.5s ease-in-out infinite}
+#pet #bunny #earR{transform-box:fill-box;transform-origin:20% 95%;animation:mainEarWiggleR 6.2s ease-in-out infinite}
+#pet #bunny #bow{transform-box:fill-box;transform-origin:50% 50%;animation:bowTwinkle 3s ease-in-out infinite}
+#pet #bunny .eye{transform-box:fill-box;transform-origin:center;animation:mainBunnyBlink 5.8s infinite}
+#pet #bubble{position:relative;z-index:2}
+#pet #stats{position:relative;z-index:2}
+@keyframes petDreamShift{0%{background-position:0% 30%}50%{background-position:80% 60%}100%{background-position:30% 100%}}
+@keyframes mainBunnyFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-7px) rotate(1deg)}}
+@keyframes mainEarWiggle{0%,88%,100%{rotate:0deg}92%{rotate:-7deg}96%{rotate:2deg}}
+@keyframes mainEarWiggleR{0%,90%,100%{rotate:0deg}94%{rotate:8deg}97%{rotate:-2deg}}
+@keyframes bowTwinkle{0%,100%{scale:1}50%{scale:1.06}}
+@keyframes mainBunnyBlink{0%,91%,100%{scale:1 1}94%{scale:1 .12}}
+#pet #bunny.bounce{animation:bounce .5s!important}
+body.sleepy #pet{background:linear-gradient(145deg,#f3edff,#fcecf5)}
+@media(prefers-reduced-motion:reduce){
+ #pet{animation:none!important}
+ #pet #bunny,#pet #bunny #earL,#pet #bunny #earR,#pet #bunny #bow,#pet #bunny .eye{animation:none!important}
+}
