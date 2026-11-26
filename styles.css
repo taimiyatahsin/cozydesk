@@ -71,3 +71,66 @@ body.private .privatable{filter:blur(8px);user-select:none}
 @media(max-width:900px){body{height:auto;min-height:100vh;overflow:auto}#app{height:auto;min-height:100vh;padding:10px}nav{border-radius:16px}main{grid-template-columns:1fr}#pet{min-height:280px;max-height:360px}#bunny{width:170px;max-height:190px}#panel{min-height:420px}.spacer{display:none}}
 @media(max-width:560px){#app{padding:8px;gap:9px}nav{gap:5px;padding:9px}nav h1{width:100%;margin:0 0 4px}nav [data-tab]{flex:1;padding:8px 5px;font-size:12px}#btnSleep,#btnFocus,#btnQuiet,#btnPrivacy{flex:1;padding:7px 5px;font-size:11px}#panel{padding:17px;border-radius:19px}#pet{border-radius:19px}.row{flex-wrap:wrap}.row>*{max-width:100%}#clock{font-size:60px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+
+/* CozyDesk visual refresh — soft editorial pastel studio */
+:root{
+  --bg:#fff9fc;--surface:#fffdfd;--card:#fff;--line:#f0d9e5;
+  --pink:#e88daf;--pink-strong:#ce6f96;--lav:#eee9ff;
+  --text:#493447;--muted:#947e90;
+  --shadow:0 22px 60px rgba(154,94,130,.12);
+  --shadow-soft:0 9px 28px rgba(154,94,130,.09);
+}
+body{
+  background:
+    radial-gradient(ellipse at 8% 4%,rgba(255,211,229,.72),transparent 34%),
+    radial-gradient(ellipse at 93% 8%,rgba(220,211,255,.65),transparent 31%),
+    radial-gradient(ellipse at 75% 100%,rgba(255,232,214,.45),transparent 34%),
+    linear-gradient(135deg,#fffafd 0%,#f8f5ff 54%,#fff8f6 100%);
+  background-attachment:fixed;
+}
+#app{gap:17px;padding:18px 22px 22px}
+nav{
+  padding:12px 16px;border-radius:22px;
+  background:rgba(255,255,255,.76);
+  border-color:rgba(238,211,226,.9);
+  box-shadow:0 12px 34px rgba(151,94,126,.08);
+}
+nav h1{font-size:21px;letter-spacing:-.9px;color:#a95f83}
+nav h1:before{content:"♡";display:inline-grid;place-items:center;width:31px;height:31px;margin-right:9px;border-radius:11px;background:linear-gradient(145deg,#ffe2ed,#eee5ff);color:#c66f96;font-size:21px}
+nav [data-tab]{border-radius:12px}
+main{gap:18px}
+#pet{
+  border-radius:29px;
+  background:
+    radial-gradient(circle at 50% 43%,rgba(255,255,255,.96) 0 25%,transparent 56%),
+    linear-gradient(155deg,#fff 0%,#fff0f6 57%,#f0edff 100%);
+  box-shadow:0 22px 55px rgba(170,111,146,.13),inset 0 1px 0 #fff;
+}
+#pet:before{content:"✧";top:12%;left:12%;font-size:29px;color:#d8a5c1}
+#pet:after{content:"✦";right:12%;top:26%;font-size:17px;color:#b9a6e9}
+#bunny{width:min(245px,84%);filter:drop-shadow(0 17px 18px rgba(190,120,153,.23))}
+#bubble{border-radius:18px;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border-color:#f0cddd}
+#stats{font-weight:650;letter-spacing:.1px}
+#panel{
+  border-radius:29px;
+  background:rgba(255,255,255,.82);
+  border-color:rgba(239,218,230,.92);
+  box-shadow:0 22px 60px rgba(154,94,130,.11),inset 0 1px 0 rgba(255,255,255,.9);
+}
+h2{font-weight:760;letter-spacing:-1.15px;color:#76506b}
+h3{letter-spacing:.1px}
+button{border-radius:14px;padding:10px 15px}
+button.active,button.on{background:linear-gradient(135deg,#f9d8e6,#eee6ff);border-color:#e8bfd3}
+input,select,textarea{border-radius:14px;background:rgba(255,250,253,.94);border-color:#ecd8e4}
+input:focus,select:focus,textarea:focus{border-color:#d99ab8;box-shadow:0 0 0 4px rgba(232,166,194,.16)}
+li{border-radius:16px;padding:12px 14px;background:linear-gradient(110deg,rgba(255,255,255,.98),rgba(255,247,251,.96));border-color:#f0dfe8;box-shadow:0 7px 20px rgba(165,112,143,.07)}
+#clock{font-variant-numeric:tabular-nums;color:#c9769b;text-shadow:0 8px 26px rgba(221,153,185,.28)}
+.tab.active{animation:panelIn .32s cubic-bezier(.2,.75,.25,1)}
+.room{border-radius:22px;box-shadow:0 14px 32px rgba(151,94,126,.12)}
+.cgrid .day{border-radius:12px;transition:transform .18s,background .18s}
+.cgrid .day:hover{transform:translateY(-2px);background:#fff0f6}
+#gcanvas{border-radius:20px}
+@media(min-width:1200px){#app{padding:20px 28px 26px}main{grid-template-columns:minmax(280px,350px) minmax(0,1fr)}#pet{padding:28px 22px}}
+@media(max-width:900px){#app{padding:12px}#pet{border-radius:24px}#panel{border-radius:24px}}
+@media(max-width:560px){#app{padding:8px}nav{border-radius:18px}#pet,#panel{border-radius:20px}}
