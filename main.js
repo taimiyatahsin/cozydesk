@@ -14,11 +14,11 @@ const ACTIONS = {
 let win;
 function createWindow() {
   win = new BrowserWindow({
-    width: 980, height: 680, minWidth: 760, minHeight: 560,
-    backgroundColor: '#2a0a14', title: 'CozyDesk', autoHideMenuBar: true,
+    width: 1100, height: 760, minWidth: 600, minHeight: 520,
+    backgroundColor: '#fff8fb', title: 'CozyDesk', autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      contextIsolation: true, nodeIntegration: false, backgroundThrottling: true
+      contextIsolation: true, nodeIntegration: false, sandbox: true, webSecurity: true, backgroundThrottling: true
     }
   });
   win.loadFile('index.html');
