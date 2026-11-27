@@ -218,8 +218,12 @@ function renderStudy() {
 $('#stGoal').onchange = (e) => { X.goal = Math.max(10, +e.target.value || 120); sv(); renderStudy(); };
 $('#stGo').onclick = () => {
   if (stT) {
-    clearInterval(stT); stT = null; const sec = Math.round((Date.now() - stStart) / 1000);
-    X.study[today()] = X.study[today()] || {}; X.study[today()][stSub] = (X.study[today()][stSub] || 0) + sec;
+    clearInterval(stT); stT = null;
+    const sec = Math.min(12 * 60 * 60, Math.max(0, Math.round((Date.now() - stStart) / 1000)));
+    X.study[today()] = X.study[today()] || {};
+    X.study[today()][stSub] = (X.study[today()][stSub] || 0) + sec;
+    if (sec > 0 && !X.days.includes(today())) { X.days.push(today()); X.days = X.days.slice(-60); }
+    X.activeStudy = null;
     addXP(Math.floor(sec / 120)); sv(); $('#stGo').textContent = 'Start'; $('#stClock').textContent = ''; shout('Nice study session! 📚'); renderStudy(); return;
   }
   stSub = $('#stSub').value.trim() || 'General'; stStart = Date.now();
