@@ -55,7 +55,7 @@ function mood(m) {
   if (bunny) bunny.dataset.mood = state;
   document.querySelectorAll('.home-mood-btn').forEach((btn) => btn.classList.toggle('active', btn.dataset.bunnyMood === state));
   const status = $('#bunnyMoodStatus');
-  if (status) status.textContent = ({ happy: 'খরগোশটি এখন খুব খুশি! তোমার সাথে সময় কাটাচ্ছে।', focus: 'খরগোশটি একদম ফোকাসড! পড়া বা কাজে মন দিয়েছে।', sleep: 'খরগোশটি আরামে ঘুমাচ্ছে... শান্ত পরিবেশে বিশ্রাম নিচ্ছে।', shy: 'ইশ! খরগোশটি একটু লজ্জা পেয়ে গেছে...', surprised: 'ওহ! হঠাৎ কী দেখে চমকে গেল খরগোশটি!' })[state];
+  if (status) status.textContent = ({ happy: 'Your bunny is happy to spend time with you! ✨', focus: 'Your bunny is focused and ready to work! 🎯', sleep: 'Your bunny is sleeping peacefully... 💤', shy: 'Aww, your bunny is feeling a little shy! 🌸', surprised: 'Oh! Your bunny got a little surprise! ✨' })[state];
 }
 document.querySelectorAll('.home-mood-btn').forEach((btn) => btn.addEventListener('click', () => mood(btn.dataset.bunnyMood)));
 function bounce() {
@@ -89,7 +89,29 @@ setInterval(() => {
   else if (Math.random() < 0.5) { mood(pick(['happy', 'curious', 'playful', 'bored'])); say('idle'); }
 }, 45000);
 document.addEventListener('pointerdown', () => (lastAct = Date.now()));
-$('#bunny').addEventListener('click', () => { mood('excited'); bounce(); say('poke', true); setTimeout(applyMood, 2500); });
+function floatBunnyHeart(event) {
+  const stage = $('#bunnyStage');
+  if (!stage) return;
+  const rect = stage.getBoundingClientRect();
+  const heart = document.createElement('span');
+  heart.className = 'bunny-floating-heart';
+  heart.setAttribute('aria-hidden', 'true');
+  heart.textContent = pick(['💖', '🌸', '✨', '💕']);
+  const x = Number.isFinite(event.clientX) ? event.clientX - rect.left : rect.width / 2;
+  const y = Number.isFinite(event.clientY) ? event.clientY - rect.top : rect.height / 2;
+  heart.style.left = Math.max(8, Math.min(rect.width - 28, x - 8)) + 'px';
+  heart.style.top = Math.max(8, Math.min(rect.height - 30, y - 8)) + 'px';
+  stage.appendChild(heart);
+  heart.addEventListener('animationend', () => heart.remove(), { once: true });
+  setTimeout(() => heart.remove(), 1300);
+}
+$('#bunny').addEventListener('click', (event) => {
+  floatBunnyHeart(event);
+  mood('excited');
+  bounce();
+  say('poke', true);
+  setTimeout(applyMood, 2500);
+});
 
 /* ---------- XP ---------- */
 const lvlOf = (xp) => { let l = 1, need = 100; while (xp >= need) { xp -= need; l++; need = l * 100; } return { l, cur: xp, need }; };
