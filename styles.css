@@ -328,3 +328,39 @@ li button{flex-shrink:0}
 @keyframes bunnyClickHop{0%{transform:translateY(0) scale(1)}25%{transform:translateY(5px) scale(1.07,.93)}62%{transform:translateY(-22px) scale(.96,1.05)}100%{transform:translateY(0) scale(1)}}
 @keyframes bunnyHeartRise{0%{opacity:0;transform:translateY(8px) scale(.65) rotate(-8deg)}18%{opacity:1}100%{opacity:0;transform:translateY(-62px) scale(1.25) rotate(12deg)}}
 @media(prefers-reduced-motion:reduce){#pet svg#bunny #bunnyBow,.bunny-floating-heart{animation:none!important}.bunny-floating-heart{opacity:0}}
+
+
+/* Dreamy bedtime scene — soft moonlight, nightcap and tuck-in blanket */
+#pet .sleepy-nightcap,#pet .sleepy-blanket{display:none}
+#bunnyStage[data-mood="sleep"] .sleepy-nightcap,
+#bunnyStage[data-mood="sleep"] .sleepy-blanket{display:block}
+#pet .sleepy-nightcap{transform-box:fill-box;transform-origin:50% 100%;animation:nightcapNod 3.8s ease-in-out infinite}
+#pet .sleepy-blanket{transform-box:fill-box;transform-origin:50% 50%;animation:blanketSnuggle 4.2s ease-in-out infinite}
+body.sleepy #pet{
+  background:
+    radial-gradient(ellipse at 78% 17%,rgba(255,244,202,.68),transparent 23%),
+    radial-gradient(ellipse at 50% 42%,rgba(255,255,255,.88),transparent 55%),
+    linear-gradient(155deg,#e9e5ff 0%,#e8e9ff 48%,#f7e8f5 100%)!important;
+  border-color:#dcd5f2;
+  box-shadow:0 22px 55px rgba(117,104,166,.17),inset 0 1px 0 #fff;
+}
+body.sleepy #pet:before,body.sleepy #pet:after{color:#b6a6e8;opacity:.95}
+body.sleepy #bubble{background:#fffaffed;border-color:#dcd2f0;color:#75638f}
+body.sleepy #pet .bunny-stage:before{
+  content:"☾";position:absolute;right:13%;top:7%;font-size:48px;line-height:1;
+  color:#f4d994;text-shadow:0 0 18px #fff4c9,0 4px 14px #a89bd455;
+  animation:moonGlow 3.5s ease-in-out infinite;pointer-events:none;z-index:0
+}
+body.sleepy #pet .bunny-stage:after{
+  content:"✦  ·  ✧";position:absolute;left:9%;top:17%;font-size:18px;
+  letter-spacing:9px;color:#c2b5ed;text-shadow:0 0 12px #fff;pointer-events:none;
+  animation:nightStars 3s ease-in-out infinite;z-index:0
+}
+body.sleepy #pet svg#bunny{filter:drop-shadow(0 13px 18px rgba(118,104,163,.23))!important}
+body.sleepy #pet .home-mood-btn.active{background:linear-gradient(135deg,#cfc5f5,#eee5ff)!important;border-color:#b8a9e8!important;color:#5d507e!important;box-shadow:0 4px 14px #a99add55!important}
+body.sleepy #pet .bunny-mood-status{color:#75658f}
+@keyframes nightcapNod{0%,100%{rotate:-1deg}50%{rotate:2deg}}
+@keyframes blanketSnuggle{0%,100%{translate:0 0}50%{translate:0 2px}}
+@keyframes moonGlow{0%,100%{transform:translateY(0) rotate(-7deg);filter:brightness(1)}50%{transform:translateY(-4px) rotate(2deg);filter:brightness(1.12)}}
+@keyframes nightStars{0%,100%{opacity:.55;transform:translateY(0)}50%{opacity:1;transform:translateY(-5px)}}
+@media(prefers-reduced-motion:reduce){#pet .sleepy-nightcap,#pet .sleepy-blanket,body.sleepy #pet .bunny-stage:before,body.sleepy #pet .bunny-stage:after{animation:none!important}}
