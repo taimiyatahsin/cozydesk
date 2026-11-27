@@ -123,3 +123,6 @@ nav .nav-menu>[data-tab]{display:block;width:100%;margin:3px 0;text-align:left;b
 .room[data-theme=night] .dustMotes,.room[data-theme=maroon] .dustMotes{opacity:.45}
 .room[data-theme=autumn] .sunRays{opacity:.4}
 @media(prefers-reduced-motion:reduce){#room .sunRays{animation:none!important}}
+
+#room #rzzz:not(.hide){animation:roomZzzFloat 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}@keyframes roomZzzFloat{0%,100%{opacity:.75;translate:0 0}50%{opacity:1;translate:0 -8px}}
+@media(prefers-reduced-motion:reduce){#room #rzzz:not(.hide){animation:none!important}}
