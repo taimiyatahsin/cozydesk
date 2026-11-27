@@ -24,11 +24,23 @@ const dd = (date) => Math.round((new Date(date + 'T00:00') - new Date(today() + 
 const TABS = [['room', 'Room'], ['calendar', 'Calendar'], ['alarms', 'Alarms'], ['study', 'Study'], ['clock', 'Clock'], ['game', 'Game']];
 const nav = $('nav'), panel = $('#panel');
 TABS.forEach(([id, label]) => { const b = document.createElement('button'); b.dataset.tab = id; b.textContent = label; nav.insertBefore(b, $('.spacer')); });
+(() => {
+  const group = (label, icon, ids) => {
+    const d = document.createElement('details'); d.className = 'nav-group';
+    const summary = document.createElement('summary'); summary.textContent = icon + ' ' + label; d.appendChild(summary);
+    ids.forEach(id => { const b = nav.querySelector('[data-tab="' + id + '"]'); if (b) d.appendChild(b); });
+    nav.insertBefore(d, $('.spacer'));
+    d.addEventListener('click', e => { if (e.target.closest('[data-tab]')) d.open = false; });
+  };
+  group('Productivity','✦',['tasks','notes','timer','study','calendar','alarms']);
+  group('Cozy Space','⌂',['room','game']);
+  group('More','☾',['clock','settings']);
+})();
 const sec = (id, html) => { const d = document.createElement('div'); d.className = 'tab'; d.id = 'tab-' + id; d.innerHTML = html; panel.appendChild(d); };
 
 sec('room', `<h2>Pet Room</h2>
-<div class="row wrap"><select id="roomTheme"></select>
-<button data-go="bed">Bed</button><button data-go="desk">Desk</button><button data-go="shelf">Read</button><button data-go="plant">Plant</button><button data-go="window">Window</button><button data-go="toys">Toys</button><button data-go="any">Surprise me</button></div>
+<div class="room-toolbar"><label class="theme-picker">Room mood <select id="roomTheme"></select></label>
+<div class="room-actions"><button data-go="bed"><span>🛏️</span> Bed</button><button data-go="desk"><span>📝</span> Desk</button><button data-go="shelf"><span>📖</span> Read</button><button data-go="plant"><span>🌷</span> Plant</button><button data-go="window"><span>🪟</span> Window</button><button data-go="toys"><span>🧸</span> Toys</button><button data-go="any" class="surprise-cta"><span>✨</span> Surprise me</button></div></div>
 <svg id="room" class="room" viewBox="0 0 400 260" data-theme="pink" role="img" aria-label="A dreamy pastel kitty house room">
 <defs>
  <linearGradient id="roomGlow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff7fb"/><stop offset="1" stop-color="#f4eaff"/></linearGradient>
@@ -116,7 +128,9 @@ sec('room', `<h2>Pet Room</h2>
 <rect id="blanket" class="hide" x="305" y="160" width="80" height="26" rx="6" fill="#f4a6bb"/><text id="rzzz" class="hide" x="335" y="135" fill="#bd83b0" font-size="16">Zzz…</text>
 <g class="roomSparkles" fill="#fff"><circle cx="151" cy="54" r="2"/><circle cx="365" cy="42" r="2.5"/><circle cx="232" cy="142" r="2"/></g>
 </svg>
-<p class="muted" id="unlocks"></p>`);
+<div class="soundscape" aria-label="Cozy Soundscape"><div class="soundscape-copy"><span class="soundscape-icon">♫</span><div><b>Cozy Soundscape</b><small>Soft sounds for your little room</small></div></div>
+<div class="soundscape-controls"><select id="soundKind" aria-label="Ambient sound"><option value="rain">🌧 Rain</option><option value="fire">🔥 Fireplace</option><option value="lofi">🎧 Lo-fi beats</option><option value="forest">🐦 Forest birds</option></select><button id="soundToggle" type="button" aria-pressed="false">▶ Play</button></div><p id="soundStatus" class="sound-status">Sound is off · choose a mood</p></div>
+<div id="unlocks" class="room-progress-grid" aria-label="Room collection progress"></div>`);
 
 sec('calendar', `<h2>Calendar</h2><div id="calGrid"></div>
 <div class="row wrap"><input id="evTitle" placeholder="Event title…"><select id="evType"><option>Exam</option><option>Assignment</option><option>Birthday</option><option>Reminder</option></select><input type="date" id="evDate"><button id="evAdd">Add</button></div><ul id="evList"></ul>`);
@@ -164,7 +178,12 @@ function renderRoom() {
   $('#roomTheme').innerHTML = THEMES.map(([t, l]) => `<option value="${t}" ${u.lvl < l ? 'disabled' : ''}>${t}${u.lvl < l ? ' (Lv ' + l + ')' : ''}</option>`).join('');
   $('#roomTheme').value = X.theme; $('#room').dataset.theme = X.theme;
   $('#plant').classList.toggle('locked', !u.plant); $('#teddy').classList.toggle('locked', !u.teddy); $('#lamp').classList.toggle('locked', !u.lamp);
-  $('#unlocks').textContent = `Plant: 30 min study (${u.plant ? 'unlocked' : hm(studyAll()) + ' so far'}) · Teddy: 10 tasks (${Math.min(u.done, 10)}/10) · Moon lamp: 7-day streak (${streak()}/7). New themes unlock as you level up.`;
+  const plantPct = Math.min(100, studyAll() / 1800 * 100), teddyPct = Math.min(100, u.done / 10 * 100), lampPct = Math.min(100, streak() / 7 * 100);
+  $('#unlocks').innerHTML = [
+    ['🌿','Plant','30 min study',plantPct,u.plant ? 'Collected' : hm(studyAll()) + ' so far'],
+    ['🧸','Teddy','10 completed tasks',teddyPct,Math.min(u.done,10) + '/10 tasks'],
+    ['🌙','Moon lamp','7-day streak',lampPct,streak() + '/7 days']
+  ].map(([icon,name,goal,pct,status]) => '<div class="room-progress-card"><div class="progress-heading"><span class="progress-emoji">' + icon + '</span><span><b>' + name + '</b><small>' + goal + '</small></span></div><div class="mini-progress"><i style="width:' + pct + '%"></i></div><small class="progress-status">' + status + '</small></div>').join('');
   roomSync();
 }
 $('#roomTheme').onchange = (e) => { X.theme = e.target.value; sv(); $('#room').dataset.theme = X.theme; };
@@ -316,5 +335,27 @@ setInterval(() => { if (!document.hidden && $('#tab-clock').classList.contains('
   }
   draw(30);
 })();
+
+
+/* Local Web Audio soundscape: no external files or network requests. */
+(() => {
+ const toggle=$('#soundToggle'), select=$('#soundKind'), status=$('#soundStatus');
+ if(!toggle||!select||!status)return;
+ let ctx=null, master=null, src=null, timer=null, playing=false;
+ const stop=()=>{playing=false;if(timer){clearInterval(timer);timer=null;}if(src){try{src.stop();}catch(_){}src=null;}if(master&&ctx)master.gain.setTargetAtTime(.0001,ctx.currentTime,.08);toggle.textContent='▶ Play';toggle.setAttribute('aria-pressed','false');};
+ const note=(freq,dur,type='sine',vol=.025)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(vol,ctx.currentTime+.04);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+dur);o.connect(g);g.connect(master);o.start();o.stop(ctx.currentTime+dur+.05);};
+ const noise=()=>{const b=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*.4;return b;};
+ const start=()=>{stop();try{ctx=ctx||new(window.AudioContext||window.webkitAudioContext)();ctx.resume();master=ctx.createGain();master.gain.value=.18;master.connect(ctx.destination);const kind=select.value;
+ if(kind==='lofi'){const notes=[261.63,329.63,392,440,392,329.63,293.66,349.23];let i=0;note(notes[i++],1.3,'sine',.04);timer=setInterval(()=>{if(!playing)return;note(notes[i++%notes.length],1.3,'sine',.035);if(i%4===0)note(130.81,.5,'triangle',.02);},650);}
+ else if(kind==='forest'){timer=setInterval(()=>{if(playing)note(1500+Math.random()*900,.2,'sine',.018);},1700);}
+ else{src=ctx.createBufferSource();src.buffer=noise();src.loop=true;const f=ctx.createBiquadFilter();f.type='lowpass';f.frequency.value=kind==='fire'?650:1200;const g=ctx.createGain();g.gain.value=kind==='fire'?.25:.16;src.connect(f);f.connect(g);g.connect(master);src.start();if(kind==='fire')timer=setInterval(()=>{if(playing)note(100+Math.random()*90,.12,'triangle',.02);},900);}
+ playing=true;toggle.textContent='Ⅱ Pause';toggle.setAttribute('aria-pressed','true');status.textContent=({rain:'Rain is falling softly ☔',fire:'A tiny fireplace is crackling 🔥',lofi:'A gentle lo-fi loop is playing 🎧',forest:'Birds are singing outside 🌿'})[kind];
+ }catch(_){status.textContent='Audio is unavailable in this browser.';stop();}};
+ toggle.addEventListener('click',()=>playing?stop():start());select.addEventListener('change',()=>{if(playing)start();});document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)stop();});
+})();
+document.addEventListener('click',event=>{
+ if(event.target.closest('#tStart'))setTimeout(()=>{const b=$('#tStart');if(b&&(b.textContent==='Pause'||b.textContent==='Resume')){goto('desk');mood('focused');shout('Study time! I’m at the desk with you 📚',3200);}else if(b&&b.textContent==='Start'){goto('center');applyMood();}},0);
+ if(event.target.closest('#tReset')){goto('center');applyMood();}
+});
 
 renderRoom();
