@@ -53,6 +53,7 @@ function mood(m) {
   const state = map[m] || 'happy';
   const bunny = $('#bunnyStage');
   if (bunny) bunny.dataset.mood = state;
+  document.body.dataset.bunnyMood = state;
   document.querySelectorAll('.home-mood-btn').forEach((btn) => btn.classList.toggle('active', btn.dataset.bunnyMood === state));
   const status = $('#bunnyMoodStatus');
   if (status) status.textContent = ({ happy: 'Your bunny is happily cheering you on! ✨', focus: 'Locked in and focusing right beside you! 🎯', sleep: 'Shh… your bunny is taking a cozy nap. 💤', shy: 'Aww, you made your bunny blush! 🌸', surprised: 'Ooh! Something exciting just caught their eye! ✨' })[state];
@@ -141,7 +142,11 @@ function renderStats() {
   const { l, cur, need } = lvlOf(S.xp);
   $('#lvl').textContent = 'Lv ' + l; $('#xpTxt').textContent = `${cur}/${need}`; $('#xpFill').style.width = (cur / need) * 100 + '%';
   const open = S.tasks.filter((t) => !t.done).length;
-  $('#homeSummary').textContent = `${open} open task(s) · ${S.notes.length} note(s) · ${S.pomos} focus session(s) completed.`;
+  $('#homeSummary').innerHTML = [
+    ['Tasks', open, 'open'],
+    ['Notes', S.notes.length, 'saved'],
+    ['Focus', S.pomos, 'sessions']
+  ].map(([label, value, unit]) => '<div class="home-stat"><span class="home-stat-label">' + label + '</span><strong>' + value + '</strong><span class="home-stat-unit">' + unit + '</span></div>').join('');
 }
 
 /* ---------- Modes ---------- */
