@@ -73,6 +73,38 @@ sec('room', `<h2>Pet Room</h2>
 <g id="plant" class="locked"><path d="M25 190h27l-4 27H29Z" fill="#d69a9c"/><path d="M38 190q-23-20-17-30q17 0 19 25q2-27 19-29q7 17-16 34" fill="#86bd9a"/><path d="M38 191q-7-29 5-36" stroke="#649b79" stroke-width="2" fill="none"/></g>
 <g id="teddy" class="locked"><circle cx="94" cy="219" r="10" fill="#c58a74"/><circle cx="94" cy="205" r="8" fill="#d6a18d"/><circle cx="88" cy="199" r="4" fill="#d6a18d"/><circle cx="100" cy="199" r="4" fill="#d6a18d"/><circle cx="91" cy="205" r="1.3" fill="#553b45"/><circle cx="97" cy="205" r="1.3" fill="#553b45"/></g>
 <g id="lamp" class="locked"><path d="M355 143h5v53h-5Z" fill="#b887a2"/><path d="M342 145l15-24 16 24Z" fill="#ffe4a9" stroke="#d5a8bf" stroke-width="2"/><circle cx="358" cy="145" r="19" fill="#ffe8ae" opacity=".16" class="lampGlow"/></g>
+<!-- extra cozy room decor: flower corner, plush toys and tiny details -->
+<g class="roomFlowers">
+ <path d="M18 183q-7-24 5-35q9 11 1 34q11-24 25-17q-1 19-25 24" fill="#8fbd91"/>
+ <path d="M22 184q-4-29 8-37" fill="none" stroke="#6f9d79" stroke-width="2"/>
+ <path d="M13 184h35l-5 31H18Z" fill="#e9a7c2" stroke="#c985a5" stroke-width="2"/>
+ <path d="M16 192h29" stroke="#fff1f7" stroke-width="3" opacity=".8"/>
+ <g transform="translate(54 157)">
+  <path d="M0 24q-9-22 2-31q10 12 1 31q10-23 22-15q-2 17-22 20" fill="#9bc99d"/>
+  <path d="M-7 23h34l-4 24H-3Z" fill="#c9b8ef" stroke="#a18acb" stroke-width="2"/>
+  <g transform="translate(9 -1)" fill="#ffc4dd" stroke="#e89aba" stroke-width="1"><ellipse cy="-7" rx="4" ry="7"/><ellipse cy="7" rx="4" ry="7"/><ellipse cx="-7" rx="7" ry="4"/><ellipse cx="7" rx="7" ry="4"/><circle r="3" fill="#ffe69a" stroke="none"/></g>
+ </g>
+ <g transform="translate(365 91)">
+  <path d="M0 0q-8 16 0 29q8-13 0-29" fill="#8fbd91"/>
+  <g fill="#f5b5d0"><circle cx="-7" cy="8" r="4"/><circle cx="7" cy="8" r="4"/><circle cy="0" r="4"/><circle cy="15" r="4"/></g><circle cy="8" r="3" fill="#ffe69a"/>
+ </g>
+</g>
+<g class="toyDecor">
+ <ellipse cx="116" cy="235" rx="17" ry="5" fill="#b78ca7" opacity=".18"/>
+ <g transform="translate(116 215)">
+  <circle cy="-7" r="10" fill="#e7b08f"/><circle cx="-7" cy="-15" r="5" fill="#e7b08f"/><circle cx="7" cy="-15" r="5" fill="#e7b08f"/>
+  <circle cx="-3" cy="-8" r="1.4" fill="#5a4250"/><circle cx="3" cy="-8" r="1.4" fill="#5a4250"/>
+  <ellipse cy="5" rx="12" ry="8" fill="#f2c5d8"/><path d="M-4 -1q4 4 8 0" fill="none" stroke="#b87991" stroke-width="1.5"/>
+ </g>
+ <g transform="translate(150 229)"><path d="M-13 0h26l-3 9h-20Z" fill="#b7a5e4"/><circle cx="-7" cy="10" r="3" fill="#927dbb"/><circle cx="7" cy="10" r="3" fill="#927dbb"/><path d="M-8 -1l8-9 8 9" fill="#f5c2d8"/></g>
+</g>
+<g class="wallDetails">
+ <rect x="236" y="105" width="44" height="37" rx="5" fill="#fff8fc" stroke="#d8a6c1" stroke-width="3"/>
+ <rect x="241" y="110" width="34" height="27" rx="3" fill="#eee7ff"/>
+ <path d="M258 131q-12-9 0-17q12 8 0 17" fill="#e99cbb"/>
+ <path d="M290 113q12-12 24 0q-12 16-24 0" fill="#f6c4d8"/>
+ <path d="M304 111l-4-7m4 7 5-7" stroke="#c98ba8" stroke-width="2" stroke-linecap="round"/>
+</g>
 <!-- bunny -->
 <g id="rb">
 <ellipse cx="-7" cy="-60" rx="4.5" ry="13" fill="#f3d3dc"/><ellipse cx="7" cy="-60" rx="4.5" ry="13" fill="#f3d3dc"/><ellipse cx="-7" cy="-59" rx="2" ry="8" fill="#f7a8bf"/><ellipse cx="7" cy="-59" rx="2" ry="8" fill="#f7a8bf"/>
