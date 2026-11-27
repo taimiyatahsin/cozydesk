@@ -49,16 +49,15 @@ const MOODS = {
   confused: ['M177 286 Q185 278 191 286 T204 283', 1]
 };
 function mood(m) {
-  const [d, s, f] = MOODS[m] || MOODS.happy;
-  const mouth = $('#mouth');
-  if (mouth) { mouth.setAttribute('d', d); mouth.setAttribute('fill', f || 'none'); }
-  const bunny = $('#bunny');
-  if (bunny) bunny.style.setProperty('--es', s);
-  ['#eyeLeft', '#eyeRight'].forEach((selector) => {
-    const eye = $(selector);
-    if (eye) eye.style.setProperty('--eye-scale', s);
-  });
+  const map = { sleepy: 'sleep', sleep: 'sleep', focused: 'focus', focus: 'focus', shy: 'shy', surprised: 'surprised', excited: 'surprised', curious: 'surprised', happy: 'happy', playful: 'happy', neutral: 'happy', sad: 'shy', bored: 'focus', confused: 'surprised' };
+  const state = map[m] || 'happy';
+  const bunny = $('#bunnyStage');
+  if (bunny) bunny.dataset.mood = state;
+  document.querySelectorAll('.home-mood-btn').forEach((btn) => btn.classList.toggle('active', btn.dataset.bunnyMood === state));
+  const status = $('#bunnyMoodStatus');
+  if (status) status.textContent = ({ happy: 'খরগোশটি এখন খুব খুশি! তোমার সাথে সময় কাটাচ্ছে।', focus: 'খরগোশটি একদম ফোকাসড! পড়া বা কাজে মন দিয়েছে।', sleep: 'খরগোশটি আরামে ঘুমাচ্ছে... শান্ত পরিবেশে বিশ্রাম নিচ্ছে।', shy: 'ইশ! খরগোশটি একটু লজ্জা পেয়ে গেছে...', surprised: 'ওহ! হঠাৎ কী দেখে চমকে গেল খরগোশটি!' })[state];
 }
+document.querySelectorAll('.home-mood-btn').forEach((btn) => btn.addEventListener('click', () => mood(btn.dataset.bunnyMood)));
 function bounce() {
   const b = $('#bunny'); b.classList.remove('bounce'); void b.getBoundingClientRect(); b.classList.add('bounce');
 }
