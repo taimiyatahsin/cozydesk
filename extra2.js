@@ -49,7 +49,16 @@ function getPrayer() {
 }
 
 /* ---------- inject tabs ---------- */
-[['faith', 'Faith'], ['wellness', 'Wellness']].forEach(([id, label]) => { const b = document.createElement('button'); b.dataset.tab = id; b.textContent = label; nav.insertBefore(b, $('.spacer')); });
+(() => {
+  const more = [...nav.querySelectorAll('.nav-group')].find(d => d.querySelector('summary')?.textContent.includes('More'));
+  const target = more?.querySelector('.nav-menu') || nav;
+  [['faith', 'Faith'], ['wellness', 'Wellness']].forEach(([id, label]) => {
+    const b = document.createElement('button');
+    b.dataset.tab = id;
+    b.textContent = label;
+    target.appendChild(b);
+  });
+})();
 sec('faith', `<h2>Faith &amp; Reflection</h2>
 <p class="muted">Optional. No religion is the default and CozyDesk is not a religious authority. Turn it off any time.</p>
 <label><input type="checkbox" id="fOn"> Enable this module</label>
