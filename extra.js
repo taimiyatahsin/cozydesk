@@ -2,10 +2,18 @@
 /* CozyDesk part 2: Room, Calendar, Alarms, Study, Clock, Game */
 const XD = { events: [], alarms: [], study: {}, zones: ['Asia/Dhaka', 'Europe/London', 'America/New_York', 'Europe/Amsterdam'], theme: 'maroon', best: 0, days: [], goal: 120, lastFired: '' };
 const X = (S.ext = Object.assign({}, XD, S.ext || {}));
+X.events = Array.isArray(X.events) ? X.events : [];
+X.alarms = Array.isArray(X.alarms) ? X.alarms : [];
+X.zones = Array.isArray(X.zones) ? X.zones.filter(z => typeof z === 'string') : [...XD.zones];
+X.days = Array.isArray(X.days) ? X.days.filter(d => typeof d === 'string') : [];
+X.study = X.study && typeof X.study === 'object' && !Array.isArray(X.study) ? X.study : {};
+X.goal = Number.isFinite(+X.goal) && +X.goal >= 10 ? +X.goal : 120;
+X.best = Number.isFinite(+X.best) ? Math.max(0, +X.best) : 0;
+X.activeStudy = X.activeStudy && typeof X.activeStudy.subject === 'string' && Number.isFinite(+X.activeStudy.startedAt) ? X.activeStudy : null;
 const sv = () => { S.ext = X; save(); };
 const today = () => new Date().toLocaleDateString('en-CA');
 const shout = (t, ms = 5000) => { const b = $('#bubble'); b.textContent = t; b.classList.add('show'); clearTimeout(hideT); hideT = setTimeout(() => b.classList.remove('show'), ms); };
-if (!X.days.includes(today())) { X.days.push(today()); X.days = X.days.slice(-60); sv(); }
+// Study streaks are earned by recording a real study session, not by merely opening the app.
 const streak = () => { let n = 0; const d = new Date(); while (X.days.includes(d.toLocaleDateString('en-CA'))) { n++; d.setDate(d.getDate() - 1); } return n; };
 const studySec = (day) => Object.values(X.study[day] || {}).reduce((a, b) => a + b, 0);
 const studyAll = () => Object.keys(X.study).reduce((a, d) => a + studySec(d), 0);
@@ -214,9 +222,17 @@ $('#stGo').onclick = () => {
     X.study[today()] = X.study[today()] || {}; X.study[today()][stSub] = (X.study[today()][stSub] || 0) + sec;
     addXP(Math.floor(sec / 120)); sv(); $('#stGo').textContent = 'Start'; $('#stClock').textContent = ''; shout('Nice study session! 📚'); renderStudy(); return;
   }
-  stSub = $('#stSub').value.trim() || 'General'; stStart = Date.now(); $('#stGo').textContent = 'Stop';
+  stSub = $('#stSub').value.trim() || 'General'; stStart = Date.now();
+  X.activeStudy = { subject: stSub, startedAt: stStart }; sv();
+  $('#stGo').textContent = 'Stop';
   stT = setInterval(() => { $('#stClock').textContent = stSub + ' · ' + fmt(Math.floor((Date.now() - stStart) / 1000)); }, 1000);
 };
+if (X.activeStudy && Date.now() - X.activeStudy.startedAt < 12 * 60 * 60 * 1000) {
+  stSub = X.activeStudy.subject; stStart = +X.activeStudy.startedAt;
+  $('#stGo').textContent = 'Stop';
+  $('#stClock').textContent = stSub + ' · ' + fmt(Math.floor((Date.now() - stStart) / 1000));
+  stT = setInterval(() => { $('#stClock').textContent = stSub + ' · ' + fmt(Math.floor((Date.now() - stStart) / 1000)); }, 1000);
+} else if (X.activeStudy) { X.activeStudy = null; sv(); }
 
 /* ---------- World clock ---------- */
 const ZONES = ['Asia/Dhaka', 'Asia/Kolkata', 'Asia/Dubai', 'Asia/Tokyo', 'Europe/London', 'Europe/Amsterdam', 'Europe/Berlin', 'America/New_York', 'America/Chicago', 'America/Los_Angeles', 'Australia/Sydney'];
@@ -250,10 +266,12 @@ setInterval(() => { if (!document.hidden && $('#tab-clock').classList.contains('
     requestAnimationFrame(loop);
   }
   function draw(left) {
-    g.fillStyle = '#2f0d19'; g.fillRect(0, 0, 420, 300);
-    carrots.forEach((k) => { g.fillStyle = '#ff9a3c'; g.beginPath(); g.moveTo(k.x - 6, k.y); g.lineTo(k.x + 6, k.y); g.lineTo(k.x, k.y + 22); g.fill(); g.fillStyle = '#5ec27a'; g.fillRect(k.x - 3, k.y - 6, 6, 6); });
-    g.fillStyle = '#f4a6bb'; g.fillRect(bx - 32, 278, 64, 14);
-    g.fillStyle = '#f7e3ea'; g.font = '14px Segoe UI'; g.fillText(`Score ${score}   Time ${Math.max(0, Math.ceil(left))}`, 10, 20);
+    g.fillStyle = '#fff7fb'; g.fillRect(0, 0, 420, 300);
+    g.strokeStyle = '#f3dce8'; g.lineWidth = 1;
+    for (let y = 42; y < 300; y += 36) { g.beginPath(); g.moveTo(0, y); g.lineTo(420, y); g.stroke(); }
+    carrots.forEach((k) => { g.fillStyle = '#f39a45'; g.beginPath(); g.moveTo(k.x - 7, k.y); g.lineTo(k.x + 7, k.y); g.lineTo(k.x, k.y + 23); g.fill(); g.fillStyle = '#78b98b'; g.fillRect(k.x - 3, k.y - 7, 6, 7); });
+    g.fillStyle = '#e9a4c3'; g.beginPath(); g.roundRect(bx - 34, 276, 68, 16, 8); g.fill();
+    g.fillStyle = '#77556c'; g.font = '600 14px Segoe UI'; g.fillText(`Score ${score}   Time ${Math.max(0, Math.ceil(left))}`, 12, 22);
   }
   function end() {
     run = false; if (score > X.best) X.best = score; addXP(score * 2); sv();
