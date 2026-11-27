@@ -73,6 +73,10 @@ sec('room', `<h2>Pet Room</h2>
 <rect x="244" y="76" width="105" height="6" rx="3" fill="#bd8ba5"/>
 <rect x="254" y="54" width="12" height="22" rx="2" fill="#f3aeca"/><rect x="269" y="48" width="13" height="28" rx="2" fill="#c9b8f4"/><rect x="285" y="57" width="12" height="19" rx="2" fill="#a9d7c0"/>
 <path d="M305 76q8-22 16 0Z" fill="#f7c9d9"/><circle cx="313" cy="55" r="8" fill="#a8d8b8"/>
+<!-- soft contact shadows under the furniture -->
+<ellipse cx="201" cy="199" rx="66" ry="7" fill="#74556c" opacity=".14" filter="url(#softShadow)"/>
+<ellipse cx="330" cy="202" rx="62" ry="8" fill="#74556c" opacity=".16" filter="url(#softShadow)"/>
+<ellipse cx="39" cy="219" rx="23" ry="5" fill="#74556c" opacity=".13" filter="url(#softShadow)"/>
 <!-- study desk -->
 <rect x="145" y="155" width="112" height="9" rx="3" fill="#bd8ba5"/><rect x="153" y="164" width="7" height="34" fill="#a97896"/><rect x="243" y="164" width="7" height="34" fill="#a97896"/>
 <rect x="184" y="125" width="39" height="27" rx="4" fill="#fff6fb" stroke="#bd8ba5" stroke-width="2"/><rect x="189" y="130" width="29" height="17" rx="2" fill="#c8c0f2"/><path d="M199 153h9" stroke="#bd8ba5" stroke-width="3"/>
