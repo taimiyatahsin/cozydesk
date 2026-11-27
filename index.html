@@ -26,7 +26,78 @@
   <main>
     <section id="pet">
       <div id="bubble"></div>
-      <img id="bunny" src="assets/cozydesk-bunny-scene.svg?v=20261127c" alt="A cute pastel bunny in a cozy pink bedroom" loading="eager" decoding="async">
+      <svg id="bunny" class="cozy-bunny" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="A cute white bunny resting in a pastel pink bedroom">
+<defs>
+ <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#fff4fa"/><stop offset="1" stop-color="#f8ddec"/></linearGradient>
+ <linearGradient id="floor" x2="0" y2="1"><stop stop-color="#f4cbdc"/><stop offset="1" stop-color="#e9b8d0"/></linearGradient>
+ <linearGradient id="fur" x2=".2" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#f5edf2"/></linearGradient>
+ <linearGradient id="hood" x2="1" y2="1"><stop stop-color="#ffd7e9"/><stop offset="1" stop-color="#efaed0"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="10"/></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="2"/></filter>
+</defs>
+<rect width="900" height="620" rx="34" fill="url(#wall)"/>
+<path d="M0 455 Q220 430 450 455T900 445V620H0Z" fill="url(#floor)"/>
+<!-- window -->
+<rect x="625" y="55" width="205" height="260" rx="18" fill="#a99bdc" stroke="#fff" stroke-width="13"/>
+<rect x="640" y="70" width="175" height="230" rx="10" fill="#554b88"/>
+<path d="M640 185H815M727 70V300" stroke="#fff0fa" stroke-width="9"/>
+<circle cx="765" cy="125" r="30" fill="#fff1b8"/><circle cx="778" cy="113" r="29" fill="#554b88"/>
+<g fill="#fff3c9"><circle cx="680" cy="115" r="3"/><circle cx="700" cy="160" r="3"/><circle cx="790" cy="210" r="3"/><circle cx="680" cy="250" r="3"/></g>
+<path d="M610 42Q590 190 615 325M845 42Q865 190 840 325" fill="none" stroke="#fff8fc" stroke-width="24"/>
+<!-- shelves -->
+<path d="M55 130H360M70 135V145M345 135V145" stroke="#d79fbd" stroke-width="12" stroke-linecap="round"/>
+<rect x="105" y="75" width="38" height="52" rx="5" fill="#b9a9e8"/><rect x="150" y="62" width="35" height="65" rx="5" fill="#f5b6d1"/><rect x="192" y="84" width="43" height="43" rx="5" fill="#f6d58f"/>
+<path d="M285 125q-8-55 18-62q23 13 12 62" fill="#8dbd9b"/><path d="M300 125v-55" stroke="#669d7a" stroke-width="5"/>
+<!-- bed -->
+<rect x="30" y="350" width="365" height="145" rx="58" fill="#c9b5eb"/>
+<rect x="45" y="375" width="340" height="118" rx="48" fill="#fff1f7"/>
+<path d="M45 430Q210 390 385 430" stroke="#f4c2d9" stroke-width="13" fill="none"/>
+<rect x="72" y="337" width="130" height="92" rx="36" fill="#fff" stroke="#f0c9dc" stroke-width="7"/>
+<path d="M128 378q-25-35-48-5q-8 32 48 57q56-25 48-57q-23-30-48 5" fill="#f6bdd8"/>
+<!-- rug -->
+<ellipse cx="480" cy="555" rx="285" ry="38" fill="#c58cac" opacity=".25" filter="url(#shadow)"/>
+<ellipse cx="480" cy="540" rx="285" ry="48" fill="#fff1f8" stroke="#e9bfd5" stroke-width="7"/>
+<path d="M225 540q20-22 40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0" fill="none" stroke="#f4d1e3" stroke-width="5"/>
+<!-- bunny shadow -->
+<ellipse cx="480" cy="510" rx="135" ry="24" fill="#bd8ca8" opacity=".22" filter="url(#shadow)"/>
+<!-- ears -->
+<path d="M405 285Q340 70 390 58Q445 52 455 275Z" fill="url(#fur)" stroke="#d9cbd3" stroke-width="5"/>
+<path d="M389 248Q360 95 390 86Q420 92 433 252Z" fill="#f4b8d0"/>
+<path d="M510 275Q515 45 570 63Q615 88 550 295Z" fill="url(#fur)" stroke="#d9cbd3" stroke-width="5"/>
+<path d="M535 252Q550 100 572 91Q593 113 545 260Z" fill="#f4b8d0"/>
+<!-- body -->
+<ellipse cx="480" cy="450" rx="125" ry="112" fill="url(#fur)" stroke="#dfd4da" stroke-width="5"/>
+<ellipse cx="480" cy="477" rx="75" ry="66" fill="#fff"/>
+<!-- hood -->
+<path d="M354 365Q350 255 480 245Q615 250 608 370Q598 445 540 450Q480 425 420 454Q360 425 354 365Z" fill="url(#hood)" stroke="#dfabc5" stroke-width="6"/>
+<path d="M362 363Q370 287 480 279Q575 278 600 360Q565 330 535 350Q480 380 425 350Q390 337 362 363Z" fill="#fff0f7" opacity=".7"/>
+<!-- face -->
+<ellipse cx="480" cy="385" rx="112" ry="92" fill="url(#fur)" stroke="#e6dce1" stroke-width="4"/>
+<!-- hood brim -->
+<path d="M370 354Q480 315 590 354Q570 397 480 398Q395 395 370 354Z" fill="#ffe7f1" stroke="#e4b5cb" stroke-width="5"/>
+<!-- eyes -->
+<ellipse cx="438" cy="383" rx="12" ry="17" fill="#65515c"/><ellipse cx="522" cy="383" rx="12" ry="17" fill="#65515c"/>
+<circle cx="442" cy="377" r="4" fill="#fff"/><circle cx="526" cy="377" r="4" fill="#fff"/>
+<!-- cheeks and nose -->
+<ellipse cx="405" cy="409" rx="22" ry="12" fill="#f7c1d4" opacity=".65" filter="url(#soft)"/><ellipse cx="555" cy="409" rx="22" ry="12" fill="#f7c1d4" opacity=".65" filter="url(#soft)"/>
+<ellipse cx="480" cy="405" rx="9" ry="6" fill="#e9a9bf"/>
+<path d="M480 411q-2 12-14 12m14-12q2 12 14 12" fill="none" stroke="#a88c99" stroke-width="3" stroke-linecap="round"/>
+<!-- paws -->
+<ellipse cx="420" cy="510" rx="42" ry="30" fill="#fff" stroke="#e5d8df" stroke-width="4"/><ellipse cx="540" cy="510" rx="42" ry="30" fill="#fff" stroke="#e5d8df" stroke-width="4"/>
+<g fill="#f4c0d4"><circle cx="410" cy="510" r="7"/><circle cx="427" cy="502" r="6"/><circle cx="432" cy="517" r="6"/><circle cx="530" cy="510" r="7"/><circle cx="547" cy="502" r="6"/><circle cx="552" cy="517" r="6"/></g>
+<!-- bow -->
+<path d="M557 330q-42-38-54-5q-7 24 43 25q-49 10-35 34q20 25 57-20q40 45 58 16q12-23-39-31q51-3 38-28q-16-28-59 9Z" fill="#f6aeca" stroke="#d98eaf" stroke-width="5"/>
+<circle cx="572" cy="351" r="10" fill="#ffe8f2" stroke="#d98eaf" stroke-width="4"/>
+<!-- tiny hearts -->
+<path d="M285 285q-20-25-38-4q-14 20 38 52q52-32 38-52q-18-21-38 4" fill="#f4b8d1" opacity=".9"/>
+<path d="M685 390q-14-18-27-3q-10 15 27 38q38-23 27-38q-13-15-27 3" fill="#f4b8d1" opacity=".8"/>
+<!-- carrot -->
+<path d="M250 495q42-55 86-16q-7 50-70 58Z" fill="#f4a56e" stroke="#d77d54" stroke-width="5"/>
+<path d="M275 474q-8-30 8-42q23 10 17 34q20-32 39-18q-3 27-33 39" fill="#91bd8b" stroke="#6f9e78" stroke-width="4"/>
+<g fill="#fff" opacity=".8"><circle cx="271" cy="504" r="4"/><circle cx="298" cy="491" r="4"/><circle cx="282" cy="521" r="4"/></g>
+<!-- little stars -->
+<g fill="#fff4be"><path d="M215 245l7 18 18 7-18 7-7 18-7-18-18-7 18-7Z"/><path d="M720 355l5 13 13 5-13 5-5 13-5-13-13-5 13-5Z"/></g>
+</svg>
       <div id="zzz">Zzz…</div>
       <div id="stats"><span id="lvl"></span><div class="bar"><div id="xpFill"></div></div><span id="xpTxt"></span></div>
     </section>
