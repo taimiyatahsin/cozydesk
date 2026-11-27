@@ -16,9 +16,10 @@ const MOODS = {
 };
 function mood(m) {
   const [d, s, f] = MOODS[m] || MOODS.happy;
-  $('#mouth').setAttribute('d', d);
-  $('#mouth').setAttribute('fill', f || 'none');
-  $('#bunny').style.setProperty('--es', s);
+  const mouth = $('#mouth');
+  if (mouth) { mouth.setAttribute('d', d); mouth.setAttribute('fill', f || 'none'); }
+  const bunny = $('#bunny');
+  if (bunny) bunny.style.setProperty('--es', s);
 }
 function bounce() {
   const b = $('#bunny'); b.classList.remove('bounce'); void b.getBoundingClientRect(); b.classList.add('bounce');
