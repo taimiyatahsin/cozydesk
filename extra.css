@@ -110,3 +110,16 @@ nav .nav-group[open]>[data-tab]{display:block;width:100%;text-align:left;margin-
 .progress-heading b,.progress-heading small{display:block}.progress-heading b{font-size:12px}.progress-heading small,.progress-status{font-size:10px;color:#a18a9a}
 .mini-progress{height:6px;margin:10px 0 6px;border-radius:99px;background:#f2e6ee;overflow:hidden}.mini-progress i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#e99cba,#c3a9ed)}
 @media(max-width:700px){.room-progress-grid{grid-template-columns:1fr}.soundscape-controls{width:100%}.soundscape-controls select{flex:1;min-width:0}.sound-status{margin-left:0}}
+
+nav .nav-group[open]{position:relative}
+nav .nav-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:170px;padding:7px;border:1px solid #efd9e6;border-radius:17px;background:rgba(255,252,255,.97);box-shadow:0 16px 38px #77536b25;backdrop-filter:blur(18px)}
+nav .nav-group[open] .nav-menu{display:block}
+nav .nav-menu>[data-tab]{display:block;width:100%;margin:3px 0;text-align:left;border-radius:11px}
+#room .sunRays{opacity:.32;filter:blur(1px);animation:sunRayPulse 7s ease-in-out infinite alternate}
+#room .dustMotes circle:nth-child(2n){animation-delay:1.8s}
+#room .dustMotes circle:nth-child(3n){animation-delay:3.1s}
+@keyframes sunRayPulse{from{opacity:.12}to{opacity:.42}}
+.room[data-theme=night] .sunRays,.room[data-theme=maroon] .sunRays{opacity:.06}
+.room[data-theme=night] .dustMotes,.room[data-theme=maroon] .dustMotes{opacity:.45}
+.room[data-theme=autumn] .sunRays{opacity:.4}
+@media(prefers-reduced-motion:reduce){#room .sunRays{animation:none!important}}
