@@ -28,7 +28,9 @@ TABS.forEach(([id, label]) => { const b = document.createElement('button'); b.da
   const group = (label, icon, ids) => {
     const d = document.createElement('details'); d.className = 'nav-group';
     const summary = document.createElement('summary'); summary.textContent = icon + ' ' + label; d.appendChild(summary);
-    ids.forEach(id => { const b = nav.querySelector('[data-tab="' + id + '"]'); if (b) d.appendChild(b); });
+    const menu = document.createElement('div'); menu.className = 'nav-menu';
+    ids.forEach(id => { const b = nav.querySelector('[data-tab="' + id + '"]'); if (b) menu.appendChild(b); });
+    d.appendChild(menu);
     nav.insertBefore(d, $('.spacer'));
     d.addEventListener('click', e => { if (e.target.closest('[data-tab]')) d.open = false; });
   };
@@ -53,6 +55,8 @@ sec('room', `<h2>Pet Room</h2>
 <rect x="28" y="25" width="105" height="91" rx="13" fill="#fff8fc" stroke="#d99bb9" stroke-width="4"/>
 <rect class="sky" x="36" y="33" width="89" height="75" rx="8"/>
 <circle class="sunMoon" cx="103" cy="51" r="12" fill="#fff0ad"/>
+<g class="sunRays" stroke="#fff8d8" stroke-width="3" stroke-linecap="round"><path d="M101 67L86 133"/><path d="M112 68L128 133"/><path d="M92 70L76 122"/><path d="M120 69L139 120"/></g>
+<g class="dustMotes" fill="#fff"><circle cx="150" cy="95" r="2"/><circle cx="142" cy="132" r="1.6"/><circle cx="228" cy="116" r="1.8"/><circle cx="335" cy="136" r="1.5"/></g>
 <path d="M38 91q17-18 32 0t32 0t22 0v15H38Z" fill="#fff" opacity=".72"/>
 <path d="M27 25q-13 30 1 83q12-8 15-1V29Z" fill="#f3aeca" opacity=".9"/>
 <path d="M134 25q13 30-1 83q-12-8-15-1V29Z" fill="#f3aeca" opacity=".9"/>
