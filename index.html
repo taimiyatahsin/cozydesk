@@ -6,7 +6,7 @@
 <meta name="description" content="CozyDesk is your cozy bunny desktop companion for tasks, notes, focus and little breaks.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'">
 <title>CozyDesk — Your Cozy Bunny Companion</title>
-<link rel="stylesheet" href="styles.css?v=20261127i">
+<link rel="stylesheet" href="styles.css?v=20261127k">
 <link rel="stylesheet" href="extra.css">
 </head><body>
 <div id="app">
@@ -27,64 +27,83 @@
     <section id="pet">
       <div id="bubble"></div>
       <div class="bunny-stage" id="bunnyStage">
-        <svg id="bunny" class="bunny-character" viewBox="0 0 380 450" role="img" aria-label="Cute girly fluffy white bunny with rosy cheeks, big blue eyes, pink bow and flower accessories" xmlns="http://www.w3.org/2000/svg">
+        <svg id="bunny" class="bunny-character" viewBox="0 0 380 450" role="img" aria-label="Adorable fluffy white kawaii bunny girl with huge sparkling blue eyes, pink cheeks and a tiny bow" xmlns="http://www.w3.org/2000/svg">
 <defs>
- <radialGradient id="fur" cx="38%" cy="27%" r="78%"><stop stop-color="#fff" offset="0"/><stop stop-color="#fffdfd" offset=".48"/><stop stop-color="#eadfe8" offset="1"/></radialGradient>
- <linearGradient id="earPink" x2="0" y2="1"><stop stop-color="#f9b8d0"/><stop offset="1" stop-color="#ed86b0"/></linearGradient>
- <radialGradient id="iris" cx="38%" cy="28%" r="72%"><stop stop-color="#a7e7ff"/><stop offset=".36" stop-color="#438fd6"/><stop offset=".75" stop-color="#253b85"/><stop offset="1" stop-color="#18234f"/></radialGradient>
- <radialGradient id="cheek"><stop stop-color="#f6a9c4" stop-opacity=".7"/><stop offset="1" stop-color="#f6a9c4" stop-opacity="0"/></radialGradient>
- <linearGradient id="pinkBow" x2="0" y2="1"><stop stop-color="#ffe0ef"/><stop offset=".55" stop-color="#ffafd0"/><stop offset="1" stop-color="#ec78ad"/></linearGradient><linearGradient id="dress" x2="0" y2="1"><stop stop-color="#fff0f7"/><stop offset=".55" stop-color="#ffc4df"/><stop offset="1" stop-color="#f18dbb"/></linearGradient>
- <filter id="softShadow" x="-40%" y="-40%" width="180%" height="190%"><feGaussianBlur stdDeviation="8"/></filter>
+ <radialGradient id="fur" cx="36%" cy="25%" r="78%"><stop stop-color="#fff" offset="0"/><stop offset=".58" stop-color="#fffdfd"/><stop offset="1" stop-color="#e9dfe9"/></radialGradient>
+ <linearGradient id="earPink" x2="0" y2="1"><stop stop-color="#ffd9e8"/><stop offset="1" stop-color="#f29abc"/></linearGradient>
+ <radialGradient id="iris" cx="34%" cy="24%" r="76%"><stop stop-color="#d9f7ff"/><stop offset=".25" stop-color="#82d5f5"/><stop offset=".57" stop-color="#4389d5"/><stop offset=".84" stop-color="#263d88"/><stop offset="1" stop-color="#172451"/></radialGradient>
+ <radialGradient id="cheek"><stop stop-color="#f39cbd" stop-opacity=".62"/><stop offset="1" stop-color="#f39cbd" stop-opacity="0"/></radialGradient>
+ <linearGradient id="dress" x2="0" y2="1"><stop stop-color="#fff4fa"/><stop offset=".58" stop-color="#ffd1e6"/><stop offset="1" stop-color="#f4a6cb"/></linearGradient>
+ <linearGradient id="bow" x2="0" y2="1"><stop stop-color="#fff0f7"/><stop offset=".5" stop-color="#ffb9d8"/><stop offset="1" stop-color="#ec82b1"/></linearGradient>
+ <filter id="shadow" x="-40%" y="-40%" width="180%" height="190%"><feGaussianBlur stdDeviation="8"/></filter>
+ <filter id="furSoft" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="7" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale=".65" xChannelSelector="R" yChannelSelector="G"/></filter>
 </defs>
-<ellipse cx="190" cy="420" rx="105" ry="15" fill="#b99bb4" opacity=".22" filter="url(#softShadow)"/>
+<ellipse cx="190" cy="423" rx="92" ry="13" fill="#b99bb4" opacity=".2" filter="url(#shadow)"/>
+<!-- tiny plush body -->
+<ellipse cx="190" cy="363" rx="76" ry="76" fill="url(#fur)" stroke="#eee5ed" stroke-width="2"/>
+<path d="M125 348 Q190 328 255 348 L265 399 Q190 426 115 399Z" fill="url(#dress)" stroke="#edb2cf" stroke-width="2"/>
+<path d="M145 350 Q190 367 235 350" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+<path d="M171 353 Q190 367 209 353 L190 375Z" fill="#fff8fc" stroke="#f2b6d2" stroke-width="1.5"/>
+<circle cx="190" cy="365" r="5" fill="#f3a0c4"/>
+<!-- little feet and paws -->
+<ellipse cx="143" cy="406" rx="32" ry="24" fill="#fff" stroke="#eee4ed" stroke-width="2"/>
+<ellipse cx="237" cy="406" rx="32" ry="24" fill="#fff" stroke="#eee4ed" stroke-width="2"/>
+<ellipse cx="143" cy="411" rx="15" ry="9" fill="#f6b8d0" opacity=".75"/>
+<ellipse cx="237" cy="411" rx="15" ry="9" fill="#f6b8d0" opacity=".75"/>
+<ellipse cx="112" cy="359" rx="20" ry="36" transform="rotate(-30 112 359)" fill="url(#fur)" stroke="#eee5ed" stroke-width="2"/>
+<ellipse cx="268" cy="359" rx="20" ry="36" transform="rotate(30 268 359)" fill="url(#fur)" stroke="#eee5ed" stroke-width="2"/>
+<!-- ears behind the head -->
 <g id="bunnyEars">
- <path id="earL" d="M116 177 C82 128 64 49 91 20 C109 0 139 16 145 50 L163 163Z" fill="url(#fur)" stroke="#e8dfe8" stroke-width="3"/>
- <path d="M111 137 C91 91 85 43 99 31 C111 21 126 40 130 68 L140 145Z" fill="url(#earPink)" opacity=".9"/>
- <path id="earR" d="M235 164 C239 93 249 18 279 13 C313 7 323 53 305 104 L278 181Z" fill="url(#fur)" stroke="#e8dfe8" stroke-width="3"/>
- <path d="M257 146 C264 87 272 37 286 31 C301 27 306 55 294 94 L278 153Z" fill="url(#earPink)" opacity=".9"/>
+ <path id="earL" d="M119 166 C77 116 72 34 104 18 C136 2 158 47 158 101 L166 177Z" fill="url(#fur)" stroke="#e9e0e9" stroke-width="3"/>
+ <path d="M111 131 C91 89 91 39 108 31 C124 23 139 57 140 101 L147 145Z" fill="url(#earPink)"/>
+ <path id="earR" d="M221 174 C218 103 231 20 270 12 C308 5 326 49 303 111 L273 183Z" fill="url(#fur)" stroke="#e9e0e9" stroke-width="3"/>
+ <path d="M244 145 C244 88 258 33 277 28 C297 24 306 59 288 105 L270 157Z" fill="url(#earPink)"/>
 </g>
-<ellipse cx="190" cy="355" rx="102" ry="84" fill="url(#fur)" stroke="#eee5ed" stroke-width="2"/>
-<path d="M105 345 Q190 319 275 345 L286 397 Q190 432 94 397Z" fill="url(#dress)" stroke="#ed9fc3" stroke-width="2"/><path d="M105 365 Q190 386 275 365" fill="none" stroke="#fff7fb" stroke-width="5" stroke-linecap="round"/><path d="M150 384 Q190 398 230 384" fill="none" stroke="#f9e6f0" stroke-width="3"/>
-<ellipse cx="126" cy="390" rx="38" ry="31" fill="#fff" stroke="#eee5ed" stroke-width="2"/>
-<ellipse cx="254" cy="390" rx="38" ry="31" fill="#fff" stroke="#eee5ed" stroke-width="2"/>
-<ellipse cx="126" cy="396" rx="18" ry="12" fill="#f5b1ca" opacity=".8"/>
-<ellipse cx="254" cy="396" rx="18" ry="12" fill="#f5b1ca" opacity=".8"/>
-<ellipse cx="190" cy="211" rx="139" ry="128" fill="url(#fur)" stroke="#e9e0e9" stroke-width="2.5"/>
-<ellipse cx="190" cy="247" rx="113" ry="75" fill="#fff" opacity=".62"/>
-<ellipse cx="98" cy="260" rx="39" ry="25" fill="url(#cheek)"/>
-<ellipse cx="282" cy="260" rx="39" ry="25" fill="url(#cheek)"/>
+<!-- giant round fluffy head -->
+<ellipse cx="190" cy="232" rx="145" ry="137" fill="url(#fur)" stroke="#e9e0e9" stroke-width="2.5" filter="url(#furSoft)"/>
+<ellipse cx="190" cy="281" rx="105" ry="60" fill="#fff" opacity=".58"/>
+<!-- cheek fluff -->
+<ellipse cx="91" cy="278" rx="45" ry="31" fill="url(#cheek)"/>
+<ellipse cx="289" cy="278" rx="45" ry="31" fill="url(#cheek)"/>
+<path d="M73 264 q-9 7 -12 17 M82 270 q-7 7 -8 15 M307 264 q9 7 12 17 M298 270 q7 7 8 15" fill="none" stroke="#f6b0ca" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+<!-- big glassy eyes -->
 <g id="eyeLeft">
- <ellipse cx="139" cy="211" rx="29" ry="37" fill="#fff"/>
- <ellipse cx="142" cy="214" rx="22" ry="30" fill="url(#iris)"/>
- <ellipse cx="143" cy="218" rx="12" ry="19" fill="#101a39"/>
- <ellipse cx="134" cy="202" rx="8" ry="10" fill="#fff"/>
- <circle cx="153" cy="225" r="4" fill="#bdeeff"/>
- <path d="M111 194 Q130 174 157 184" fill="none" stroke="#5a4b5a" stroke-width="5" stroke-linecap="round"/><path d="M116 187 l-7 -8 M127 180 l-3 -9 M140 178 l1 -9 M151 181 l5 -8" stroke="#5a4b5a" stroke-width="3" stroke-linecap="round"/>
- <path class="eyeLid" d="M106 211 Q140 167 174 210 Q173 244 140 247 Q111 243 106 211Z" fill="url(#fur)" stroke="#e8dfe8" stroke-width="2"/>
+ <ellipse cx="139" cy="224" rx="34" ry="42" fill="#fff"/>
+ <ellipse cx="141" cy="226" rx="27" ry="35" fill="url(#iris)"/>
+ <ellipse cx="142" cy="233" rx="15" ry="23" fill="#111d43"/>
+ <ellipse cx="130" cy="211" rx="10" ry="12" fill="#fff"/>
+ <circle cx="153" cy="238" r="5" fill="#d8f7ff"/>
+ <path d="M108 199 Q137 178 169 198" fill="none" stroke="#645466" stroke-width="5" stroke-linecap="round"/>
+ <path d="M116 190 l-7 -9 M130 184 l-2 -10 M147 184 l3 -10 M161 191 l7 -8" stroke="#645466" stroke-width="3" stroke-linecap="round"/>
+ <path class="eyeLid" d="M104 223 Q139 176 174 222 Q173 260 140 261 Q108 259 104 223Z" fill="url(#fur)" stroke="#e9e0e9" stroke-width="2"/>
 </g>
 <g id="eyeRight">
- <ellipse cx="241" cy="211" rx="29" ry="37" fill="#fff"/>
- <ellipse cx="238" cy="214" rx="22" ry="30" fill="url(#iris)"/>
- <ellipse cx="237" cy="218" rx="12" ry="19" fill="#101a39"/>
- <ellipse cx="230" cy="202" rx="8" ry="10" fill="#fff"/>
- <circle cx="249" cy="225" r="4" fill="#bdeeff"/>
- <path d="M213 184 Q240 174 269 194" fill="none" stroke="#5a4b5a" stroke-width="5" stroke-linecap="round"/><path d="M219 181 l-5 -8 M230 177 l-1 -9 M243 178 l3 -9 M256 184 l7 -7" stroke="#5a4b5a" stroke-width="3" stroke-linecap="round"/>
- <path class="eyeLid" d="M206 210 Q240 167 274 211 Q270 244 240 247 Q209 243 206 210Z" fill="url(#fur)" stroke="#e8dfe8" stroke-width="2"/>
+ <ellipse cx="241" cy="224" rx="34" ry="42" fill="#fff"/>
+ <ellipse cx="239" cy="226" rx="27" ry="35" fill="url(#iris)"/>
+ <ellipse cx="238" cy="233" rx="15" ry="23" fill="#111d43"/>
+ <ellipse cx="228" cy="211" rx="10" ry="12" fill="#fff"/>
+ <circle cx="251" cy="238" r="5" fill="#d8f7ff"/>
+ <path d="M211 198 Q241 178 272 199" fill="none" stroke="#645466" stroke-width="5" stroke-linecap="round"/>
+ <path d="M218 191 l-7 -8 M232 184 l-2 -10 M249 184 l3 -10 M263 192 l7 -8" stroke="#645466" stroke-width="3" stroke-linecap="round"/>
+ <path class="eyeLid" d="M206 222 Q241 176 276 223 Q272 260 240 261 Q208 259 206 222Z" fill="url(#fur)" stroke="#e9e0e9" stroke-width="2"/>
 </g>
-<ellipse cx="190" cy="249" rx="11" ry="8" fill="#f28eaa"/>
-<path d="M190 257 Q178 271 165 260 M190 257 Q202 271 215 260" fill="none" stroke="#a87887" stroke-width="3" stroke-linecap="round"/>
-<path d="M180 269 Q190 282 200 269" fill="#f28da9"/>
-<rect x="183" y="276" width="14" height="21" rx="6" fill="#fff" stroke="#e9dfe9" stroke-width="1.5"/>
-<path d="M190 295 Q190 308 179 309" fill="none" stroke="#e4d8e2" stroke-width="2"/>
-<g id="bow">
- <path d="M163 330 Q127 303 119 328 Q116 351 166 348Z" fill="url(#pinkBow)" stroke="#e88ab2" stroke-width="2"/>
- <path d="M197 330 Q233 303 241 328 Q244 351 194 348Z" fill="url(#pinkBow)" stroke="#e88ab2" stroke-width="2"/>
- <circle cx="180" cy="338" r="11" fill="#f7a4c5" stroke="#e88ab2" stroke-width="2"/>
- <path d="M180 350 L174 365 L187 361 L190 350" fill="#f3a0c1"/>
+<!-- tiny nose, muzzle and buck teeth -->
+<ellipse cx="190" cy="271" rx="10" ry="7" fill="#f29ab7"/>
+<path d="M190 278 Q179 290 167 281 M190 278 Q201 290 213 281" fill="none" stroke="#b98798" stroke-width="2.8" stroke-linecap="round"/>
+<path d="M180 289 Q190 300 200 289" fill="#f4a0bd"/>
+<rect x="184" y="291" width="12" height="17" rx="5" fill="#fff" stroke="#eadfe9" stroke-width="1.3"/>
+<!-- tiny blush freckles -->
+<g fill="#f18eae" opacity=".72"><circle cx="106" cy="282" r="2.4"/><circle cx="116" cy="287" r="2"/><circle cx="126" cy="282" r="2"/><circle cx="254" cy="282" r="2"/><circle cx="264" cy="287" r="2"/><circle cx="274" cy="282" r="2.4"/></g>
+<!-- little side bow and flower -->
+<g id="bow" transform="translate(85 132) rotate(-17)">
+ <path d="M0 0 Q-33 -25 -39 -4 Q-40 18 -2 12Z" fill="url(#bow)" stroke="#e991b9" stroke-width="2"/>
+ <path d="M4 0 Q37 -26 41 -4 Q41 18 2 12Z" fill="url(#bow)" stroke="#e991b9" stroke-width="2"/>
+ <circle cx="1" cy="5" r="8" fill="#f59fc3" stroke="#e991b9" stroke-width="2"/>
+ <path d="M-1 13 L-10 30 L4 25 L8 13" fill="#f4a4c6"/>
 </g>
-<g id="flowerClip" transform="translate(284 112)"><g fill="#ffb6d4" stroke="#ed91b8" stroke-width="1.5"><ellipse cy="-12" rx="7" ry="11"/><ellipse cy="12" rx="7" ry="11"/><ellipse cx="-12" rx="11" ry="7"/><ellipse cx="12" rx="11" ry="7"/><ellipse cx="-8.5" cy="-8.5" rx="7" ry="9" transform="rotate(-45 -8.5 -8.5)"/><ellipse cx="8.5" cy="-8.5" rx="7" ry="9" transform="rotate(45 8.5 -8.5)"/></g><circle r="6" fill="#ffe79c" stroke="#edc66e" stroke-width="1.5"/></g>
-<path d="M91 287 Q104 279 116 287 M264 287 Q276 279 289 287" stroke="#f5a6c5" stroke-width="3" stroke-linecap="round" fill="none" opacity=".7"/>
-<g fill="#fff" opacity=".8"><circle cx="88" cy="219" r="3"/><circle cx="296" cy="219" r="3"/><circle cx="72" cy="240" r="2"/><circle cx="310" cy="240" r="2"/></g>
+<g id="flowerClip" transform="translate(292 153) scale(.78)"><g fill="#ffc4dd" stroke="#ed9abc" stroke-width="1.5"><ellipse cy="-12" rx="7" ry="11"/><ellipse cy="12" rx="7" ry="11"/><ellipse cx="-12" rx="11" ry="7"/><ellipse cx="12" rx="11" ry="7"/><ellipse cx="-8" cy="-8" rx="7" ry="9" transform="rotate(-45 -8 -8)"/><ellipse cx="8" cy="-8" rx="7" ry="9" transform="rotate(45 8 -8)"/></g><circle r="6" fill="#ffe99e" stroke="#edc66e" stroke-width="1.5"/></g>
+<!-- soft sparkle accents -->
+<g fill="#fff" opacity=".95"><path d="M57 214 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4Z"/><path d="M321 238 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3Z"/><circle cx="86" cy="185" r="3"/><circle cx="303" cy="190" r="3"/></g>
 </svg>
       </div>
       <div id="zzz">Zzz…</div>
