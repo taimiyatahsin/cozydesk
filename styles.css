@@ -234,3 +234,17 @@ body.sleepy #pet{background:linear-gradient(180deg,#dcdcf4 0%,#e8d9ef 76%,#c7b3d
 #pet{display:flex!important;visibility:visible!important;min-height:420px}
 #pet>svg#bunny{display:block!important;visibility:visible!important;opacity:1!important;width:min(100%,440px)!important;height:auto!important;max-height:58vh!important;min-height:0!important;flex:0 1 auto;object-fit:contain;position:relative;z-index:1;overflow:visible;filter:drop-shadow(0 10px 16px rgba(173,126,155,.16))}
 @media(max-width:900px){#pet{min-height:360px!important;max-height:none!important}#pet>svg#bunny{width:min(100%,420px)!important;max-height:48vh!important}}
+
+
+/* Reliable visible bunny character: separate from the bedroom background */
+#pet{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;min-height:420px!important;position:relative!important}
+#pet>svg#bunny{display:block!important;visibility:visible!important;opacity:1!important;flex:0 0 auto!important;width:min(340px,88%)!important;height:420px!important;max-height:58vh!important;min-height:260px!important;position:relative!important;z-index:3!important;overflow:visible!important;object-fit:contain!important;filter:drop-shadow(0 12px 13px rgba(130,85,112,.2))!important;animation:cozyBunnyBob 3.8s ease-in-out infinite!important}
+#pet>svg#bunny #earL{transform-box:fill-box;transform-origin:70% 95%;animation:cozyEarLeft 5.5s ease-in-out infinite}
+#pet>svg#bunny #earR{transform-box:fill-box;transform-origin:25% 95%;animation:cozyEarRight 6s ease-in-out infinite}
+#pet>svg#bunny .eye{transform-box:fill-box;transform-origin:center;animation:cozyBlink 5.5s infinite}
+@keyframes cozyBunnyBob{0%,100%{transform:translateY(2px)}50%{transform:translateY(-7px)}}
+@keyframes cozyEarLeft{0%,90%,100%{rotate:0deg}94%{rotate:-7deg}97%{rotate:2deg}}
+@keyframes cozyEarRight{0%,90%,100%{rotate:0deg}94%{rotate:7deg}97%{rotate:-2deg}}
+@keyframes cozyBlink{0%,91%,100%{scale:1 1}94%{scale:1 .08}}
+@media(max-width:900px){#pet{min-height:360px!important}#pet>svg#bunny{width:min(300px,82%)!important;height:370px!important;max-height:46vh!important;min-height:240px!important}}
+@media(prefers-reduced-motion:reduce){#pet>svg#bunny,#pet>svg#bunny *{animation:none!important}}
