@@ -282,3 +282,36 @@ li button{flex-shrink:0}
 @media(prefers-reduced-motion:reduce){
   #pet .bunny-stage,#pet svg#bunny #eyeLeft,#pet svg#bunny #eyeRight{animation:none!important;transition:none!important}
 }
+
+/* Home companion — five expressive moods from the supplied bunny design */
+#pet .bunny-stage{width:min(340px,88%)!important;min-height:270px!important;animation:none!important;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#pet svg#bunny.cozy-bunny-character{width:min(250px,100%)!important;height:auto!important;max-height:none!important;overflow:visible!important;filter:drop-shadow(0 13px 15px rgba(130,85,112,.16))!important;cursor:pointer;animation:bunnyFloat 3.2s ease-in-out infinite}
+#pet .bunny-head,#pet .bunny-body{transform-box:fill-box;transform-origin:center;animation:bunnySoftBreath 3.2s ease-in-out infinite}
+#pet .ear-left{transform-box:fill-box;transform-origin:50% 100%;animation:bunnyEarLeft 4.8s ease-in-out infinite}
+#pet .ear-right{transform-box:fill-box;transform-origin:50% 100%;animation:bunnyEarRight 4.8s ease-in-out infinite}
+#pet .eyes-focus,#pet .eyes-sleep,#pet .eyes-shy,#pet .eyes-surprised,#pet .mouth-focus,#pet .mouth-sleep,#pet .mouth-shy,#pet .mouth-surprised,#pet .paws-shy{display:none}
+#bunnyStage[data-mood="happy"] .eyes-happy,#bunnyStage[data-mood="happy"] .mouth-happy{display:block}
+#bunnyStage[data-mood="focus"] .eyes-focus,#bunnyStage[data-mood="focus"] .mouth-focus{display:block}
+#bunnyStage[data-mood="sleep"] .eyes-sleep,#bunnyStage[data-mood="sleep"] .mouth-sleep{display:block}
+#bunnyStage[data-mood="shy"] .eyes-shy,#bunnyStage[data-mood="shy"] .mouth-shy,#bunnyStage[data-mood="shy"] .paws-shy{display:block}
+#bunnyStage[data-mood="surprised"] .eyes-surprised,#bunnyStage[data-mood="surprised"] .mouth-surprised{display:block}
+#bunnyStage[data-mood="shy"] .paws-default{display:none}
+#bunnyStage[data-mood="shy"] .blush{fill:url(#shyBlushGrad)}
+#bunnyStage[data-mood="sleep"] .ear-left{rotate:-15deg;translate:0 3px}
+#bunnyStage[data-mood="sleep"] .ear-right{rotate:15deg;translate:0 3px}
+#bunnyStage[data-mood="surprised"] .bunny-head{animation:bunnyPop .45s cubic-bezier(.22,1,.36,1)}
+.home-bunny-moods{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:4px auto 8px;max-width:390px;position:relative;z-index:4}
+.home-mood-btn{border:1px solid #ebc3d4!important;background:#fff!important;color:#6b4c5e!important;padding:6px 10px!important;border-radius:999px!important;font-size:11px!important;font-weight:650!important;box-shadow:none!important}
+.home-mood-btn.active{background:#ff7aa2!important;color:#fff!important;border-color:#ff7aa2!important;box-shadow:0 4px 12px #ff7aa24d!important}
+.bunny-mood-status{margin:0 auto 7px;text-align:center;font-size:12px;color:#8a687b;max-width:340px}
+.bunny-zzz-layer{position:absolute;inset:20px 12% auto auto;pointer-events:none;display:none;color:#9b6b84;font-weight:800}
+.bunny-zzz-layer span{position:absolute;opacity:0;animation:bunnyZzz 3.6s linear infinite}.bunny-zzz-layer span:nth-child(1){right:25px;top:65px;font-size:12px}.bunny-zzz-layer span:nth-child(2){right:10px;top:42px;font-size:17px;animation-delay:1.2s}.bunny-zzz-layer span:nth-child(3){right:-8px;top:14px;font-size:20px;animation-delay:2.4s}
+#bunnyStage[data-mood="sleep"] .bunny-zzz-layer{display:block}
+@keyframes bunnySoftBreath{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-2px) scale(1.012)}}
+@keyframes bunnyFloat{0%,100%{translate:0 0}50%{translate:0 -3px}}
+@keyframes bunnyEarLeft{0%,82%,100%{rotate:0}88%{rotate:-5deg}94%{rotate:2deg}}
+@keyframes bunnyEarRight{0%,82%,100%{rotate:0}88%{rotate:5deg}94%{rotate:-2deg}}
+@keyframes bunnyPop{0%{transform:scale(.96)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
+@keyframes bunnyZzz{0%{transform:translate(0,8px) scale(.8);opacity:0}25%{opacity:.85}100%{transform:translate(6px,-16px) scale(1.1);opacity:0}}
+@media(max-width:900px){#pet .bunny-stage{width:min(300px,85%)!important;min-height:245px!important}#pet svg#bunny.cozy-bunny-character{width:min(225px,100%)!important}}
+@media(prefers-reduced-motion:reduce){#pet svg#bunny.cozy-bunny-character,#pet .bunny-head,#pet .bunny-body,#pet .ear-left,#pet .ear-right,.bunny-zzz-layer span{animation:none!important;translate:0 0!important}}
