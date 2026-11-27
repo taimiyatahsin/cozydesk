@@ -315,3 +315,16 @@ li button{flex-shrink:0}
 @keyframes bunnyZzz{0%{transform:translate(0,8px) scale(.8);opacity:0}25%{opacity:.85}100%{transform:translate(6px,-16px) scale(1.1);opacity:0}}
 @media(max-width:900px){#pet .bunny-stage{width:min(300px,85%)!important;min-height:245px!important}#pet svg#bunny.cozy-bunny-character{width:min(225px,100%)!important}}
 @media(prefers-reduced-motion:reduce){#pet svg#bunny.cozy-bunny-character,#pet .bunny-head,#pet .bunny-body,#pet .ear-left,#pet .ear-right,.bunny-zzz-layer span{animation:none!important;translate:0 0!important}}
+
+
+/* Extra cute interactions from the supplied bunny design */
+#pet .bunny-stage{position:relative;isolation:isolate}
+#pet svg#bunny #bunnyBow{transform-box:fill-box;transform-origin:50% 50%;animation:bunnyBowSway 3.6s ease-in-out infinite}
+#pet svg#bunny .shy-blush-marks{display:none}
+#bunnyStage[data-mood="shy"] .shy-blush-marks{display:block}
+#pet #bunny.bounce{animation:bunnyClickHop .48s cubic-bezier(.34,1.56,.64,1)!important}
+.bunny-floating-heart{position:absolute;z-index:8;pointer-events:none;font-size:20px;line-height:1;filter:drop-shadow(0 3px 5px #df8daf55);animation:bunnyHeartRise 1.15s ease-out forwards}
+@keyframes bunnyBowSway{0%,100%{rotate:0deg}50%{rotate:7deg}}
+@keyframes bunnyClickHop{0%{transform:translateY(0) scale(1)}25%{transform:translateY(5px) scale(1.07,.93)}62%{transform:translateY(-22px) scale(.96,1.05)}100%{transform:translateY(0) scale(1)}}
+@keyframes bunnyHeartRise{0%{opacity:0;transform:translateY(8px) scale(.65) rotate(-8deg)}18%{opacity:1}100%{opacity:0;transform:translateY(-62px) scale(1.25) rotate(12deg)}}
+@media(prefers-reduced-motion:reduce){#pet svg#bunny #bunnyBow,.bunny-floating-heart{animation:none!important}.bunny-floating-heart{opacity:0}}
