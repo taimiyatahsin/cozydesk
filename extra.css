@@ -332,3 +332,116 @@ nav .quick-modes button{padding:8px 10px;font-size:11px;min-height:38px}
 @media(prefers-reduced-motion:reduce){
   #pet svg#bunny.bunny-artwork-refresh,#pet svg#bunny.bunny-artwork-refresh #bunnyBow{animation:none!important}
 }
+
+
+/* CozyDesk 2026 — ambient background, complete mascot framing and home card polish */
+body{
+  background:
+    radial-gradient(ellipse at 7% 15%,rgba(255,211,229,.52) 0,transparent 29%),
+    radial-gradient(ellipse at 93% 10%,rgba(216,207,255,.48) 0,transparent 31%),
+    radial-gradient(ellipse at 52% 100%,rgba(255,237,220,.42) 0,transparent 36%),
+    linear-gradient(145deg,#fff9fc 0%,#f8f5ff 55%,#fff9f6 100%);
+  background-attachment:fixed
+}
+body:before,body:after{
+  content:"✧   ·      ✦      ·   ✧";position:fixed;z-index:0;pointer-events:none;
+  color:#d8b9d3;opacity:.22;font-size:15px;letter-spacing:15px;white-space:nowrap
+}
+body:before{top:17%;left:-18px;transform:rotate(-18deg)}
+body:after{right:-24px;bottom:14%;transform:rotate(16deg);color:#e6b4c9}
+#app{position:relative;z-index:1}
+body[data-bunny-mood="happy"]{--mood-glow:rgba(255,208,226,.32)}
+body[data-bunny-mood="focus"]{--mood-glow:rgba(202,190,255,.32)}
+body[data-bunny-mood="sleep"]{--mood-glow:rgba(183,174,224,.3)}
+body[data-bunny-mood="shy"]{--mood-glow:rgba(255,194,215,.3)}
+body[data-bunny-mood="surprised"]{--mood-glow:rgba(255,225,190,.28)}
+#pet{
+  overflow:visible;
+  background:
+    radial-gradient(ellipse at 50% 23%,var(--mood-glow,rgba(255,218,235,.3)),transparent 53%),
+    linear-gradient(160deg,#fffefe 0%,#fff3f8 58%,#f4f0ff 100%);
+  border-color:#eedce9;
+  box-shadow:0 18px 44px rgba(169,117,151,.12),inset 0 1px rgba(255,255,255,.9)
+}
+#pet .bunny-stage{
+  order:2;position:relative;isolation:isolate;
+  width:min(100%,350px)!important;min-height:290px!important;
+  display:flex;align-items:center;justify-content:center;
+  padding:28px 8px 8px!important;margin:0 auto 5px!important;
+  overflow:visible
+}
+#pet .bunny-stage:before{
+  top:50%;width:min(250px,78%);transform:translate(-50%,-47%);
+  background:radial-gradient(circle,#ffe9f2 0%,#f0eaff 56%,rgba(240,234,255,0) 75%);
+  opacity:.95
+}
+#pet svg#bunny.cozy-bunny-character{
+  display:block;position:relative;z-index:1;
+  width:min(258px,100%)!important;height:auto!important;max-height:none!important;
+  overflow:visible;flex:0 0 auto
+}
+#pet .home-bunny-moods{order:1;margin:0 auto 9px!important;position:relative;z-index:2}
+#pet .bunny-mood-status{
+  order:3;min-height:40px;width:min(100%,350px);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:9px 15px;margin:5px auto 2px;border-radius:999px;
+  border:1px solid #eeddea;background:rgba(255,255,255,.82);
+  color:#76586f;font-size:13px;font-weight:600;
+  box-shadow:0 5px 15px rgba(170,119,151,.07)
+}
+#pet #stats{
+  order:4;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+  width:min(100%,350px);min-height:48px;padding:9px 13px;margin:8px auto 0;
+  border:1px solid #eaddeb;border-radius:999px;background:rgba(255,255,255,.86);
+  box-shadow:0 6px 17px rgba(170,119,151,.08);gap:10px
+}
+#pet #stats .bar{width:auto;flex:1 1 75px;max-width:135px;height:9px}
+#pet #lvl,#pet #xpTxt{white-space:nowrap;color:#815d79;font-weight:750;font-variant-numeric:tabular-nums}
+#panel{border-color:#eddfeb;box-shadow:0 18px 48px rgba(158,119,157,.11),inset 0 1px #fff}
+#tab-home h2{margin-bottom:17px}
+#tab-home .home-summary-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;
+  margin:0 0 14px
+}
+#tab-home .home-stat{
+  min-width:0;display:grid;grid-template-columns:1fr auto;align-items:center;
+  padding:14px 15px;border:1px solid #efdfeb;border-radius:18px;
+  background:linear-gradient(145deg,#fff 0%,#fff8fc 72%,#f8f4ff 100%);
+  box-shadow:0 7px 20px rgba(175,129,158,.08)
+}
+#tab-home .home-stat-label{font-size:12px;font-weight:700;color:#99758d}
+#tab-home .home-stat strong{grid-column:1;grid-row:2;font-size:27px;line-height:1.15;color:#815a78;font-variant-numeric:tabular-nums}
+#tab-home .home-stat-unit{grid-column:2;grid-row:2;font-size:11px;color:#aa8fa3}
+#tab-home .home-helper-hint{
+  margin:0;padding:12px 15px;border:1px solid #f0e4ed;border-radius:15px;
+  background:rgba(255,250,253,.82);color:#927d8d;line-height:1.55
+}
+nav{flex-wrap:nowrap;gap:6px;padding:9px 11px}
+nav h1{flex:0 0 auto;margin-right:9px}
+nav .nav-group{flex:0 0 auto}
+nav .quick-modes{display:flex;flex:0 1 auto;min-width:0;gap:5px;justify-content:flex-end}
+nav .quick-modes button{white-space:nowrap;flex:0 1 auto}
+@media(max-width:1080px){
+  nav{flex-wrap:wrap}
+  nav .quick-modes{margin-left:auto}
+}
+@media(max-width:900px){
+  #pet{overflow:visible}
+  #pet .bunny-stage{min-height:275px!important;padding-top:25px!important}
+  #pet svg#bunny.cozy-bunny-character{width:min(250px,90%)!important}
+  #tab-home .home-summary-grid{gap:8px}
+  #tab-home .home-stat{padding:12px}
+}
+@media(max-width:560px){
+  #pet .bunny-stage{min-height:250px!important;padding-top:23px!important}
+  #pet svg#bunny.cozy-bunny-character{width:min(235px,94%)!important}
+  #pet #stats{border-radius:18px}
+  #tab-home .home-summary-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  #tab-home .home-stat{padding:10px 8px;border-radius:14px}
+  #tab-home .home-stat strong{font-size:23px}
+  #tab-home .home-stat-unit{font-size:10px}
+  nav{flex-wrap:wrap}
+  nav .quick-modes{width:100%;justify-content:stretch;margin:2px 0 0}
+  nav .quick-modes button{flex:1 1 0}
+}
+@media(prefers-reduced-motion:reduce){body:before,body:after{display:none}}
