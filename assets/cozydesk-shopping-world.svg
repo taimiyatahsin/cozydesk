@@ -6,23 +6,23 @@
  <linearGradient id="night" x2="0" y2="1"><stop stop-color="#33365d"/><stop offset="1" stop-color="#7c648f"/></linearGradient>
  <filter id="shadow"><feGaussianBlur stdDeviation="10"/></filter>
  </defs>
- <rect width="1200" height="720" rx="34" fill="#fff8fc"/>
+ <rect width="1200" height="720" rx="34" fill="#fff5fb"/>
  <g transform="translate(16 16)">
   <rect width="568" height="336" rx="26" fill="url(#bg)"/>
-  <circle cx="500" cy="52" r="24" fill="#ffe7a9"/><path d="M0 280Q130 245 250 285T568 268V336H0Z" fill="#e6c8d7"/>
+  <circle cx="500" cy="52" r="24" fill="#ffe7a9"/><path d="M0 280Q130 245 250 285T568 268V336H0Z" fill="#f5c7dc"/>
   <rect x="92" y="72" width="420" height="220" rx="18" fill="#fff8fc" stroke="#d99bb9" stroke-width="7"/>
   <path d="M76 78H530L510 34H96Z" fill="#f3aeca"/><text x="303" y="65" text-anchor="middle" font-size="29" font-family="Trebuchet MS" font-weight="bold" fill="#fff">Cozy Boutique ♡</text>
   <g fill="#f6c8da" stroke="#d89ab5" stroke-width="3"><rect x="118" y="112" width="95" height="154" rx="10"/><rect x="230" y="112" width="95" height="154" rx="10"/><rect x="342" y="112" width="145" height="154" rx="10"/></g>
   <g fill="#fff4f8"><rect x="128" y="124" width="75" height="132" rx="8"/><rect x="240" y="124" width="75" height="132" rx="8"/><rect x="352" y="124" width="125" height="132" rx="8"/></g>
   <g fill="#d6c6f4"><rect x="140" y="205" width="48" height="35" rx="6"/><rect x="250" y="190" width="55" height="50" rx="8"/></g>
   <g fill="#a8d7b8"><path d="M165 197q-35-36-10-45q22 7 10 45m0 0q8-40 30-30q0 22-30 30"/></g>
-  <g transform="translate(282 175)"><ellipse cy="15" rx="30" ry="28" fill="#fff"/><ellipse cx="-17" cy="-17" rx="10" ry="30" fill="#fff"/><ellipse cx="17" cy="-17" rx="10" ry="30" fill="#fff"/><ellipse cx="-17" cy="-17" rx="4" ry="21" fill="#ffb9d0"/><ellipse cx="17" cy="-17" rx="4" ry="21" fill="#ffb9d0"/><circle cx="-10" cy="12" r="3" fill="#493644"/><circle cx="10" cy="12" r="3" fill="#493644"/><ellipse cx="-19" cy="22" rx="8" ry="4" fill="#ffb2c9"/><ellipse cx="19" cy="22" rx="8" ry="4" fill="#ffb2c9"/><path d="M-5 22q5 6 10 0" fill="none" stroke="#b96e8b" stroke-width="2"/></g>
-  <g transform="translate(55 210)"><ellipse cy="55" rx="36" ry="32" fill="#fff"/><ellipse cx="-20" cy="5" rx="12" ry="36" fill="#fff"/><ellipse cx="20" cy="5" rx="12" ry="36" fill="#fff"/><ellipse cx="-20" cy="5" rx="5" ry="26" fill="#ffb9d0"/><ellipse cx="20" cy="5" rx="5" ry="26" fill="#ffb9d0"/><circle cx="-12" cy="50" r="3.5" fill="#493644"/><circle cx="12" cy="50" r="3.5" fill="#493644"/><ellipse cx="-22" cy="60" rx="9" ry="5" fill="#ffb2c9"/><ellipse cx="22" cy="60" rx="9" ry="5" fill="#ffb2c9"/><path d="M-5 61q5 6 10 0" fill="none" stroke="#b96e8b" stroke-width="2"/><path d="M-28 78q28 30 56 0" fill="#f6b5cf"/></g>
+  <g transform="translate(282 175) scale(1.22)"><path d="M20 -39Q8 -52 5 -40Q4 -31 19 -36Q32 -25 34 -38Q35 -50 20 -39Z" fill="#ff78a5" stroke="#e66b98" stroke-width="1.5"/><circle cx="20" cy="-38" r="3.2" fill="#ffd0e0"/><ellipse cy="15" rx="30" ry="28" fill="#fff"/><ellipse cx="-17" cy="-17" rx="10" ry="30" fill="#fff"/><ellipse cx="17" cy="-17" rx="10" ry="30" fill="#fff"/><ellipse cx="-17" cy="-17" rx="4" ry="21" fill="#ffb9d0"/><ellipse cx="17" cy="-17" rx="4" ry="21" fill="#ffb9d0"/><circle cx="-10" cy="12" r="4.2" fill="#493644"/><circle cx="10" cy="12" r="4.2" fill="#493644"/><circle cx="-11.5" cy="10.5" r="1.6" fill="#fff"/><circle cx="-8" cy="14" r=".9" fill="#fff"/><circle cx="8.5" cy="10.5" r="1.6" fill="#fff"/><circle cx="12" cy="14" r=".9" fill="#fff"/><ellipse cx="-19" cy="22" rx="8" ry="4" fill="#ffb2c9"/><ellipse cx="19" cy="22" rx="8" ry="4" fill="#ffb2c9"/><path d="M-5 22q5 6 10 0" fill="none" stroke="#b96e8b" stroke-width="2"/></g>
+  <g transform="translate(55 198) scale(1.16)"><path d="M20 -39Q8 -52 5 -40Q4 -31 19 -36Q32 -25 34 -38Q35 -50 20 -39Z" fill="#ff78a5" stroke="#e66b98" stroke-width="1.5"/><circle cx="20" cy="-38" r="3.2" fill="#ffd0e0"/><ellipse cy="55" rx="36" ry="32" fill="#fff"/><ellipse cx="-20" cy="5" rx="12" ry="36" fill="#fff"/><ellipse cx="20" cy="5" rx="12" ry="36" fill="#fff"/><ellipse cx="-20" cy="5" rx="5" ry="26" fill="#ffb9d0"/><ellipse cx="20" cy="5" rx="5" ry="26" fill="#ffb9d0"/><circle cx="-12" cy="50" r="3.5" fill="#493644"/><circle cx="12" cy="50" r="3.5" fill="#493644"/><ellipse cx="-22" cy="60" rx="9" ry="5" fill="#ffb2c9"/><ellipse cx="22" cy="60" rx="9" ry="5" fill="#ffb2c9"/><path d="M-5 61q5 6 10 0" fill="none" stroke="#b96e8b" stroke-width="2"/><path d="M-28 78q28 30 56 0" fill="#f6b5cf"/></g>
   <text x="292" y="319" text-anchor="middle" font-size="17" fill="#956d87" font-family="Trebuchet MS">Plushies · Plants · Pretty things</text>
  </g>
  <g transform="translate(616 16)">
   <rect width="568" height="336" rx="26" fill="#f4eaff"/>
-  <path d="M0 276Q140 238 270 280T568 268V336H0Z" fill="#e8d5e9"/>
+  <path d="M0 276Q140 238 270 280T568 268V336H0Z" fill="#eadcff"/>
   <rect x="48" y="55" width="470" height="235" rx="20" fill="url(#shop)" stroke="#d8b4d0" stroke-width="5"/>
   <path d="M32 65H536L510 25H58Z" fill="#d7c4f5"/><text x="284" y="54" text-anchor="middle" font-size="27" font-family="Trebuchet MS" font-weight="bold" fill="#fff">Cute Desk Shop ♡</text>
   <rect x="76" y="92" width="416" height="125" rx="14" fill="#fff" stroke="#f1c9dc" stroke-width="4"/>
@@ -30,7 +30,7 @@
   <rect x="300" y="115" width="76" height="64" rx="8" fill="#c9c2f1"/><rect x="309" y="123" width="58" height="45" rx="5" fill="#a8d8e8"/>
   <path d="M405 178v-48l25-23 25 23v48Z" fill="#ffe3a6"/><path d="M412 133h36" stroke="#fff" stroke-width="5"/>
   <g fill="#a8d7b8"><path d="M90 210q-20-44 0-55q19 16 0 55m0 0q3-50 28-40q-2 27-28 40"/></g>
-  <g transform="translate(276 258)"><ellipse cy="0" rx="36" ry="27" fill="#fff"/><ellipse cx="-18" cy="-35" rx="11" ry="34" fill="#fff"/><ellipse cx="18" cy="-35" rx="11" ry="34" fill="#fff"/><ellipse cx="-18" cy="-35" rx="5" ry="25" fill="#ffb8d0"/><ellipse cx="18" cy="-35" rx="5" ry="25" fill="#ffb8d0"/><circle cx="-12" cy="-2" r="3" fill="#493644"/><circle cx="12" cy="-2" r="3" fill="#493644"/><ellipse cx="-23" cy="8" rx="8" ry="5" fill="#ffb2c9"/><ellipse cx="23" cy="8" rx="8" ry="5" fill="#ffb2c9"/><path d="M-5 9q5 6 10 0" fill="none" stroke="#b96e8b" stroke-width="2"/></g>
+  <g transform="translate(276 252) scale(1.17)"><path d="M20 -39Q8 -52 5 -40Q4 -31 19 -36Q32 -25 34 -38Q35 -50 20 -39Z" fill="#ff78a5" stroke="#e66b98" stroke-width="1.5"/><circle cx="20" cy="-38" r="3.2" fill="#ffd0e0"/><ellipse cy="0" rx="36" ry="27" fill="#fff"/><ellipse cx="-18" cy="-35" rx="11" ry="34" fill="#fff"/><ellipse cx="18" cy="-35" rx="11" ry="34" fill="#fff"/><ellipse cx="-18" cy="-35" rx="5" ry="25" fill="#ffb8d0"/><ellipse cx="18" cy="-35" rx="5" ry="25" fill="#ffb8d0"/><circle cx="-12" cy="-2" r="4.2" fill="#493644"/><circle cx="12" cy="-2" r="4.2" fill="#493644"/><circle cx="-13.5" cy="-3.5" r="1.7" fill="#fff"/><circle cx="-10" cy="0" r="1" fill="#fff"/><circle cx="10.5" cy="-3.5" r="1.7" fill="#fff"/><circle cx="14" cy="0" r="1" fill="#fff"/><ellipse cx="-23" cy="8" rx="8" ry="5" fill="#ffb2c9"/><ellipse cx="23" cy="8" rx="8" ry="5" fill="#ffb2c9"/><path d="M-5 9q5 6 10 0" fill="none" stroke="#b96e8b" stroke-width="2"/></g>
   <text x="284" y="319" text-anchor="middle" font-size="17" fill="#956d87" font-family="Trebuchet MS">Keyboards · Desk mats · Lamps</text>
  </g>
  <g transform="translate(16 368)">
@@ -43,13 +43,13 @@
   <g fill="#f5c3d8"><rect x="165" y="170" width="85" height="66" rx="9"/><rect x="270" y="188" width="90" height="48" rx="8"/></g>
   <g fill="#d8c9f5"><rect x="175" y="178" width="65" height="43" rx="5"/><rect x="280" y="196" width="70" height="30" rx="4"/></g>
   <path d="M410 232v-80l30-35 30 35v80Z" fill="#ffe39f"/><circle cx="440" cy="178" r="18" fill="#fff5cb" opacity=".7"/>
-  <g transform="translate(65 208)"><ellipse cy="44" rx="34" ry="30" fill="#fff"/><ellipse cx="-18" cy="-3" rx="11" ry="35" fill="#fff"/><ellipse cx="18" cy="-3" rx="11" ry="35" fill="#fff"/><ellipse cx="-18" cy="-3" rx="5" ry="26" fill="#ffb8d0"/><ellipse cx="18" cy="-3" rx="5" ry="26" fill="#ffb8d0"/><circle cx="-11" cy="39" r="3" fill="#493644"/><circle cx="11" cy="39" r="3" fill="#493644"/><ellipse cx="-21" cy="49" rx="8" ry="5" fill="#ffb2c9"/><ellipse cx="21" cy="49" rx="8" ry="5" fill="#ffb2c9"/><path d="M-5 50q5 6 10 0" fill="none" stroke="#b96e8b" stroke-width="2"/><path d="M-40 15Q0 -40 40 15" fill="none" stroke="#e8b7cb" stroke-width="5"/></g>
-  <path d="M0 285Q130 260 250 288T568 282V336H0Z" fill="#a7a1c4"/><path d="M30 301h500" stroke="#fff" stroke-width="3" opacity=".3"/>
+  <g transform="translate(65 198) scale(1.16)"><path d="M20 -39Q8 -52 5 -40Q4 -31 19 -36Q32 -25 34 -38Q35 -50 20 -39Z" fill="#ff78a5" stroke="#e66b98" stroke-width="1.5"/><circle cx="20" cy="-38" r="3.2" fill="#ffd0e0"/><ellipse cy="44" rx="34" ry="30" fill="#fff"/><ellipse cx="-18" cy="-3" rx="11" ry="35" fill="#fff"/><ellipse cx="18" cy="-3" rx="11" ry="35" fill="#fff"/><ellipse cx="-18" cy="-3" rx="5" ry="26" fill="#ffb8d0"/><ellipse cx="18" cy="-3" rx="5" ry="26" fill="#ffb8d0"/><circle cx="-11" cy="39" r="4.2" fill="#493644"/><circle cx="11" cy="39" r="4.2" fill="#493644"/><circle cx="-12.5" cy="37.5" r="1.7" fill="#fff"/><circle cx="-9" cy="41" r="1" fill="#fff"/><circle cx="9.5" cy="37.5" r="1.7" fill="#fff"/><circle cx="13" cy="41" r="1" fill="#fff"/><ellipse cx="-21" cy="49" rx="8" ry="5" fill="#ffb2c9"/><ellipse cx="21" cy="49" rx="8" ry="5" fill="#ffb2c9"/><path d="M-5 50q5 6 10 0" fill="none" stroke="#b96e8b" stroke-width="2"/><path d="M-40 15Q0 -40 40 15" fill="none" stroke="#e8b7cb" stroke-width="5"/></g>
+  <path d="M0 285Q130 260 250 288T568 282V336H0Z" fill="#c8b8e8"/><path d="M30 301h500" stroke="#fff" stroke-width="3" opacity=".3"/>
   <text x="305" y="319" text-anchor="middle" font-size="17" fill="#fff1e8" font-family="Trebuchet MS">Warm lights · Soft rain · Cozy dreams</text>
  </g>
  <g transform="translate(616 368)">
   <rect width="568" height="336" rx="26" fill="#f9e8f1"/>
-  <path d="M0 280L284 198 568 280V336H0Z" fill="#e8c7d9"/>
+  <path d="M0 280L284 198 568 280V336H0Z" fill="#f1c6dc"/>
   <path d="M48 90L284 20 520 90" fill="none" stroke="#d6a9c1" stroke-width="8"/>
   <path d="M48 90H520V270H48Z" fill="#fff8fc" stroke="#d8b4d0" stroke-width="5"/>
   <path d="M48 90L284 20 520 90Z" fill="#f2b5cf"/>
@@ -57,7 +57,7 @@
   <g fill="#c9b8ef"><rect x="80" y="150" width="110" height="10" rx="4"/><rect x="210" y="150" width="125" height="10" rx="4"/><rect x="355" y="150" width="125" height="10" rx="4"/></g>
   <g fill="#f3aeca"><rect x="92" y="115" width="24" height="35" rx="5"/><rect x="125" y="105" width="25" height="45" rx="5"/><rect x="228" y="112" width="34" height="38" rx="6"/><rect x="280" y="120" width="35" height="30" rx="6"/><rect x="376" y="110" width="30" height="40" rx="6"/></g>
   <g fill="#a8d7b8"><path d="M420 150q-35-48-12-56q24 12 12 56m0 0q12-48 38-33q-3 29-38 33"/></g>
-  <g transform="translate(280 245)"><ellipse cy="0" rx="43" ry="29" fill="#fff"/><ellipse cx="-21" cy="-39" rx="12" ry="37" fill="#fff"/><ellipse cx="21" cy="-39" rx="12" ry="37" fill="#fff"/><ellipse cx="-21" cy="-39" rx="5" ry="27" fill="#ffb8d0"/><ellipse cx="21" cy="-39" rx="5" ry="27" fill="#ffb8d0"/><circle cx="-14" cy="-3" r="3.5" fill="#493644"/><circle cx="14" cy="-3" r="3.5" fill="#493644"/><ellipse cx="-26" cy="8" rx="9" ry="5" fill="#ffb2c9"/><ellipse cx="26" cy="8" rx="9" ry="5" fill="#ffb2c9"/><path d="M-6 10q6 7 12 0" fill="none" stroke="#b96e8b" stroke-width="2"/></g>
+  <g transform="translate(280 240) scale(1.17)"><path d="M20 -39Q8 -52 5 -40Q4 -31 19 -36Q32 -25 34 -38Q35 -50 20 -39Z" fill="#ff78a5" stroke="#e66b98" stroke-width="1.5"/><circle cx="20" cy="-38" r="3.2" fill="#ffd0e0"/><ellipse cy="0" rx="43" ry="29" fill="#fff"/><ellipse cx="-21" cy="-39" rx="12" ry="37" fill="#fff"/><ellipse cx="21" cy="-39" rx="12" ry="37" fill="#fff"/><ellipse cx="-21" cy="-39" rx="5" ry="27" fill="#ffb8d0"/><ellipse cx="21" cy="-39" rx="5" ry="27" fill="#ffb8d0"/><circle cx="-14" cy="-3" r="4.5" fill="#493644"/><circle cx="14" cy="-3" r="4.5" fill="#493644"/><circle cx="-15.5" cy="-4.5" r="1.8" fill="#fff"/><circle cx="-12" cy="-1" r="1" fill="#fff"/><circle cx="12.5" cy="-4.5" r="1.8" fill="#fff"/><circle cx="16" cy="-1" r="1" fill="#fff"/><ellipse cx="-26" cy="8" rx="9" ry="5" fill="#ffb2c9"/><ellipse cx="26" cy="8" rx="9" ry="5" fill="#ffb2c9"/><path d="M-6 10q6 7 12 0" fill="none" stroke="#b96e8b" stroke-width="2"/></g>
   <text x="284" y="319" text-anchor="middle" font-size="17" fill="#956d87" font-family="Trebuchet MS">Plushies · Plants · Pastel stationery</text>
  </g>
 </svg>
