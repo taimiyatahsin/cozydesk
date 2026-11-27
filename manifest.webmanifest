@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "CozyDesk — Your Cozy Bunny Companion",
+  "short_name": "CozyDesk",
+  "description": "A cozy bunny companion for tasks, notes, focus and little breaks.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff5fa",
+  "theme_color": "#fff5fa",
+  "orientation": "any",
+  "icons": [
+    { "src": "./assets/cozydesk-app-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
