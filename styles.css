@@ -228,3 +228,9 @@ body.sleepy #pet{background:linear-gradient(180deg,#dcdcf4 0%,#e8d9ef 76%,#c7b3d
 #pet img#bunny.bounce{animation:bounce .5s!important}
 @media(max-width:900px){#pet img#bunny{width:min(360px,90%)!important;max-height:42vh!important}}
 @media(prefers-reduced-motion:reduce){#pet img#bunny{animation:none!important}}
+
+
+/* Keep the home companion visible: inline SVG avoids external image loading issues */
+#pet{display:flex!important;visibility:visible!important;min-height:420px}
+#pet>svg#bunny{display:block!important;visibility:visible!important;opacity:1!important;width:min(100%,440px)!important;height:auto!important;max-height:58vh!important;min-height:0!important;flex:0 1 auto;object-fit:contain;position:relative;z-index:1;overflow:visible;filter:drop-shadow(0 10px 16px rgba(173,126,155,.16))}
+@media(max-width:900px){#pet{min-height:360px!important;max-height:none!important}#pet>svg#bunny{width:min(100%,420px)!important;max-height:48vh!important}}
