@@ -55,7 +55,7 @@ function mood(m) {
   if (bunny) bunny.dataset.mood = state;
   document.querySelectorAll('.home-mood-btn').forEach((btn) => btn.classList.toggle('active', btn.dataset.bunnyMood === state));
   const status = $('#bunnyMoodStatus');
-  if (status) status.textContent = ({ happy: 'Your bunny is happy to spend time with you! ✨', focus: 'Your bunny is focused and ready to work! 🎯', sleep: 'Your bunny is sleeping peacefully... 💤', shy: 'Aww, your bunny is feeling a little shy! 🌸', surprised: 'Oh! Your bunny got a little surprise! ✨' })[state];
+  if (status) status.textContent = ({ happy: 'Your bunny is happily cheering you on! ✨', focus: 'Locked in and focusing right beside you! 🎯', sleep: 'Shh… your bunny is taking a cozy nap. 💤', shy: 'Aww, you made your bunny blush! 🌸', surprised: 'Ooh! Something exciting just caught their eye! ✨' })[state];
 }
 document.querySelectorAll('.home-mood-btn').forEach((btn) => btn.addEventListener('click', () => mood(btn.dataset.bunnyMood)));
 function bounce() {
@@ -109,13 +109,34 @@ $('#bunny').addEventListener('click', (event) => {
   floatBunnyHeart(event);
   mood('excited');
   bounce();
-  say('poke', true);
+  addXP(2, 'Your bunny hopped with joy! +2 Cozy XP 💖');
   setTimeout(applyMood, 2500);
 });
 
 /* ---------- XP ---------- */
 const lvlOf = (xp) => { let l = 1, need = 100; while (xp >= need) { xp -= need; l++; need = l * 100; } return { l, cur: xp, need }; };
-function addXP(n) { S.xp += n; save(); renderStats(); }
+function addXP(n, message = '') {
+  S.xp += n;
+  save();
+  renderStats();
+  const stage = $('#bunnyStage');
+  if (stage) {
+    const toast = document.createElement('span');
+    toast.className = 'cozy-xp-pop';
+    toast.textContent = '+' + n + ' XP';
+    toast.setAttribute('aria-hidden', 'true');
+    stage.appendChild(toast);
+    toast.addEventListener('animationend', () => toast.remove(), { once: true });
+    setTimeout(() => toast.remove(), 1800);
+  }
+  if (message) {
+    const bubble = $('#bubble');
+    bubble.textContent = message;
+    bubble.classList.add('show');
+    clearTimeout(hideT);
+    hideT = setTimeout(() => bubble.classList.remove('show'), 4200);
+  }
+}
 function renderStats() {
   const { l, cur, need } = lvlOf(S.xp);
   $('#lvl').textContent = 'Lv ' + l; $('#xpTxt').textContent = `${cur}/${need}`; $('#xpFill').style.width = (cur / need) * 100 + '%';
@@ -165,7 +186,7 @@ $('#taskList').onclick = (e) => {
   if (e.target.classList.contains('del')) S.tasks = S.tasks.filter((x) => x !== t);
   else if (e.target.type === 'checkbox') {
     t.done = e.target.checked;
-    if (t.done) { addXP(20); mood('excited'); bounce(); say('task', true); setTimeout(applyMood, 3000); }
+    if (t.done) { addXP(20, 'Task complete! You earned +20 Cozy XP! 🎉'); mood('excited'); bounce(); setTimeout(applyMood, 3000); }
   }
   save(); renderTasks();
 };
@@ -204,8 +225,8 @@ function stop() { clearInterval(tick); tick = null; timerEndAt = 0; }
 function done() {
   stop(); $('#tStart').textContent = 'Start';
   const msg = isFocus ? 'Focus session complete! 🌷' : 'Break is over. Ready?';
-  if (isFocus) { S.pomos++; addXP(50); save(); }
-  mood('excited'); bounce(); say('timer', true); setTimeout(applyMood, 4000); renderStats();
+  if (isFocus) { S.pomos++; addXP(50, 'Focus session complete! +50 Cozy XP! 🌷'); save(); }
+  mood('excited'); bounce(); setTimeout(applyMood, 4000); renderStats();
   $('#pomoCount').textContent = `Focus sessions completed: ${S.pomos}`;
   if ('Notification' in window) { Notification.requestPermission().then((p) => p === 'granted' && new Notification('CozyDesk', { body: msg })); }
   secs = total; $('#clock').textContent = fmt(secs);
