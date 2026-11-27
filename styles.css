@@ -364,3 +364,54 @@ body.sleepy #pet .bunny-mood-status{color:#75658f}
 @keyframes moonGlow{0%,100%{transform:translateY(0) rotate(-7deg);filter:brightness(1)}50%{transform:translateY(-4px) rotate(2deg);filter:brightness(1.12)}}
 @keyframes nightStars{0%,100%{opacity:.55;transform:translateY(0)}50%{opacity:1;transform:translateY(-5px)}}
 @media(prefers-reduced-motion:reduce){#pet .sleepy-nightcap,#pet .sleepy-blanket,body.sleepy #pet .bunny-stage:before,body.sleepy #pet .bunny-stage:after{animation:none!important}}
+
+
+/* UI consistency pass — separated mood strip, clear navigation and reward feedback */
+#pet .home-bunny-moods{
+  order:1;position:relative;z-index:5;width:100%;max-width:100%;
+  margin:0 auto 12px;padding:7px;gap:6px;flex-wrap:nowrap;
+  border:1px solid #efdfeb;border-radius:999px;
+  background:rgba(255,255,255,.78);box-shadow:0 7px 20px rgba(160,112,147,.08);
+  backdrop-filter:blur(12px)
+}
+#pet .home-mood-btn{white-space:nowrap;flex:1 1 0;min-width:0;padding:7px 5px!important;font-size:11px!important}
+#pet .bunny-stage{order:2;min-height:240px!important;max-height:none}
+#pet .bunny-mood-status{order:3;min-height:34px;display:flex;align-items:center;justify-content:center;line-height:1.45}
+#pet #zzz{display:none!important}
+nav{gap:10px}
+nav h1{white-space:nowrap;flex:0 0 auto}
+nav .spacer{flex:1 1 auto;min-width:10px}
+nav .nav-group{flex:0 0 auto;white-space:nowrap}
+nav .nav-group>summary{white-space:nowrap}
+nav .quick-modes{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex:0 0 auto;margin-left:auto}
+nav .quick-modes button{white-space:nowrap;flex:0 0 auto;min-width:max-content;line-height:1.2}
+nav #btnSleep,nav #btnFocus,nav #btnQuiet,nav #btnPrivacy{white-space:nowrap}
+nav .nav-menu{z-index:40}
+.cozy-xp-pop{
+  position:absolute;z-index:12;left:50%;top:45%;pointer-events:none;
+  padding:6px 11px;border:1px solid #f0c5d8;border-radius:999px;
+  background:linear-gradient(120deg,#fff,#fff0f7);color:#c65f91;
+  font-size:14px;font-weight:850;letter-spacing:.02em;
+  box-shadow:0 7px 22px #d78eaf38;
+  animation:cozyXpRise 1.55s cubic-bezier(.2,.7,.25,1) forwards
+}
+@keyframes cozyXpRise{0%{opacity:0;transform:translate(-50%,12px) scale(.8)}18%{opacity:1;transform:translate(-50%,0) scale(1.08)}75%{opacity:1}100%{opacity:0;transform:translate(-50%,-54px) scale(.96)}}
+#bunnyStage[data-mood="focus"] .eyes-focus circle[fill="#fff"],
+#bunnyStage[data-mood="surprised"] .eyes-surprised circle[fill="#fff"]{filter:drop-shadow(0 0 2px #fff)}
+#bunnyStage[data-mood="focus"] .eyes-focus path[fill="#fff9df"],
+#bunnyStage[data-mood="surprised"] .eyes-surprised path[fill="#fff9df"]{animation:eyeStarTwinkle 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes eyeStarTwinkle{0%,100%{opacity:.72;scale:.88}50%{opacity:1;scale:1.12}}
+@media(max-width:900px){
+ nav{flex-wrap:wrap;align-items:center}
+ nav .spacer{display:none}
+ nav .quick-modes{margin-left:0;flex-wrap:wrap}
+}
+@media(max-width:560px){
+ #pet .home-bunny-moods{gap:3px;padding:5px}
+ #pet .home-mood-btn{font-size:10px!important;padding:7px 2px!important}
+ nav .quick-modes{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+ nav .quick-modes button{min-width:0;width:100%;padding:8px 4px!important;font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+ .cozy-xp-pop,#bunnyStage[data-mood="focus"] .eyes-focus path[fill="#fff9df"],#bunnyStage[data-mood="surprised"] .eyes-surprised path[fill="#fff9df"]{animation:none!important}
+}
