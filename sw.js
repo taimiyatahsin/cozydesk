@@ -1,4 +1,4 @@
-const CACHE = 'cozydesk-shell-v2';
+const CACHE = 'cozydesk-shell-v3';
 const CORE = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const CORE = [
   './manifest.webmanifest',
   './pwa.js',
   './assets/cozydesk-app-icon.svg',
+  './assets/cozydesk-shopping-world.svg',
   './assets/cozydesk-bunny-scene.svg',
   './assets/cozydesk-home-bunny.jpg',
   './assets/cozydesk-bunny-scene.jpg'
