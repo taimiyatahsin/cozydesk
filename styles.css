@@ -221,3 +221,10 @@ body.sleepy #pet{background:linear-gradient(180deg,#dcdcf4 0%,#e8d9ef 76%,#c7b3d
 #pet img#bunny{display:block;width:min(440px,94%);height:auto;max-height:58vh;object-fit:contain;margin:0 auto;filter:drop-shadow(0 10px 16px rgba(173,126,155,.13));border-radius:18px;animation:cozySceneFloat 5s ease-in-out infinite}
 @keyframes cozySceneFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @media(prefers-reduced-motion:reduce){#pet img#bunny{animation:none}}
+
+
+/* Final image-based bunny override: isolate from legacy inline-SVG rules */
+#pet img#bunny{display:block!important;width:min(440px,94%)!important;height:auto!important;max-height:58vh!important;object-fit:contain!important;margin:0 auto!important;position:relative;z-index:1;filter:drop-shadow(0 10px 16px rgba(173,126,155,.16))!important;animation:cozySceneFloat 5s ease-in-out infinite!important;cursor:pointer}
+#pet img#bunny.bounce{animation:bounce .5s!important}
+@media(max-width:900px){#pet img#bunny{width:min(360px,90%)!important;max-height:42vh!important}}
+@media(prefers-reduced-motion:reduce){#pet img#bunny{animation:none!important}}
