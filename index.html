@@ -29,87 +29,39 @@
   <main>
     <section id="pet">
       <div id="bubble"></div>
-      <div class="bunny-stage" id="bunnyStage">
-        <svg id="bunny" class="bunny-character" viewBox="0 0 380 450" role="img" aria-label="Adorable fluffy white kawaii bunny girl with huge sparkling blue eyes, pink cheeks and a tiny bow" xmlns="http://www.w3.org/2000/svg">
+      <div class="bunny-stage" id="bunnyStage"><div class="home-bunny-moods" role="group" aria-label="Bunny mood"><button type="button" class="home-mood-btn active" data-bunny-mood="happy">😊 Happy</button><button type="button" class="home-mood-btn" data-bunny-mood="focus">🎯 Focus</button><button type="button" class="home-mood-btn" data-bunny-mood="sleep">😴 Sleep</button><button type="button" class="home-mood-btn" data-bunny-mood="shy">😳 Shy</button><button type="button" class="home-mood-btn" data-bunny-mood="surprised">😲 Surprise</button></div>
+<div class="bunny-zzz-layer" aria-hidden="true"><span>z</span><span>Z</span><span>Zzz</span></div>
+
+        <svg id="bunny" class="cozy-bunny-character" viewBox="0 0 240 240" role="img" aria-label="Cute fluffy white bunny with pink cheeks and five expressions" xmlns="http://www.w3.org/2000/svg">
 <defs>
- <radialGradient id="fur" cx="36%" cy="25%" r="78%"><stop stop-color="#fff" offset="0"/><stop offset=".58" stop-color="#fffdfd"/><stop offset="1" stop-color="#e9dfe9"/></radialGradient>
- <linearGradient id="earPink" x2="0" y2="1"><stop stop-color="#ffd9e8"/><stop offset="1" stop-color="#f29abc"/></linearGradient>
- <radialGradient id="iris" cx="34%" cy="24%" r="76%"><stop stop-color="#d9f7ff"/><stop offset=".25" stop-color="#82d5f5"/><stop offset=".57" stop-color="#4389d5"/><stop offset=".84" stop-color="#263d88"/><stop offset="1" stop-color="#172451"/></radialGradient>
- <radialGradient id="cheek"><stop stop-color="#f39cbd" stop-opacity=".62"/><stop offset="1" stop-color="#f39cbd" stop-opacity="0"/></radialGradient>
- <linearGradient id="dress" x2="0" y2="1"><stop stop-color="#fff4fa"/><stop offset=".58" stop-color="#ffd1e6"/><stop offset="1" stop-color="#f4a6cb"/></linearGradient>
- <linearGradient id="bow" x2="0" y2="1"><stop stop-color="#fff0f7"/><stop offset=".5" stop-color="#ffb9d8"/><stop offset="1" stop-color="#ec82b1"/></linearGradient>
- <filter id="shadow" x="-40%" y="-40%" width="180%" height="190%"><feGaussianBlur stdDeviation="8"/></filter>
- <filter id="furSoft" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="7" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale=".65" xChannelSelector="R" yChannelSelector="G"/></filter>
+ <radialGradient id="furGrad" cx="45%" cy="35%" r="65%"><stop offset="0%" stop-color="#fff"/><stop offset="75%" stop-color="#fff5f8"/><stop offset="100%" stop-color="#f7dce6"/></radialGradient>
+ <radialGradient id="blushGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ff8fb1" stop-opacity=".72"/><stop offset="100%" stop-color="#ff8fb1" stop-opacity="0"/></radialGradient>
+ <radialGradient id="shyBlushGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ff5d8f" stop-opacity=".92"/><stop offset="100%" stop-color="#ff5d8f" stop-opacity="0"/></radialGradient>
 </defs>
-<ellipse cx="190" cy="423" rx="92" ry="13" fill="#b99bb4" opacity=".2" filter="url(#shadow)"/>
-<!-- tiny plush body -->
-<ellipse cx="190" cy="363" rx="76" ry="76" fill="url(#fur)" stroke="#eee5ed" stroke-width="2"/>
-<path d="M125 348 Q190 328 255 348 L265 399 Q190 426 115 399Z" fill="url(#dress)" stroke="#edb2cf" stroke-width="2"/>
-<path d="M145 350 Q190 367 235 350" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-<path d="M171 353 Q190 367 209 353 L190 375Z" fill="#fff8fc" stroke="#f2b6d2" stroke-width="1.5"/>
-<circle cx="190" cy="365" r="5" fill="#f3a0c4"/>
-<!-- little feet and paws -->
-<ellipse cx="143" cy="406" rx="32" ry="24" fill="#fff" stroke="#eee4ed" stroke-width="2"/>
-<ellipse cx="237" cy="406" rx="32" ry="24" fill="#fff" stroke="#eee4ed" stroke-width="2"/>
-<ellipse cx="143" cy="411" rx="15" ry="9" fill="#f6b8d0" opacity=".75"/>
-<ellipse cx="237" cy="411" rx="15" ry="9" fill="#f6b8d0" opacity=".75"/>
-<ellipse cx="112" cy="359" rx="20" ry="36" transform="rotate(-30 112 359)" fill="url(#fur)" stroke="#eee5ed" stroke-width="2"/>
-<ellipse cx="268" cy="359" rx="20" ry="36" transform="rotate(30 268 359)" fill="url(#fur)" stroke="#eee5ed" stroke-width="2"/>
-<!-- ears behind the head -->
-<g id="bunnyEars">
- <path id="earL" d="M119 166 C77 116 72 34 104 18 C136 2 158 47 158 101 L166 177Z" fill="url(#fur)" stroke="#e9e0e9" stroke-width="3"/>
- <path d="M111 131 C91 89 91 39 108 31 C124 23 139 57 140 101 L147 145Z" fill="url(#earPink)"/>
- <path id="earR" d="M221 174 C218 103 231 20 270 12 C308 5 326 49 303 111 L273 183Z" fill="url(#fur)" stroke="#e9e0e9" stroke-width="3"/>
- <path d="M244 145 C244 88 258 33 277 28 C297 24 306 59 288 105 L270 157Z" fill="url(#earPink)"/>
+<ellipse cx="120" cy="214" rx="58" ry="10" fill="#e6b8cb" opacity=".55"/>
+<g class="ear-left"><ellipse cx="86" cy="58" rx="18" ry="44" transform="rotate(-12 86 58)" fill="url(#furGrad)" stroke="#e8c3d2" stroke-width="2"/><ellipse cx="86" cy="60" rx="9" ry="30" transform="rotate(-12 86 60)" fill="#ffc2d6"/></g>
+<g class="ear-right"><ellipse cx="154" cy="58" rx="18" ry="44" transform="rotate(12 154 58)" fill="url(#furGrad)" stroke="#e8c3d2" stroke-width="2"/><ellipse cx="154" cy="60" rx="9" ry="30" transform="rotate(12 154 60)" fill="#ffc2d6"/></g>
+<g class="bunny-body"><ellipse cx="120" cy="172" rx="44" ry="38" fill="url(#furGrad)" stroke="#e8c3d2" stroke-width="2"/>
+<g class="paws-default"><ellipse cx="96" cy="168" rx="11" ry="8" fill="#fff" stroke="#e8c3d2" stroke-width="1.5"/><ellipse cx="144" cy="168" rx="11" ry="8" fill="#fff" stroke="#e8c3d2" stroke-width="1.5"/></g>
+<g class="paws-shy"><ellipse cx="86" cy="144" rx="10" ry="7.5" transform="rotate(-18 86 144)" fill="#fff" stroke="#e8c3d2" stroke-width="1.5"/><ellipse cx="154" cy="144" rx="10" ry="7.5" transform="rotate(18 154 144)" fill="#fff" stroke="#e8c3d2" stroke-width="1.5"/></g>
+<ellipse cx="92" cy="204" rx="16" ry="9" fill="#ffe3ec" stroke="#e8c3d2" stroke-width="1.5"/><ellipse cx="148" cy="204" rx="16" ry="9" fill="#ffe3ec" stroke="#e8c3d2" stroke-width="1.5"/></g>
+<g class="bunny-head"><ellipse cx="120" cy="118" rx="58" ry="48" fill="url(#furGrad)" stroke="#e8c3d2" stroke-width="2"/>
+<ellipse class="blush" cx="82" cy="130" rx="16" ry="9" fill="url(#blushGrad)"/><ellipse class="blush" cx="158" cy="130" rx="16" ry="9" fill="url(#blushGrad)"/>
+<g class="eyes-happy"><path d="M86 117 Q96 105 106 117 M134 117 Q144 105 154 117" fill="none" stroke="#3b2d38" stroke-width="3.2" stroke-linecap="round"/></g>
+<g class="eyes-focus"><path d="M85 103l20 4 M155 103l-20 4" stroke="#5c4352" stroke-width="2.4" stroke-linecap="round"/><circle cx="96" cy="116" r="9.5" fill="#3b2d38"/><circle cx="144" cy="116" r="9.5" fill="#3b2d38"/><circle cx="93.5" cy="113" r="3.2" fill="#fff"/><circle cx="141.5" cy="113" r="3.2" fill="#fff"/></g>
+<g class="eyes-sleep"><path d="M86 116 Q96 124 106 116 M134 116 Q144 124 154 116" fill="none" stroke="#5c4352" stroke-width="2.8" stroke-linecap="round"/></g>
+<g class="eyes-shy"><path d="M86 115 Q96 122 106 115 M134 115 Q144 122 154 115" fill="none" stroke="#3b2d38" stroke-width="3" stroke-linecap="round"/></g>
+<g class="eyes-surprised"><path d="M86 99 Q96 93 106 99 M134 99 Q144 93 154 99" fill="none" stroke="#5c4352" stroke-width="2.2" stroke-linecap="round"/><circle cx="96" cy="116" r="12" fill="#3b2d38"/><circle cx="144" cy="116" r="12" fill="#3b2d38"/><circle cx="92.5" cy="112" r="4.2" fill="#fff"/><circle cx="140.5" cy="112" r="4.2" fill="#fff"/></g>
+<ellipse cx="120" cy="126" rx="4.5" ry="3.2" fill="#ff7aa2"/>
+<path class="mouth-happy" id="mouth" d="M111 132 Q115.5 140 120 133 Q124.5 140 129 132" fill="none" stroke="#5c4352" stroke-width="2.4" stroke-linecap="round"/>
+<path class="mouth-focus" d="M114 134 Q120 137 126 134" fill="none" stroke="#5c4352" stroke-width="2.2" stroke-linecap="round"/>
+<ellipse class="mouth-sleep" cx="120" cy="135" rx="3.2" ry="2.4" fill="#ff9ebb"/>
+<path class="mouth-shy" d="M115 134 Q120 138 125 134" fill="none" stroke="#5c4352" stroke-width="2.2" stroke-linecap="round"/>
+<ellipse class="mouth-surprised" cx="120" cy="135" rx="4.5" ry="5.5" fill="#ff8fab" stroke="#5c4352" stroke-width="2"/>
 </g>
-<!-- giant round fluffy head -->
-<ellipse cx="190" cy="232" rx="145" ry="137" fill="url(#fur)" stroke="#e9e0e9" stroke-width="2.5" filter="url(#furSoft)"/>
-<ellipse cx="190" cy="281" rx="105" ry="60" fill="#fff" opacity=".58"/>
-<!-- cheek fluff -->
-<ellipse cx="91" cy="278" rx="45" ry="31" fill="url(#cheek)"/>
-<ellipse cx="289" cy="278" rx="45" ry="31" fill="url(#cheek)"/>
-<path d="M73 264 q-9 7 -12 17 M82 270 q-7 7 -8 15 M307 264 q9 7 12 17 M298 270 q7 7 8 15" fill="none" stroke="#f6b0ca" stroke-width="3" stroke-linecap="round" opacity=".7"/>
-<!-- big glassy eyes -->
-<g id="eyeLeft">
- <ellipse cx="139" cy="224" rx="34" ry="42" fill="#fff"/>
- <ellipse cx="141" cy="226" rx="27" ry="35" fill="url(#iris)"/>
- <ellipse cx="142" cy="233" rx="15" ry="23" fill="#111d43"/>
- <ellipse cx="130" cy="211" rx="10" ry="12" fill="#fff"/>
- <circle cx="153" cy="238" r="5" fill="#d8f7ff"/>
- <path d="M108 199 Q137 178 169 198" fill="none" stroke="#645466" stroke-width="5" stroke-linecap="round"/>
- <path d="M116 190 l-7 -9 M130 184 l-2 -10 M147 184 l3 -10 M161 191 l7 -8" stroke="#645466" stroke-width="3" stroke-linecap="round"/>
- <path class="eyeLid" d="M104 223 Q139 176 174 222 Q173 260 140 261 Q108 259 104 223Z" fill="url(#fur)" stroke="#e9e0e9" stroke-width="2"/>
-</g>
-<g id="eyeRight">
- <ellipse cx="241" cy="224" rx="34" ry="42" fill="#fff"/>
- <ellipse cx="239" cy="226" rx="27" ry="35" fill="url(#iris)"/>
- <ellipse cx="238" cy="233" rx="15" ry="23" fill="#111d43"/>
- <ellipse cx="228" cy="211" rx="10" ry="12" fill="#fff"/>
- <circle cx="251" cy="238" r="5" fill="#d8f7ff"/>
- <path d="M211 198 Q241 178 272 199" fill="none" stroke="#645466" stroke-width="5" stroke-linecap="round"/>
- <path d="M218 191 l-7 -8 M232 184 l-2 -10 M249 184 l3 -10 M263 192 l7 -8" stroke="#645466" stroke-width="3" stroke-linecap="round"/>
- <path class="eyeLid" d="M206 222 Q241 176 276 223 Q272 260 240 261 Q208 259 206 222Z" fill="url(#fur)" stroke="#e9e0e9" stroke-width="2"/>
-</g>
-<!-- tiny nose, muzzle and buck teeth -->
-<ellipse cx="190" cy="271" rx="10" ry="7" fill="#f29ab7"/>
-<path id="mouth" d="M190 278 Q179 290 167 281 M190 278 Q201 290 213 281" fill="none" stroke="#b98798" stroke-width="2.8" stroke-linecap="round"/>
-<path d="M180 289 Q190 300 200 289" fill="#f4a0bd"/>
-<rect x="184" y="291" width="12" height="17" rx="5" fill="#fff" stroke="#eadfe9" stroke-width="1.3"/>
-<!-- tiny blush freckles -->
-<g fill="#f18eae" opacity=".72"><circle cx="106" cy="282" r="2.4"/><circle cx="116" cy="287" r="2"/><circle cx="126" cy="282" r="2"/><circle cx="254" cy="282" r="2"/><circle cx="264" cy="287" r="2"/><circle cx="274" cy="282" r="2.4"/></g>
-<!-- little side bow and flower -->
-<g id="bow" transform="translate(85 132) rotate(-17)">
- <path d="M0 0 Q-33 -25 -39 -4 Q-40 18 -2 12Z" fill="url(#bow)" stroke="#e991b9" stroke-width="2"/>
- <path d="M4 0 Q37 -26 41 -4 Q41 18 2 12Z" fill="url(#bow)" stroke="#e991b9" stroke-width="2"/>
- <circle cx="1" cy="5" r="8" fill="#f59fc3" stroke="#e991b9" stroke-width="2"/>
- <path d="M-1 13 L-10 30 L4 25 L8 13" fill="#f4a4c6"/>
-</g>
-<g id="flowerClip" transform="translate(292 153) scale(.78)"><g fill="#ffc4dd" stroke="#ed9abc" stroke-width="1.5"><ellipse cy="-12" rx="7" ry="11"/><ellipse cy="12" rx="7" ry="11"/><ellipse cx="-12" rx="11" ry="7"/><ellipse cx="12" rx="11" ry="7"/><ellipse cx="-8" cy="-8" rx="7" ry="9" transform="rotate(-45 -8 -8)"/><ellipse cx="8" cy="-8" rx="7" ry="9" transform="rotate(45 8 -8)"/></g><circle r="6" fill="#ffe99e" stroke="#edc66e" stroke-width="1.5"/></g>
-<!-- soft sparkle accents -->
-<g fill="#fff" opacity=".95"><path d="M57 214 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4Z"/><path d="M321 238 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3Z"/><circle cx="86" cy="185" r="3"/><circle cx="303" cy="190" r="3"/></g>
 </svg>
       </div>
-      <div id="zzz">Zzz…</div>
+      <div id="zzz">Zzz…</div><p id="bunnyMoodStatus" class="bunny-mood-status">খরগোশটি এখন খুব খুশি! তোমার সাথে সময় কাটাচ্ছে।</p>
       <div id="stats"><span id="lvl"></span><div class="bar"><div id="xpFill"></div></div><span id="xpTxt"></span></div>
     </section>
     <section id="panel">
