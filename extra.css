@@ -63,3 +63,19 @@ body.private #cycleBox{display:none}
 @media(prefers-reduced-motion:reduce){
  #room .sunMoon,#room .garland,#room .roomSparkles,#room #rb,#room #plant,#room .lampGlow{animation:none!important;translate:0 0!important}
 }
+
+/* Room v2 — richer dollhouse details and soft collectible decor */
+#room .roomFlowers,#room .toyDecor,#room .wallDetails{pointer-events:none}
+#room .roomFlowers{transform-box:fill-box;transform-origin:bottom center;animation:roomFlowerBreeze 5s ease-in-out infinite}
+#room .toyDecor{filter:drop-shadow(0 2px 2px #8d637322)}
+#room .wallDetails{opacity:.96}
+#room .roomFlowers g[transform="translate(54 157)"]{transform-box:fill-box;transform-origin:bottom center;animation:kittyPlantSway 4.8s ease-in-out infinite}
+#room .roomSparkles{filter:drop-shadow(0 0 4px #fff)}
+#tab-room .row:first-of-type select{min-width:150px;border-radius:999px;background:linear-gradient(135deg,#fffafd,#f2edff);border-color:#e8c9db;font-weight:650}
+#tab-room .row:first-of-type button{box-shadow:0 5px 14px #c78eaa20}
+#room{max-height: min(58vh,520px);background:linear-gradient(145deg,#fff8fc,#f3eaff)}
+#room .wall{filter:saturate(1.06)}
+#room .floor{filter:saturate(1.02)}
+@keyframes roomFlowerBreeze{0%,100%{rotate:-.5deg}50%{rotate:.8deg}}
+@media(max-width:700px){#room{max-height:none}.room{border-radius:14px}}
+@media(prefers-reduced-motion:reduce){#room .roomFlowers{animation:none!important}}
