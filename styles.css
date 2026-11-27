@@ -223,3 +223,11 @@ body.sleepy #pet{background:linear-gradient(180deg,#dcdcf4 0%,#e8d9ef 76%,#c7b3d
 #pet svg#bunny.bounce{animation:bounce .5s!important}
 @media(max-width:900px){#pet{min-height:360px!important}#pet .bunny-stage{width:min(320px,84%)!important}#pet svg#bunny{max-height:48vh!important}}
 @media(prefers-reduced-motion:reduce){#pet .bunny-stage,#pet svg#bunny #earL,#pet svg#bunny #earR{animation:none!important}#pet svg#bunny .eyeLid{animation:bunnyRealBlink 7s infinite}}
+
+
+/* Girly kawaii styling for the Home bunny */
+#pet svg#bunny #bow{transform-box:fill-box;transform-origin:center;animation:bunnyBowSway 3.6s ease-in-out infinite}
+#pet svg#bunny #flowerClip{transform-box:fill-box;transform-origin:center;animation:bunnyFlowerSparkle 3.2s ease-in-out infinite}
+#pet svg#bunny .eyeLid{stroke:#e7c5d6;stroke-width:2}
+@keyframes bunnyBowSway{0%,100%{transform:rotate(-2deg) scale(1)}50%{transform:rotate(2deg) scale(1.045)}}
+@keyframes bunnyFlowerSparkle{0%,100%{transform:translateY(0) rotate(-5deg) scale(1)}50%{transform:translateY(-3px) rotate(7deg) scale(1.08)}}
