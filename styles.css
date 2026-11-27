@@ -220,6 +220,6 @@ body.sleepy #pet{background:linear-gradient(180deg,#dcdcf4 0%,#e8d9ef 76%,#c7b3d
 @keyframes bunnyEarLeft{0%,100%{rotate:0deg}35%{rotate:-2deg}55%{rotate:1deg}80%{rotate:-.5deg}}
 @keyframes bunnyEarRight{0%,100%{rotate:0deg}30%{rotate:1.5deg}60%{rotate:-1.2deg}85%{rotate:.4deg}}
 @keyframes bunnyRealBlink{0%,17%,21%,58%,62%,100%{transform:scaleY(0)}18.5%,19.5%,59.5%,60.5%{transform:scaleY(1)}}
-#pet .bunny-stage.bounce{animation:bounce .5s!important}
+#pet svg#bunny.bounce{animation:bounce .5s!important}
 @media(max-width:900px){#pet{min-height:360px!important}#pet .bunny-stage{width:min(320px,84%)!important}#pet svg#bunny{max-height:48vh!important}}
 @media(prefers-reduced-motion:reduce){#pet .bunny-stage,#pet svg#bunny #earL,#pet svg#bunny #earR{animation:none!important}#pet svg#bunny .eyeLid{animation:bunnyRealBlink 7s infinite}}
