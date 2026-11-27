@@ -248,3 +248,8 @@ body.sleepy #pet{background:linear-gradient(180deg,#dcdcf4 0%,#e8d9ef 76%,#c7b3d
 @keyframes cozyBlink{0%,91%,100%{scale:1 1}94%{scale:1 .08}}
 @media(max-width:900px){#pet{min-height:360px!important}#pet>svg#bunny{width:min(300px,82%)!important;height:370px!important;max-height:46vh!important;min-height:240px!important}}
 @media(prefers-reduced-motion:reduce){#pet>svg#bunny,#pet>svg#bunny *{animation:none!important}}
+
+/* Home page: 3D bunny artwork */
+#pet>img#bunny{display:block!important;visibility:visible!important;opacity:1!important;width:min(340px,88%)!important;height:auto!important;max-height:58vh!important;object-fit:contain!important;position:relative!important;z-index:3!important;margin:0 auto!important;border-radius:18px!important;filter:drop-shadow(0 12px 14px rgba(130,85,112,.2))!important;animation:cozySceneFloat 5s ease-in-out infinite!important}
+@media(max-width:900px){#pet>img#bunny{width:min(300px,82%)!important;max-height:46vh!important}}
+@media(prefers-reduced-motion:reduce){#pet>img#bunny{animation:none!important}}
