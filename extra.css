@@ -292,3 +292,43 @@ nav .quick-modes button{padding:8px 10px;font-size:11px;min-height:38px}
 @media(prefers-reduced-motion:reduce){
   #pet .home-mood-btn{transition:none}
 }
+
+
+/* Kawaii mascot refresh — softer face, glossy eyes and gentle movement */
+#pet .bunny-stage{isolation:isolate;position:relative}
+#pet .bunny-stage:before{
+  content:"";position:absolute;z-index:-1;left:50%;top:20px;
+  width:min(245px,76%);aspect-ratio:1;border-radius:50%;
+  transform:translateX(-50%);
+  background:radial-gradient(circle,#ffe6f1 0%,#f4eaff 52%,rgba(244,234,255,0) 74%);
+  filter:blur(5px);pointer-events:none
+}
+#pet svg#bunny.bunny-artwork-refresh{
+  filter:drop-shadow(0 9px 8px rgba(177,123,157,.16));
+  transform-origin:50% 86%;
+  animation:kawaiiBunnyBreath 3.4s ease-in-out infinite
+}
+#pet svg#bunny.bunny-artwork-refresh .bunny-head{
+  transform-box:fill-box;transform-origin:50% 62%;
+  filter:drop-shadow(0 2px 2px rgba(214,163,188,.12))
+}
+#pet svg#bunny.bunny-artwork-refresh .eyes-happy circle{
+  filter:drop-shadow(0 0 2px rgba(255,255,255,.75))
+}
+#pet svg#bunny.bunny-artwork-refresh .blush{opacity:.94}
+#pet svg#bunny.bunny-artwork-refresh #bunnyBow{
+  transform-box:fill-box;transform-origin:50% 50%;
+  animation:kawaiiBowWiggle 4.8s ease-in-out infinite
+}
+@keyframes kawaiiBunnyBreath{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-2px) scale(1.012)}
+}
+@keyframes kawaiiBowWiggle{
+  0%,90%,100%{rotate:0deg}
+  94%{rotate:-4deg}
+  97%{rotate:3deg}
+}
+@media(prefers-reduced-motion:reduce){
+  #pet svg#bunny.bunny-artwork-refresh,#pet svg#bunny.bunny-artwork-refresh #bunnyBow{animation:none!important}
+}
