@@ -215,7 +215,13 @@ $('#noteText').addEventListener('keydown', (e) => { if ((e.ctrlKey || e.metaKey)
 
 /* ---------- Windows helper ---------- */
 document.querySelectorAll('[data-act]').forEach((b) => (b.onclick = () => window.cozy && window.cozy.systemAction(b.dataset.act)));
-$('#resetAll').onclick = () => { if (confirm('Delete all CozyDesk data?')) { localStorage.clear(); location.reload(); } };
+$('#resetAll').onclick = () => {
+  if (confirm('Delete all CozyDesk data saved by this app on this device?')) {
+    localStorage.removeItem(KEY);
+    localStorage.removeItem('cozydesk.draft');
+    location.reload();
+  }
+};
 
 /* ---------- Init ---------- */
 $('#pomoCount').textContent = `Focus sessions completed: ${S.pomos}`;
