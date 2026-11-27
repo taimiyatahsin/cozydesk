@@ -325,3 +325,5 @@ body.sleepy #pet{background:linear-gradient(180deg,#dcdcf4 0%,#e8d9ef 76%,#c7b3d
   #pet .bunny-stage{animation:none!important}
   #pet .bunny-eyelid{animation:none!important}
 }
+
+#pet .bunny-stage>img#bunny.bounce{animation:bounce .5s!important}
