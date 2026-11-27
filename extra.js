@@ -37,6 +37,16 @@ TABS.forEach(([id, label]) => { const b = document.createElement('button'); b.da
   group('Productivity','✦',['tasks','notes','timer','study','calendar','alarms']);
   group('Cozy Space','⌂',['room','shopping','game']);
   group('More','☾',['clock','settings']);
+  // Keep quick modes in their own compact cluster, separate from page menus.
+  const quick = document.createElement('div');
+  quick.className = 'quick-modes';
+  quick.setAttribute('role', 'group');
+  quick.setAttribute('aria-label', 'Quick modes');
+  ['btnSleep','btnFocus','btnQuiet','btnPrivacy'].forEach(id => {
+    const button = document.getElementById(id);
+    if (button) quick.appendChild(button);
+  });
+  nav.appendChild(quick);
 })();
 const sec = (id, html) => { const d = document.createElement('div'); d.className = 'tab'; d.id = 'tab-' + id; d.innerHTML = html; panel.appendChild(d); };
 
