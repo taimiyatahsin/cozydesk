@@ -3,6 +3,7 @@
 A cozy, lightweight desktop companion for Windows. An original SVG bunny lives in the app, reacts to what you do, and helps you stay organised. Built with Electron. **All data stays on your own PC.**
 
 ## Features
+- **Offline-ready web app** with a home-screen app icon and install support in compatible browsers
 - **Bunny** with 11 moods, blinking, breathing, random cooldown-based chatter
 - **Tasks** (priority, deadline, XP), **Notes** (search, pin, auto-saved draft)
 - **Timer / Pomodoro**, **Study tracker** (subjects, daily goal, streak)
@@ -13,6 +14,9 @@ A cozy, lightweight desktop companion for Windows. An original SVG bunny lives i
 - **Wellness** reminders, breathing break, optional private tracker
 - **Sleepy / Focus / Quiet / Privacy** modes
 - **Windows helper**: opens a fixed whitelist of settings pages, always asks first
+
+## Use it in a browser
+Open the [CozyDesk web app](https://taimiyatahsin.github.io/cozydesk/). In a supported browser, use the browser menu's **Install app** or **Add to Home Screen** option. After the first successful load, the app shell is cached for offline use.
 
 ## Run it
 1. Install [Node.js LTS](https://nodejs.org).
