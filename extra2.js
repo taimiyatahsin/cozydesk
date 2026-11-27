@@ -2,9 +2,21 @@
 /* CozyDesk part 3: Faith & Reflection, Wellness, optional private tracker */
 const E = (S.ext2 = S.ext2 || {});
 E.faith = Object.assign({ on: false, rel: 'none', lat: '', lng: '', tz: '', method: 'karachi', asr: 1, lead: 0, pray: false, custom: [], last: '' }, E.faith);
-E.well = Object.assign({ water: { on: false, min: 60 }, stretch: { on: false, min: 60 }, eyes: { on: false, min: 20 }, screen: { on: false, min: 90 }, breathe: { on: false, min: 120 }, sleep: { on: false, time: '23:00' } }, E.well);
+E.faith.custom = Array.isArray(E.faith.custom) ? E.faith.custom.filter(x => x && /^([01]\\d|2[0-3]):[0-5]\\d$/.test(x.time) && typeof x.label === 'string') : [];
+E.faith.lead = Math.min(60, Math.max(0, Number(E.faith.lead) || 0));
+const WELL_DEFAULTS = { water: { on: false, min: 60 }, stretch: { on: false, min: 60 }, eyes: { on: false, min: 20 }, screen: { on: false, min: 90 }, breathe: { on: false, min: 120 }, sleep: { on: false, time: '23:00' } };
+E.well = E.well && typeof E.well === 'object' ? E.well : {};
+Object.keys(WELL_DEFAULTS).forEach(k => {
+  const saved = E.well[k] && typeof E.well[k] === 'object' ? E.well[k] : {};
+  E.well[k] = { ...WELL_DEFAULTS[k], ...saved };
+  if (k === 'sleep') E.well[k].time = /^([01]\\d|2[0-3]):[0-5]\\d$/.test(E.well[k].time) ? E.well[k].time : '23:00';
+  else E.well[k].min = Math.min(240, Math.max(5, Number(E.well[k].min) || WELL_DEFAULTS[k].min));
+});
 E.cycle = Object.assign({ on: false, len: 28, dur: 5, starts: [] }, E.cycle);
-const askPerm = () => { if ('Notification' in window && Notification.permission === 'default') Notification.requestPermission(); };
+E.cycle.len = Math.min(45, Math.max(20, Number(E.cycle.len) || 28));
+E.cycle.dur = Math.min(10, Math.max(1, Number(E.cycle.dur) || 5));
+E.cycle.starts = Array.isArray(E.cycle.starts) ? [...new Set(E.cycle.starts.filter(d => /^\\d{4}-\\d{2}-\\d{2}$/.test(d)))].sort() : [];
+const askPerm = () => { try { if ('Notification' in window && Notification.permission === 'default') Notification.requestPermission().catch(() => {}); } catch (_) {} };
 const sysNotif = (t) => { if ('Notification' in window && Notification.permission === 'granted') new Notification('CozyDesk', { body: t, silent: true }); };
 
 //PT-START  (prayer times computed locally from latitude, longitude, UTC offset and date)
@@ -32,7 +44,7 @@ function prayerTimes(date, lat, lng, tz, method, asrF) {
 const fmtH = (t) => { const m = Math.round(t * 60) % 1440; return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
 function getPrayer() {
   const f = E.faith, lat = parseFloat(f.lat), lng = parseFloat(f.lng), tz = parseFloat(f.tz);
-  if ([lat, lng, tz].some(isNaN) || Math.abs(lat) > 60) return null;
+  if ([lat, lng, tz].some(isNaN) || Math.abs(lat) > 60 || Math.abs(lng) > 180 || Math.abs(tz) > 14) return null;
   return prayerTimes(new Date(), lat, lng, tz, f.method, +f.asr);
 }
 
@@ -135,13 +147,25 @@ setInterval(() => { // one check per minute
 }, 60000);
 
 /* breathing */
-let br = false;
-function bstep(t, s, ms, nxt) { if (!br) return bcycle(); $('#bTxt').textContent = t; $('#bCircle').style.transform = `scale(${s})`; setTimeout(nxt, ms); }
+let br = false, brTimer = null;
+function stopBreathing() {
+  br = false; clearTimeout(brTimer); brTimer = null;
+  $('#bTxt').textContent = ''; $('#bCircle').style.transform = 'scale(1)';
+  $('#bBtn').textContent = 'Start'; applyMood();
+}
+function bstep(t, s, ms, nxt) {
+  if (!br) return stopBreathing();
+  $('#bTxt').textContent = t; $('#bCircle').style.transform = `scale(${s})`;
+  clearTimeout(brTimer); brTimer = setTimeout(nxt, ms);
+}
 function bcycle() {
-  if (!br) { $('#bTxt').textContent = ''; $('#bCircle').style.transform = 'scale(1)'; $('#bBtn').textContent = 'Start'; applyMood(); return; }
+  if (!br) return stopBreathing();
   bstep('Inhale… 4', 1.8, 4000, () => bstep('Hold… 4', 1.8, 4000, () => bstep('Exhale… 6', 1, 6000, bcycle)));
 }
-$('#bBtn').onclick = () => { br = !br; if (br) { mood('focused'); $('#bBtn').textContent = 'Stop'; bcycle(); } };
+$('#bBtn').onclick = () => {
+  if (br) { stopBreathing(); return; }
+  br = true; mood('focused'); $('#bBtn').textContent = 'Stop'; bcycle();
+};
 
 /* private tracker (estimates only, local storage only) */
 const addDays = (d, n) => { const x = new Date(d + 'T00:00'); x.setDate(x.getDate() + n); return x.toLocaleDateString('en-CA'); };
