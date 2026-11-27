@@ -8,6 +8,7 @@ const CORE = [
   './extra.js',
   './extra2.js',
   './manifest.webmanifest',
+  './pwa.js',
   './assets/cozydesk-app-icon.svg',
   './assets/cozydesk-bunny-scene.svg',
   './assets/cozydesk-home-bunny.jpg',
