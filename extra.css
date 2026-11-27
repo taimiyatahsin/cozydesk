@@ -126,3 +126,23 @@ nav .nav-menu>[data-tab]{display:block;width:100%;margin:3px 0;text-align:left;b
 
 #room #rzzz:not(.hide){animation:roomZzzFloat 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}@keyframes roomZzzFloat{0%,100%{opacity:.75;translate:0 0}50%{opacity:1;translate:0 -8px}}
 @media(prefers-reduced-motion:reduce){#room #rzzz:not(.hide){animation:none!important}}
+
+
+/* Bunny Window Shopping — four-scene pastel mini world */
+#tab-shopping{position:relative;overflow:hidden}
+.shopping-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:4px 0 16px;padding:18px 20px;border:1px solid #efd7e5;border-radius:22px;background:linear-gradient(120deg,#fff4f8,#f5efff 58%,#effaf4);box-shadow:0 12px 28px #9e759018}
+.shopping-kicker{font-size:10px;letter-spacing:.16em;font-weight:800;color:#bd83a2}
+.shopping-heading h2{margin:5px 0 4px;color:#79566e}
+.shopping-heading p{margin:0;color:#9d8294;font-size:13px}
+.shopping-heart{font-size:42px;color:#e99cba;text-shadow:0 4px 16px #e99cba55}
+.shopping-art-wrap{overflow:hidden;border:1px solid #eed6e4;border-radius:24px;background:#fff8fc;box-shadow:0 16px 36px #9c718d20}
+.shopping-art{display:block;width:100%;height:auto;aspect-ratio:5/3;object-fit:cover}
+.shopping-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:13px}
+.shopping-tiles article{min-width:0;padding:13px 12px;border:1px solid #efdeea;border-radius:17px;background:linear-gradient(145deg,#fff,#fff6fa);box-shadow:0 7px 18px #b98ba313}
+.shopping-tiles article>span{display:block;font-size:22px;margin-bottom:5px}
+.shopping-tiles b,.shopping-tiles small{display:block}
+.shopping-tiles b{font-size:12px;color:#805b75}
+.shopping-tiles small{margin-top:4px;font-size:10px;line-height:1.5;color:#a18a9a}
+.shopping-note{margin:13px 2px 0;padding:12px 15px;border-radius:15px;background:#f5f0ff;color:#947ca8;font-size:12px;text-align:center}
+@media(max-width:760px){.shopping-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.shopping-heading{padding:14px}.shopping-art-wrap{border-radius:16px}}
+@media(prefers-reduced-motion:no-preference){.shopping-tiles article{transition:transform .2s ease,box-shadow .2s ease}.shopping-tiles article:hover{transform:translateY(-3px);box-shadow:0 12px 24px #b98ba32b}}
