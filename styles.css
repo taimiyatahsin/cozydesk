@@ -209,101 +209,17 @@ body.sleepy #pet{background:linear-gradient(180deg,#dcdcf4 0%,#e8d9ef 76%,#c7b3d
 @media(prefers-reduced-motion:reduce){#pet,#pet #bunny,#pet #bunny #earL,#pet #bunny #earR,#pet #bunny #bow,#pet #bunny .eye{animation:none!important}}
 
 
-/* Kawaii pastel bunny character refresh */
-#pet #bunny{width:min(285px,88%);max-height:54vh;filter:drop-shadow(0 13px 13px rgba(166,111,139,.19));}
-#pet #bunny path,#pet #bunny ellipse{vector-effect:non-scaling-stroke}
-#pet #bunny{animation:softKawaiiBob 3.8s ease-in-out infinite}
-@keyframes softKawaiiBob{0%,100%{transform:translateY(1px) rotate(-.7deg)}50%{transform:translateY(-6px) rotate(.7deg)}}
-@media(prefers-reduced-motion:reduce){#pet #bunny{animation:none!important}}
-
-
-/* Illustrated CozyDesk bunny scene */
-#pet img#bunny{display:block;width:min(440px,94%);height:auto;max-height:58vh;object-fit:contain;margin:0 auto;filter:drop-shadow(0 10px 16px rgba(173,126,155,.13));border-radius:18px;animation:cozySceneFloat 5s ease-in-out infinite}
-@keyframes cozySceneFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-@media(prefers-reduced-motion:reduce){#pet img#bunny{animation:none}}
-
-
-/* Final image-based bunny override: isolate from legacy inline-SVG rules */
-#pet img#bunny{display:block!important;width:min(440px,94%)!important;height:auto!important;max-height:58vh!important;object-fit:contain!important;margin:0 auto!important;position:relative;z-index:1;filter:drop-shadow(0 10px 16px rgba(173,126,155,.16))!important;animation:cozySceneFloat 5s ease-in-out infinite!important;cursor:pointer}
-#pet img#bunny.bounce{animation:bounce .5s!important}
-@media(max-width:900px){#pet img#bunny{width:min(360px,90%)!important;max-height:42vh!important}}
-@media(prefers-reduced-motion:reduce){#pet img#bunny{animation:none!important}}
-
-
-/* Keep the home companion visible: inline SVG avoids external image loading issues */
-#pet{display:flex!important;visibility:visible!important;min-height:420px}
-#pet>svg#bunny{display:block!important;visibility:visible!important;opacity:1!important;width:min(100%,440px)!important;height:auto!important;max-height:58vh!important;min-height:0!important;flex:0 1 auto;object-fit:contain;position:relative;z-index:1;overflow:visible;filter:drop-shadow(0 10px 16px rgba(173,126,155,.16))}
-@media(max-width:900px){#pet{min-height:360px!important;max-height:none!important}#pet>svg#bunny{width:min(100%,420px)!important;max-height:48vh!important}}
-
-
-/* Reliable visible bunny character: separate from the bedroom background */
+/* Home bunny rebuilt as one inline animated character — no photo or misplaced eyelid overlays */
 #pet{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;min-height:420px!important;position:relative!important}
-#pet>svg#bunny{display:block!important;visibility:visible!important;opacity:1!important;flex:0 0 auto!important;width:min(340px,88%)!important;height:420px!important;max-height:58vh!important;min-height:260px!important;position:relative!important;z-index:3!important;overflow:visible!important;object-fit:contain!important;filter:drop-shadow(0 12px 13px rgba(130,85,112,.2))!important;animation:cozyBunnyBob 3.8s ease-in-out infinite!important}
-#pet>svg#bunny #earL{transform-box:fill-box;transform-origin:70% 95%;animation:cozyEarLeft 5.5s ease-in-out infinite}
-#pet>svg#bunny #earR{transform-box:fill-box;transform-origin:25% 95%;animation:cozyEarRight 6s ease-in-out infinite}
-#pet>svg#bunny .eye{transform-box:fill-box;transform-origin:center;animation:cozyBlink 5.5s infinite}
-@keyframes cozyBunnyBob{0%,100%{transform:translateY(2px)}50%{transform:translateY(-7px)}}
-@keyframes cozyEarLeft{0%,90%,100%{rotate:0deg}94%{rotate:-7deg}97%{rotate:2deg}}
-@keyframes cozyEarRight{0%,90%,100%{rotate:0deg}94%{rotate:7deg}97%{rotate:-2deg}}
-@keyframes cozyBlink{0%,91%,100%{scale:1 1}94%{scale:1 .08}}
-@media(max-width:900px){#pet{min-height:360px!important}#pet>svg#bunny{width:min(300px,82%)!important;height:370px!important;max-height:46vh!important;min-height:240px!important}}
-@media(prefers-reduced-motion:reduce){#pet>svg#bunny,#pet>svg#bunny *{animation:none!important}}
-
-/* Home page: 3D bunny artwork */
-#pet>img#bunny{display:block!important;visibility:visible!important;opacity:1!important;width:min(340px,88%)!important;height:auto!important;max-height:58vh!important;object-fit:contain!important;position:relative!important;z-index:3!important;margin:0 auto!important;border-radius:18px!important;filter:drop-shadow(0 12px 14px rgba(130,85,112,.2))!important;animation:cozySceneFloat 5s ease-in-out infinite!important}
-@media(max-width:900px){#pet>img#bunny{width:min(300px,82%)!important;max-height:46vh!important}}
-@media(prefers-reduced-motion:reduce){#pet>img#bunny{animation:none!important}}
-
-
-/* Stable Home bunny animation: gentle bob, sway and visible eyelid blink */
-#pet .bunny-stage{
-  position:relative!important;display:block!important;
-  width:min(340px,88%)!important;aspect-ratio:2/3;max-height:58vh;
-  margin:0 auto!important;flex:0 1 auto;transform-origin:50% 88%;
-  animation:cozyBunnyBreathing 3.8s ease-in-out infinite,cozyBunnyEarSway 6.2s ease-in-out infinite;
-  will-change:transform,rotate;cursor:pointer;
-}
-#pet .bunny-stage>img#bunny{
-  display:block!important;visibility:visible!important;opacity:1!important;
-  width:100%!important;height:100%!important;max-height:58vh!important;
-  object-fit:contain!important;margin:0!important;position:relative!important;
-  z-index:1!important;border-radius:18px!important;
-  filter:drop-shadow(0 12px 14px rgba(130,85,112,.2))!important;
-  animation:none!important;
-}
-#pet .bunny-eyelid{
-  position:absolute;z-index:3;top:38.5%;width:15%;height:9%;
-  border-radius:48% 48% 44% 44% / 38% 38% 62% 62%;
-  background:linear-gradient(180deg,#fff 0%,#fff8fb 65%,#f8e5ee 100%);
-  border-bottom:2px solid rgba(164,116,139,.72);
-  box-shadow:0 2px 4px rgba(135,95,115,.16);
-  transform:scaleY(0);transform-origin:center top;pointer-events:none;
-  animation:cozyBunnyBlink 4.8s ease-in-out infinite;
-}
-#pet .bunny-eyelid-left{left:24.5%}
-#pet .bunny-eyelid-right{left:60.5%;animation-delay:.045s}
-@keyframes cozyBunnyBreathing{
-  0%,100%{transform:translateY(0) scale(1)}
-  50%{transform:translateY(-7px) scale(1.02,1.025)}
-}
-@keyframes cozyBunnyEarSway{
-  0%,100%{rotate:0deg}
-  20%{rotate:-1.15deg}
-  42%{rotate:.7deg}
-  68%{rotate:1.15deg}
-  84%{rotate:-.5deg}
-}
-@keyframes cozyBunnyBlink{
-  0%,18%,22%,62%,66%,100%{transform:scaleY(0)}
-  19%,21%,63%,65%{transform:scaleY(1)}
-}
-#pet .bunny-stage>img#bunny.bounce{animation:bounce .5s!important}
-@media(max-width:900px){
-  #pet .bunny-stage{width:min(300px,82%)!important;max-height:46vh}
-  #pet .bunny-stage>img#bunny{max-height:46vh!important}
-}
-/* Respect reduced motion for layout movement but keep the requested gentle blink. */
-@media(prefers-reduced-motion:reduce){
-  #pet .bunny-stage{animation:none!important}
-  #pet .bunny-eyelid{animation:cozyBunnyBlink 7s ease-in-out infinite}
-}
+#pet .bunny-stage{display:flex!important;align-items:center!important;justify-content:center!important;width:min(370px,90%)!important;margin:0 auto!important;position:relative!important;z-index:3!important;animation:bunnyBreath 3.8s ease-in-out infinite;transform-origin:50% 90%;cursor:pointer}
+#pet svg#bunny{display:block!important;visibility:visible!important;opacity:1!important;width:100%!important;height:auto!important;max-height:58vh!important;overflow:visible!important;filter:drop-shadow(0 12px 14px rgba(130,85,112,.19))!important}
+#pet svg#bunny #earL{transform-box:fill-box;transform-origin:70% 95%;animation:bunnyEarLeft 5.8s ease-in-out infinite}
+#pet svg#bunny #earR{transform-box:fill-box;transform-origin:25% 95%;animation:bunnyEarRight 6.4s ease-in-out infinite}
+#pet svg#bunny .eyeLid{transform-box:fill-box;transform-origin:center top;transform:scaleY(0);animation:bunnyRealBlink 5.2s infinite}
+@keyframes bunnyBreath{0%,100%{transform:translateY(1px) scale(1)}50%{transform:translateY(-5px) scale(1.012,1.018)}}
+@keyframes bunnyEarLeft{0%,100%{rotate:0deg}35%{rotate:-2deg}55%{rotate:1deg}80%{rotate:-.5deg}}
+@keyframes bunnyEarRight{0%,100%{rotate:0deg}30%{rotate:1.5deg}60%{rotate:-1.2deg}85%{rotate:.4deg}}
+@keyframes bunnyRealBlink{0%,17%,21%,58%,62%,100%{transform:scaleY(0)}18.5%,19.5%,59.5%,60.5%{transform:scaleY(1)}}
+#pet .bunny-stage.bounce{animation:bounce .5s!important}
+@media(max-width:900px){#pet{min-height:360px!important}#pet .bunny-stage{width:min(320px,84%)!important}#pet svg#bunny{max-height:48vh!important}}
+@media(prefers-reduced-motion:reduce){#pet .bunny-stage,#pet svg#bunny #earL,#pet svg#bunny #earR{animation:none!important}#pet svg#bunny .eyeLid{animation:bunnyRealBlink 7s infinite}}
