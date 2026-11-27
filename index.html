@@ -6,7 +6,7 @@
 <meta name="description" content="CozyDesk is your cozy bunny desktop companion for tasks, notes, focus and little breaks.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'">
 <title>CozyDesk — Your Cozy Bunny Companion</title>
-<link rel="stylesheet" href="styles.css?v=20261127g">
+<link rel="stylesheet" href="styles.css?v=20261127h">
 <link rel="stylesheet" href="extra.css">
 </head><body>
 <div id="app">
@@ -27,9 +27,62 @@
     <section id="pet">
       <div id="bubble"></div>
       <div class="bunny-stage" id="bunnyStage">
-        <img id="bunny" class="cozy-bunny-image" src="assets/cozydesk-home-bunny.jpg?v=20261127e" alt="Fluffy white 3D bunny in a cozy pink bedroom" loading="eager" decoding="async">
-        <span class="bunny-eyelid bunny-eyelid-left" aria-hidden="true"></span>
-        <span class="bunny-eyelid bunny-eyelid-right" aria-hidden="true"></span>
+        <svg id="bunny" class="bunny-character" viewBox="0 0 380 450" role="img" aria-label="Cute animated fluffy white bunny with blue eyes and pink ears" xmlns="http://www.w3.org/2000/svg">
+<defs>
+ <radialGradient id="fur" cx="38%" cy="27%" r="78%"><stop stop-color="#fff" offset="0"/><stop stop-color="#fffdfd" offset=".48"/><stop stop-color="#eadfe8" offset="1"/></radialGradient>
+ <linearGradient id="earPink" x2="0" y2="1"><stop stop-color="#f9b8d0"/><stop offset="1" stop-color="#ed86b0"/></linearGradient>
+ <radialGradient id="iris" cx="38%" cy="28%" r="72%"><stop stop-color="#a7e7ff"/><stop offset=".36" stop-color="#438fd6"/><stop offset=".75" stop-color="#253b85"/><stop offset="1" stop-color="#18234f"/></radialGradient>
+ <radialGradient id="cheek"><stop stop-color="#f6a9c4" stop-opacity=".7"/><stop offset="1" stop-color="#f6a9c4" stop-opacity="0"/></radialGradient>
+ <linearGradient id="pinkBow" x2="0" y2="1"><stop stop-color="#ffc5dc"/><stop offset="1" stop-color="#f28dbb"/></linearGradient>
+ <filter id="softShadow" x="-40%" y="-40%" width="180%" height="190%"><feGaussianBlur stdDeviation="8"/></filter>
+</defs>
+<ellipse cx="190" cy="420" rx="105" ry="15" fill="#b99bb4" opacity=".22" filter="url(#softShadow)"/>
+<g id="bunnyEars">
+ <path id="earL" d="M116 177 C82 128 64 49 91 20 C109 0 139 16 145 50 L163 163Z" fill="url(#fur)" stroke="#e8dfe8" stroke-width="3"/>
+ <path d="M111 137 C91 91 85 43 99 31 C111 21 126 40 130 68 L140 145Z" fill="url(#earPink)" opacity=".9"/>
+ <path id="earR" d="M235 164 C239 93 249 18 279 13 C313 7 323 53 305 104 L278 181Z" fill="url(#fur)" stroke="#e8dfe8" stroke-width="3"/>
+ <path d="M257 146 C264 87 272 37 286 31 C301 27 306 55 294 94 L278 153Z" fill="url(#earPink)" opacity=".9"/>
+</g>
+<ellipse cx="190" cy="355" rx="102" ry="84" fill="url(#fur)" stroke="#eee5ed" stroke-width="2"/>
+<ellipse cx="126" cy="390" rx="38" ry="31" fill="#fff" stroke="#eee5ed" stroke-width="2"/>
+<ellipse cx="254" cy="390" rx="38" ry="31" fill="#fff" stroke="#eee5ed" stroke-width="2"/>
+<ellipse cx="126" cy="396" rx="18" ry="12" fill="#f5b1ca" opacity=".8"/>
+<ellipse cx="254" cy="396" rx="18" ry="12" fill="#f5b1ca" opacity=".8"/>
+<ellipse cx="190" cy="211" rx="139" ry="128" fill="url(#fur)" stroke="#e9e0e9" stroke-width="2.5"/>
+<ellipse cx="190" cy="247" rx="113" ry="75" fill="#fff" opacity=".62"/>
+<ellipse cx="98" cy="260" rx="39" ry="25" fill="url(#cheek)"/>
+<ellipse cx="282" cy="260" rx="39" ry="25" fill="url(#cheek)"/>
+<g id="eyeLeft">
+ <ellipse cx="139" cy="211" rx="29" ry="37" fill="#fff"/>
+ <ellipse cx="142" cy="214" rx="22" ry="30" fill="url(#iris)"/>
+ <ellipse cx="143" cy="218" rx="12" ry="19" fill="#101a39"/>
+ <ellipse cx="134" cy="202" rx="8" ry="10" fill="#fff"/>
+ <circle cx="153" cy="225" r="4" fill="#bdeeff"/>
+ <path d="M111 194 Q130 174 157 184" fill="none" stroke="#5a4b5a" stroke-width="5" stroke-linecap="round"/>
+ <path class="eyeLid" d="M106 211 Q140 167 174 210 Q173 244 140 247 Q111 243 106 211Z" fill="url(#fur)" stroke="#e8dfe8" stroke-width="2"/>
+</g>
+<g id="eyeRight">
+ <ellipse cx="241" cy="211" rx="29" ry="37" fill="#fff"/>
+ <ellipse cx="238" cy="214" rx="22" ry="30" fill="url(#iris)"/>
+ <ellipse cx="237" cy="218" rx="12" ry="19" fill="#101a39"/>
+ <ellipse cx="230" cy="202" rx="8" ry="10" fill="#fff"/>
+ <circle cx="249" cy="225" r="4" fill="#bdeeff"/>
+ <path d="M213 184 Q240 174 269 194" fill="none" stroke="#5a4b5a" stroke-width="5" stroke-linecap="round"/>
+ <path class="eyeLid" d="M206 210 Q240 167 274 211 Q270 244 240 247 Q209 243 206 210Z" fill="url(#fur)" stroke="#e8dfe8" stroke-width="2"/>
+</g>
+<ellipse cx="190" cy="249" rx="11" ry="8" fill="#f28eaa"/>
+<path d="M190 257 Q178 271 165 260 M190 257 Q202 271 215 260" fill="none" stroke="#a87887" stroke-width="3" stroke-linecap="round"/>
+<path d="M180 269 Q190 282 200 269" fill="#f28da9"/>
+<rect x="183" y="276" width="14" height="21" rx="6" fill="#fff" stroke="#e9dfe9" stroke-width="1.5"/>
+<path d="M190 295 Q190 308 179 309" fill="none" stroke="#e4d8e2" stroke-width="2"/>
+<g id="bow">
+ <path d="M163 330 Q127 303 119 328 Q116 351 166 348Z" fill="url(#pinkBow)" stroke="#e88ab2" stroke-width="2"/>
+ <path d="M197 330 Q233 303 241 328 Q244 351 194 348Z" fill="url(#pinkBow)" stroke="#e88ab2" stroke-width="2"/>
+ <circle cx="180" cy="338" r="11" fill="#f7a4c5" stroke="#e88ab2" stroke-width="2"/>
+ <path d="M180 350 L174 365 L187 361 L190 350" fill="#f3a0c1"/>
+</g>
+<g fill="#fff" opacity=".8"><circle cx="88" cy="219" r="3"/><circle cx="296" cy="219" r="3"/><circle cx="72" cy="240" r="2"/><circle cx="310" cy="240" r="2"/></g>
+</svg>
       </div>
       <div id="zzz">Zzz…</div>
       <div id="stats"><span id="lvl"></span><div class="bar"><div id="xpFill"></div></div><span id="xpTxt"></span></div>
