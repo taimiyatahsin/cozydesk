@@ -2,17 +2,51 @@
 const $ = (s) => document.querySelector(s);
 const KEY = 'cozydesk.v1';
 const def = { xp: 0, tasks: [], notes: [], pomos: 0, mode: { sleepy: false, focus: false, quiet: false, privacy: false } };
-let S = Object.assign({}, def, JSON.parse(localStorage.getItem(KEY) || '{}'));
-const save = () => localStorage.setItem(KEY, JSON.stringify(S));
+function loadState() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(KEY) || '{}');
+    const tasks = Array.isArray(raw.tasks) ? raw.tasks : [];
+    const notes = Array.isArray(raw.notes) ? raw.notes : [];
+    return {
+      ...def, ...raw,
+      xp: Number.isFinite(+raw.xp) ? Math.max(0, +raw.xp) : 0,
+      pomos: Number.isFinite(+raw.pomos) ? Math.max(0, +raw.pomos) : 0,
+      tasks: tasks.filter(t => t && typeof t.text === 'string').map((t, i) => ({
+        id: String(t.id || 'task-' + i), text: t.text,
+        prio: ['high','med','low'].includes(t.prio) ? t.prio : 'med',
+        due: typeof t.due === 'string' ? t.due : '', done: !!t.done
+      })),
+      notes: notes.filter(n => n && typeof n.text === 'string').map((n, i) => ({
+        id: String(n.id || 'note-' + i), text: n.text, pin: !!n.pin,
+        at: Number.isFinite(+n.at) ? +n.at : Date.now()
+      })),
+      mode: { ...def.mode, ...(raw.mode && typeof raw.mode === 'object' ? raw.mode : {}) }
+    };
+  } catch (_) {
+    return { ...def, tasks: [], notes: [], mode: { ...def.mode } };
+  }
+}
+let S = loadState();
+const save = () => {
+  try { localStorage.setItem(KEY, JSON.stringify(S)); }
+  catch (err) { console.warn('CozyDesk could not save local data:', err); }
+};
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
 const esc = (t) => t.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 /* ---------- Bunny ---------- */
-const W = 'M91 144 Q95.5 151 100 144 Q104.5 151 109 144';
 const MOODS = {
-  happy: [W, 1], neutral: ['M94 146 Q100 148 106 146', 1], sleepy: ['M95 146 Q100 149 105 146', 0.3],
-  excited: ['M91 143 Q100 160 109 143 Z', 1.12, '#ff8fab'], sad: ['M93 150 Q100 142 107 150', 0.9], surprised: ['M96 144 Q100 158 104 144 Q100 141 96 144 Z', 1.2, '#ff8fab'],
-  bored: ['M94 147 L106 147', 0.6], playful: ['M92 144 Q100 158 108 144 Z', 1, '#ff8fab'], focused: ['M95 146 L105 146', 0.8], curious: ['M94 148 Q100 143 106 148', 1.1], confused: ['M93 149 Q97 143 101 149 T108 146', 1]
+  happy: ['M190 278 Q179 290 167 281 M190 278 Q201 290 213 281', 1],
+  neutral: ['M178 283 Q190 286 202 283', 1],
+  sleepy: ['M178 284 Q190 288 202 284', 0.38],
+  excited: ['M176 280 Q190 304 204 280 Q190 310 176 280Z', 1.12, '#f49ab8'],
+  sad: ['M176 288 Q190 276 204 288', 0.9],
+  surprised: ['M183 280 Q190 276 197 280 Q197 296 190 296 Q183 296 183 280Z', 1.1, '#f49ab8'],
+  bored: ['M178 284 L202 284', 0.72],
+  playful: ['M177 281 Q190 300 203 281 Q190 306 177 281Z', 1, '#f49ab8'],
+  focused: ['M180 284 L200 284', 0.82],
+  curious: ['M178 286 Q190 279 202 286', 1.08],
+  confused: ['M177 286 Q185 278 191 286 T204 283', 1]
 };
 function mood(m) {
   const [d, s, f] = MOODS[m] || MOODS.happy;
@@ -20,6 +54,10 @@ function mood(m) {
   if (mouth) { mouth.setAttribute('d', d); mouth.setAttribute('fill', f || 'none'); }
   const bunny = $('#bunny');
   if (bunny) bunny.style.setProperty('--es', s);
+  ['#eyeLeft', '#eyeRight'].forEach((selector) => {
+    const eye = $(selector);
+    if (eye) eye.style.setProperty('--eye-scale', s);
+  });
 }
 function bounce() {
   const b = $('#bunny'); b.classList.remove('bounce'); void b.getBoundingClientRect(); b.classList.add('bounce');
@@ -135,12 +173,16 @@ $('#noteList').onclick = (e) => {
 };
 
 /* ---------- Timer (interval only runs while active) ---------- */
-let secs = 1500, total = 1500, tick = null, isFocus = true;
+let secs = 1500, total = 1500, tick = null, timerEndAt = 0, isFocus = true;
 const fmt = (s) => String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
-function setTimer(min, focus) { stop(); secs = total = min * 60; isFocus = focus; $('#clock').textContent = fmt(secs); }
-function stop() { clearInterval(tick); tick = null; }
+function setTimer(min, focus) {
+  stop(); secs = total = min * 60; isFocus = focus;
+  $('#clock').textContent = fmt(secs); $('#tStart').textContent = 'Start';
+}
+function stop() { clearInterval(tick); tick = null; timerEndAt = 0; }
 function done() {
-  stop(); const msg = isFocus ? 'Focus session complete! 🌷' : 'Break is over. Ready?';
+  stop(); $('#tStart').textContent = 'Start';
+  const msg = isFocus ? 'Focus session complete! 🌷' : 'Break is over. Ready?';
   if (isFocus) { S.pomos++; addXP(50); save(); }
   mood('excited'); bounce(); say('timer', true); setTimeout(applyMood, 4000); renderStats();
   $('#pomoCount').textContent = `Focus sessions completed: ${S.pomos}`;
@@ -148,12 +190,28 @@ function done() {
   secs = total; $('#clock').textContent = fmt(secs);
 }
 $('#tStart').onclick = () => {
-  if (tick) return stop();
-  tick = setInterval(() => { secs--; $('#clock').textContent = fmt(Math.max(secs, 0)); if (secs <= 0) done(); }, 1000);
+  if (tick) {
+    secs = Math.max(0, Math.ceil((timerEndAt - Date.now()) / 1000));
+    stop(); $('#clock').textContent = fmt(secs); $('#tStart').textContent = 'Resume';
+    return;
+  }
+  if (secs <= 0) secs = total;
+  if ('Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission().catch(() => {});
+  }
+  timerEndAt = Date.now() + secs * 1000;
+  $('#tStart').textContent = 'Pause';
+  tick = setInterval(() => {
+    secs = Math.max(0, Math.ceil((timerEndAt - Date.now()) / 1000));
+    $('#clock').textContent = fmt(secs);
+    if (secs <= 0) done();
+  }, 250);
 };
 $('#tFocus').onclick = () => setTimer(25, true);
 $('#tBreak').onclick = () => setTimer(5, false);
 $('#tReset').onclick = () => setTimer(total / 60, isFocus);
+$('#taskText').addEventListener('keydown', (e) => { if (e.key === 'Enter') $('#addTask').click(); });
+$('#noteText').addEventListener('keydown', (e) => { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') $('#addNote').click(); });
 
 /* ---------- Windows helper ---------- */
 document.querySelectorAll('[data-act]').forEach((b) => (b.onclick = () => window.cozy && window.cozy.systemAction(b.dataset.act)));
