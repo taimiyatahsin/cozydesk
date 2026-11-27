@@ -253,3 +253,75 @@ body.sleepy #pet{background:linear-gradient(180deg,#dcdcf4 0%,#e8d9ef 76%,#c7b3d
 #pet>img#bunny{display:block!important;visibility:visible!important;opacity:1!important;width:min(340px,88%)!important;height:auto!important;max-height:58vh!important;object-fit:contain!important;position:relative!important;z-index:3!important;margin:0 auto!important;border-radius:18px!important;filter:drop-shadow(0 12px 14px rgba(130,85,112,.2))!important;animation:cozySceneFloat 5s ease-in-out infinite!important}
 @media(max-width:900px){#pet>img#bunny{width:min(300px,82%)!important;max-height:46vh!important}}
 @media(prefers-reduced-motion:reduce){#pet>img#bunny{animation:none!important}}
+
+
+/* Cozy bunny idle animation: gentle breathing, ear sway and soft blinking */
+#pet .bunny-stage{
+  position:relative!important;
+  display:block!important;
+  width:min(340px,88%)!important;
+  aspect-ratio:2/3;
+  max-height:58vh;
+  margin:0 auto!important;
+  flex:0 1 auto;
+  transform-origin:50% 88%;
+  animation:cozyBunnyBreathing 4.2s ease-in-out infinite,cozyBunnyEarSway 7.5s ease-in-out infinite;
+  cursor:pointer;
+}
+#pet .bunny-stage>img#bunny{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:100%!important;
+  height:100%!important;
+  max-height:58vh!important;
+  object-fit:contain!important;
+  margin:0!important;
+  position:relative!important;
+  z-index:1!important;
+  border-radius:18px!important;
+  filter:drop-shadow(0 12px 14px rgba(130,85,112,.2))!important;
+  animation:none!important;
+}
+#pet .bunny-eyelid{
+  position:absolute;
+  z-index:2;
+  top:45.5%;
+  width:13.5%;
+  height:9%;
+  border-radius:50% / 42%;
+  background:linear-gradient(180deg,#fff 0%,#fffdfd 72%,#f7e7ee 100%);
+  box-shadow:0 2px 3px rgba(135,95,115,.12);
+  transform:scaleY(0);
+  transform-origin:center;
+  pointer-events:none;
+  animation:cozyBunnyBlink 5.4s ease-in-out infinite;
+}
+#pet .bunny-eyelid-left{left:26.5%}
+#pet .bunny-eyelid-right{left:61.5%;animation-delay:.035s}
+@keyframes cozyBunnyBreathing{
+  0%,100%{transform:translateY(0) scale(1,1)}
+  50%{transform:translateY(-3px) scale(1.012,1.018)}
+}
+@keyframes cozyBunnyEarSway{
+  0%,100%{rotate:0deg}
+  18%{rotate:-.35deg}
+  38%{rotate:.25deg}
+  62%{rotate:.15deg}
+  82%{rotate:-.2deg}
+}
+@keyframes cozyBunnyBlink{
+  0%,44%,47%,100%{transform:scaleY(0)}
+  45%,46%{transform:scaleY(1)}
+  73%,76%{transform:scaleY(0)}
+  74%,75%{transform:scaleY(1)}
+}
+#pet .bunny-stage.bounce{animation:bounce .5s!important}
+@media(max-width:900px){
+  #pet .bunny-stage{width:min(300px,82%)!important;max-height:46vh}
+  #pet .bunny-stage>img#bunny{max-height:46vh!important}
+}
+@media(prefers-reduced-motion:reduce){
+  #pet .bunny-stage{animation:none!important}
+  #pet .bunny-eyelid{animation:none!important}
+}
