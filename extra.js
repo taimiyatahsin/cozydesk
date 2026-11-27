@@ -21,7 +21,7 @@ const hm = (s) => { const m = Math.round(s / 60); return m >= 60 ? `${Math.floor
 const dd = (date) => Math.round((new Date(date + 'T00:00') - new Date(today() + 'T00:00')) / 864e5);
 
 /* ---------- inject tabs ---------- */
-const TABS = [['room', 'Room'], ['calendar', 'Calendar'], ['alarms', 'Alarms'], ['study', 'Study'], ['clock', 'Clock'], ['game', 'Game']];
+const TABS = [['room', 'Room'], ['shopping', 'Shopping'], ['calendar', 'Calendar'], ['alarms', 'Alarms'], ['study', 'Study'], ['clock', 'Clock'], ['game', 'Game']];
 const nav = $('nav'), panel = $('#panel');
 TABS.forEach(([id, label]) => { const b = document.createElement('button'); b.dataset.tab = id; b.textContent = label; nav.insertBefore(b, $('.spacer')); });
 (() => {
@@ -35,7 +35,7 @@ TABS.forEach(([id, label]) => { const b = document.createElement('button'); b.da
     d.addEventListener('click', e => { if (e.target.closest('[data-tab]')) d.open = false; });
   };
   group('Productivity','✦',['tasks','notes','timer','study','calendar','alarms']);
-  group('Cozy Space','⌂',['room','game']);
+  group('Cozy Space','⌂',['room','shopping','game']);
   group('More','☾',['clock','settings']);
 })();
 const sec = (id, html) => { const d = document.createElement('div'); d.className = 'tab'; d.id = 'tab-' + id; d.innerHTML = html; panel.appendChild(d); };
@@ -140,6 +140,15 @@ sec('room', `<h2>Pet Room</h2>
 <div class="soundscape-controls"><select id="soundKind" aria-label="Ambient sound"><option value="rain">🌧 Rain</option><option value="fire">🔥 Fireplace</option><option value="lofi">🎧 Lo-fi beats</option><option value="forest">🐦 Forest birds</option></select><button id="soundToggle" type="button" aria-pressed="false">▶ Play</button></div><p id="soundStatus" class="sound-status">Sound is off · choose a mood</p></div>
 <div id="unlocks" class="room-progress-grid" aria-label="Room collection progress"></div>`);
 
+sec('shopping', `<div class="shopping-heading"><div><span class="shopping-kicker">A LITTLE HAPPY PLACE</span><h2>🐰 Bunny Window Shopping</h2><p>Take a tiny stroll through four cozy corners filled with pastel things.</p></div><span class="shopping-heart" aria-hidden="true">♡</span></div>
+<div class="shopping-art-wrap"><img class="shopping-art" src="assets/cozydesk-shopping-world.svg?v=20261128a" alt="Four cute pastel bunny shopping scenes: a boutique, desk accessories shop, rainy night storefront and room decor store" loading="lazy"></div>
+<div class="shopping-tiles">
+ <article><span>🌸</span><b>Cozy Boutique</b><small>Plushies, flowers & little treasures</small></article>
+ <article><span>⌨️</span><b>Cute Desk Shop</b><small>Pastel keyboards, desk mats & lamps</small></article>
+ <article><span>🌙</span><b>Rainy Night Finds</b><small>Warm lights, soft rain & dreamy vibes</small></article>
+ <article><span>🪴</span><b>Room Decor Store</b><small>Plants, stationery & cozy room pieces</small></article>
+</div>
+<p class="shopping-note">A tiny reminder: window shopping is free, and so is taking a cozy break. ✨</p>`);
 sec('calendar', `<h2>Calendar</h2><div id="calGrid"></div>
 <div class="row wrap"><input id="evTitle" placeholder="Event title…"><select id="evType"><option>Exam</option><option>Assignment</option><option>Birthday</option><option>Reminder</option></select><input type="date" id="evDate"><button id="evAdd">Add</button></div><ul id="evList"></ul>`);
 sec('alarms', `<h2>Alarms</h2><div class="row wrap"><input type="time" id="alTime"><input id="alLabel" placeholder="Label (Study, Class…)"><label class="muted"><input type="checkbox" id="alDaily"> Daily</label><button id="alAdd">Add</button></div><ul id="alList"></ul>`);
