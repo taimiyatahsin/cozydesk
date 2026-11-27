@@ -239,3 +239,46 @@ body.sleepy #pet{background:linear-gradient(180deg,#dcdcf4 0%,#e8d9ef 76%,#c7b3d
 #pet svg#bunny #flowerClip{transform-box:fill-box;transform-origin:center;animation:bunnyFlowerSparkle 3.1s ease-in-out infinite}
 #pet svg#bunny .eyeLid{stroke:#e9dfe9;stroke-width:2}
 @media(max-width:900px){#pet .bunny-stage{width:min(340px,88%)!important}#pet svg#bunny{max-height:52vh!important}}
+
+
+/* App-wide polish and interaction fixes */
+#pet svg#bunny #eyeLeft,#pet svg#bunny #eyeRight{
+  transform-box:fill-box;transform-origin:center;
+  transform:scale(var(--eye-scale,1));
+  transition:transform .22s ease;
+}
+#pet svg#bunny #mouth{transition:fill .18s ease}
+#pet .bunny-stage{user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+#panel{scrollbar-width:thin;scrollbar-color:#e8bfd3 transparent;overscroll-behavior:contain}
+#panel::-webkit-scrollbar{width:9px}
+#panel::-webkit-scrollbar-thumb{background:#e8bfd3;border:3px solid transparent;border-radius:20px;background-clip:padding-box}
+button:disabled,input:disabled,select:disabled{opacity:.48;cursor:not-allowed;transform:none;box-shadow:none}
+li button{flex-shrink:0}
+#gcanvas{touch-action:none;cursor:crosshair}
+#tab-game .row{align-items:center;flex-wrap:wrap}
+#tab-timer .row{flex-wrap:wrap}
+#tab-timer .row button{min-width:92px}
+#tab-home>h2:after{content:" ✨";font-size:.72em;color:#d89ab8}
+@media(max-width:900px){
+  body{min-height:100vh;overflow:auto}
+  #app{height:auto;min-height:100vh}
+  main{min-height:0}
+  #pet{min-height:340px;max-height:none}
+  #pet .bunny-stage{width:min(340px,88%)!important}
+  #pet svg#bunny{max-height:48vh!important}
+  #panel{max-height:none;min-height:420px}
+}
+@media(max-width:560px){
+  nav [data-tab]{min-width:64px}
+  nav #btnSleep,nav #btnFocus,nav #btnQuiet,nav #btnPrivacy{min-height:38px}
+  .row input,.row select,.row button{min-height:42px}
+  #tab-tasks .row>*{flex:1 1 100%;width:100%}
+  #tab-calendar .row>*{flex:1 1 42%}
+  #tab-alarms .row>*{flex:1 1 42%}
+  #tab-clock .row>*{flex:1 1 42%}
+  #tab-study .row>*{max-width:100%}
+  #gcanvas{width:100%;height:auto;aspect-ratio:7/5}
+}
+@media(prefers-reduced-motion:reduce){
+  #pet .bunny-stage,#pet svg#bunny #eyeLeft,#pet svg#bunny #eyeRight{animation:none!important;transition:none!important}
+}
