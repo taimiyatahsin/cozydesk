@@ -1,4 +1,4 @@
-const CACHE = 'cozydesk-shell-v3';
+const CACHE = 'cozydesk-shell-v4';
 const CORE = [
   './',
   './index.html',
