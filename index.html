@@ -9,8 +9,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="assets/cozydesk-app-icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/cozydesk-app-icon.svg">
-<link rel="stylesheet" href="styles.css?v=20261129c">
-<link rel="stylesheet" href="extra.css?v=20261129c">
+<link rel="stylesheet" href="styles.css?v=20261129d">
+<link rel="stylesheet" href="extra.css?v=20261129d">
 </head><body>
 <div id="app">
   <nav>
@@ -32,7 +32,7 @@
       <div class="home-bunny-moods" role="group" aria-label="Bunny mood"><button type="button" class="home-mood-btn active" data-bunny-mood="happy">😊 Happy</button><button type="button" class="home-mood-btn" data-bunny-mood="focus">🎯 Focus</button><button type="button" class="home-mood-btn" data-bunny-mood="sleep">😴 Sleep</button><button type="button" class="home-mood-btn" data-bunny-mood="shy">😳 Shy</button><button type="button" class="home-mood-btn" data-bunny-mood="surprised">😲 Surprise</button></div><div class="bunny-stage" id="bunnyStage">
 <div class="bunny-zzz-layer" aria-hidden="true"><span>z</span><span>Z</span><span>Zzz</span></div>
 
-        <svg id="bunny" class="cozy-bunny-character bunny-artwork-refresh" viewBox="0 0 240 240" role="img" aria-label="Cute fluffy white bunny with pink cheeks and five expressions" xmlns="http://www.w3.org/2000/svg">
+        <svg id="bunny" class="cozy-bunny-character bunny-artwork-refresh" viewBox="0 0 240 240" role="button" tabindex="0" aria-label="Pet your bunny" xmlns="http://www.w3.org/2000/svg">
 <defs>
  <radialGradient id="furGrad" cx="45%" cy="35%" r="65%"><stop offset="0%" stop-color="#fff"/><stop offset="75%" stop-color="#fff5f8"/><stop offset="100%" stop-color="#f7dce6"/></radialGradient>
  <radialGradient id="blushGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ff8fb1" stop-opacity=".72"/><stop offset="100%" stop-color="#ff8fb1" stop-opacity="0"/></radialGradient>
@@ -102,7 +102,11 @@
           <button data-act="wifi">Wi-Fi</button><button data-act="bluetooth">Bluetooth</button><button data-act="display">Display</button>
           <button data-act="sound">Sound</button><button data-act="update">Windows Update</button><button data-act="downloads">Downloads</button>
         </div>
-        <p class="muted">Data is stored only on this PC. RAM itself doesn't heat your laptop; sustained high CPU/GPU use does, so CozyDesk keeps animations light.</p>
+        <h3>Backup &amp; restore</h3>
+        <p class="muted">Keep a copy of your tasks, notes, progress, room settings and reminders. Backups stay on your device unless you choose to move the file.</p>
+        <div class="row wrap"><button id="exportBackup">Download backup</button><button id="importBackup">Restore backup</button><input id="backupFile" type="file" accept=".json,application/json" hidden></div>
+        <p class="muted" id="backupStatus" role="status" aria-live="polite"></p>
+        <p class="muted">Data is stored only on this PC. CozyDesk keeps animations light to reduce unnecessary CPU/GPU use.</p>
         <button id="resetAll" class="danger">Reset all data</button>
       </div>
     </section>
