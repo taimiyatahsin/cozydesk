@@ -453,3 +453,25 @@ nav .quick-modes button{white-space:nowrap;flex:0 1 auto}
 #tab-settings #backupFile{display:none}
 #tab-settings #exportBackup,#tab-settings #importBackup{min-width:145px}
 @media(max-width:560px){#tab-settings #exportBackup,#tab-settings #importBackup{flex:1 1 100%}}
+
+/* Privacy mode: obscure personal lists and schedules consistently */
+body.private #taskList,
+body.private #noteList,
+body.private #calGrid,
+body.private #evList,
+body.private #alList,
+body.private #stList,
+body.private #stSum,
+body.private #stClock{
+  filter:blur(9px);
+  user-select:none;
+  pointer-events:none
+}
+body.private #cycleBox{display:none!important}
+body.private #bubble{opacity:0!important}
+body.private #pet .bunny-mood-status{opacity:.72}
+@media(prefers-reduced-motion:reduce){
+  body.private #taskList,body.private #noteList,body.private #calGrid,
+  body.private #evList,body.private #alList,body.private #stList,
+  body.private #stSum,body.private #stClock{transition:none}
+}
