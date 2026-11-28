@@ -587,3 +587,29 @@ nav .quick-modes button.on,nav .quick-modes button.active{
   nav h1:after,#pet .bunny-stage:after{animation:none!important}
   #tab-home .home-stat{transition:none}
 }
+
+
+/* Mascot face refresh — larger glossy eyes, a tiny bunny muzzle and a soft cheeky look */
+#pet svg#bunny.bunny-artwork-refresh .eyes-happy ellipse:first-child,
+#pet svg#bunny.bunny-artwork-refresh .eyes-happy ellipse:nth-child(2){
+  filter:drop-shadow(0 1px 1px rgba(67,42,60,.16))
+}
+#pet svg#bunny.bunny-artwork-refresh .eyes-happy circle{
+  filter:drop-shadow(0 0 2px rgba(255,255,255,.9))
+}
+#pet svg#bunny.bunny-artwork-refresh .bunny-heart-nose{
+  filter:drop-shadow(0 1px 1px rgba(193,111,145,.2))
+}
+#pet svg#bunny.bunny-artwork-refresh .mouth-happy{
+  stroke:#765665;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round
+}
+#pet svg#bunny.bunny-artwork-refresh .blush{
+  opacity:1;filter:blur(.15px)
+}
+#pet .bunny-stage:after{
+  content:"♡  ✧";right:7%;bottom:18%;font-size:22px;letter-spacing:5px;
+  color:#e99bbb;text-shadow:0 2px 8px rgba(229,155,189,.25)
+}
+@media(prefers-reduced-motion:no-preference){
+  #pet svg#bunny.bunny-artwork-refresh{animation:kawaiiBunnyBreath 3.1s ease-in-out infinite}
+}
