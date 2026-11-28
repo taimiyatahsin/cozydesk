@@ -12,12 +12,12 @@ function loadState() {
       xp: Number.isFinite(+raw.xp) ? Math.max(0, +raw.xp) : 0,
       pomos: Number.isFinite(+raw.pomos) ? Math.max(0, +raw.pomos) : 0,
       tasks: tasks.filter(t => t && typeof t.text === 'string').map((t, i) => ({
-        id: String(t.id || 'task-' + i), text: t.text,
+        id: safeId(t.id, 'task-' + i), text: t.text,
         prio: ['high','med','low'].includes(t.prio) ? t.prio : 'med',
         due: typeof t.due === 'string' ? t.due : '', done: !!t.done
       })),
       notes: notes.filter(n => n && typeof n.text === 'string').map((n, i) => ({
-        id: String(n.id || 'note-' + i), text: n.text, pin: !!n.pin,
+        id: safeId(n.id, 'note-' + i), text: n.text, pin: !!n.pin,
         at: Number.isFinite(+n.at) ? +n.at : Date.now()
       })),
       mode: { ...def.mode, ...(raw.mode && typeof raw.mode === 'object' ? raw.mode : {}) }
@@ -32,6 +32,7 @@ const save = () => {
   catch (err) { console.warn('CozyDesk could not save local data:', err); }
 };
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+const safeId = (value, fallback) => /^[a-zA-Z0-9_-]{1,80}$/.test(String(value || '')) ? String(value) : fallback;
 const esc = (t) => t.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 /* ---------- Bunny ---------- */
@@ -77,7 +78,7 @@ let lastSay = 0, lastAct = Date.now(), hideT;
 const pick = (a) => a[Math.floor(Math.random() * a.length)];
 function say(kind, force) {
   const quiet = S.mode.quiet || S.mode.sleepy || S.mode.privacy || S.mode.focus;
-  if (!force && (quiet || Date.now() - lastSay < 60000)) return;
+  if (quiet || (!force && Date.now() - lastSay < 60000)) return;
   lastSay = Date.now();
   const b = $('#bubble'); b.textContent = pick(LINES[kind]); b.classList.add('show');
   clearTimeout(hideT); hideT = setTimeout(() => b.classList.remove('show'), 4500);
@@ -240,7 +241,9 @@ function done() {
   if (isFocus) { S.pomos++; addXP(50, 'Focus session complete! +50 Cozy XP! 🌷'); save(); }
   mood('excited'); bounce(); setTimeout(applyMood, 4000); renderStats();
   $('#pomoCount').textContent = `Focus sessions completed: ${S.pomos}`;
-  if ('Notification' in window) { Notification.requestPermission().then((p) => p === 'granted' && new Notification('CozyDesk', { body: msg })); }
+  if ('Notification' in window && Notification.permission === 'granted') {
+    try { new Notification('CozyDesk', { body: msg, silent: true }); } catch (_) {}
+  }
   secs = total; $('#clock').textContent = fmt(secs);
 }
 $('#tStart').onclick = () => {
