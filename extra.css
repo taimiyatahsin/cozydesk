@@ -445,3 +445,11 @@ nav .quick-modes button{white-space:nowrap;flex:0 1 auto}
   nav .quick-modes button{flex:1 1 0}
 }
 @media(prefers-reduced-motion:reduce){body:before,body:after{display:none}}
+
+/* Accessibility and backup controls */
+#pet svg#bunny[role="button"]{cursor:pointer;outline:none}
+#pet svg#bunny[role="button"]:focus-visible{filter:drop-shadow(0 0 0.45rem rgba(211,132,174,.65));outline:3px solid #e8a9c7;outline-offset:7px;border-radius:42%}
+#tab-settings #backupStatus{min-height:1.5em;margin:2px 0 12px;color:#8b6680;font-weight:600}
+#tab-settings #backupFile{display:none}
+#tab-settings #exportBackup,#tab-settings #importBackup{min-width:145px}
+@media(max-width:560px){#tab-settings #exportBackup,#tab-settings #importBackup{flex:1 1 100%}}
