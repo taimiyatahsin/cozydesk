@@ -106,12 +106,19 @@ function floatBunnyHeart(event) {
   heart.addEventListener('animationend', () => heart.remove(), { once: true });
   setTimeout(() => heart.remove(), 1300);
 }
-$('#bunny').addEventListener('click', (event) => {
+function petBunny(event) {
   floatBunnyHeart(event);
   mood('excited');
   bounce();
   addXP(2, 'Your bunny hopped with joy! +2 Cozy XP 💖');
   setTimeout(applyMood, 2500);
+}
+$('#bunny').addEventListener('click', petBunny);
+$('#bunny').addEventListener('keydown', (event) => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    petBunny({ clientX: NaN, clientY: NaN });
+  }
 });
 
 /* ---------- XP ---------- */
@@ -262,6 +269,57 @@ $('#noteText').addEventListener('keydown', (e) => { if ((e.ctrlKey || e.metaKey)
 
 /* ---------- Windows helper ---------- */
 document.querySelectorAll('[data-act]').forEach((b) => (b.onclick = () => window.cozy && window.cozy.systemAction(b.dataset.act)));
+/* ---------- Local backup / restore ---------- */
+const backupStatus = (message) => { const el = $('#backupStatus'); if (el) el.textContent = message; };
+$('#exportBackup').onclick = () => {
+  try {
+    const payload = {
+      app: 'CozyDesk',
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      data: S,
+      draft: localStorage.getItem('cozydesk.draft') || ''
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'cozydesk-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    backupStatus('Backup downloaded. Keep the file somewhere safe. ✨');
+  } catch (err) {
+    console.warn('CozyDesk backup export failed:', err);
+    backupStatus('Could not create the backup. Please try again.');
+  }
+};
+$('#importBackup').onclick = () => $('#backupFile').click();
+$('#backupFile').onchange = async (event) => {
+  const file = event.target.files && event.target.files[0];
+  event.target.value = '';
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { backupStatus('That backup is too large (5 MB maximum).'); return; }
+  try {
+    const backup = JSON.parse(await file.text());
+    const data = backup && backup.data;
+    if (backup.app !== 'CozyDesk' || backup.version !== 1 || !data ||
+        typeof data !== 'object' || Array.isArray(data) ||
+        (data.tasks !== undefined && !Array.isArray(data.tasks)) ||
+        (data.notes !== undefined && !Array.isArray(data.notes)) ||
+        (data.ext !== undefined && (!data.ext || typeof data.ext !== 'object' || Array.isArray(data.ext)))) {
+      throw new Error('Unsupported backup format');
+    }
+    if (!confirm('Restore this CozyDesk backup? Current data on this device will be replaced.')) return;
+    localStorage.setItem(KEY, JSON.stringify(data));
+    localStorage.setItem('cozydesk.draft', typeof backup.draft === 'string' ? backup.draft : '');
+    backupStatus('Backup restored. Reloading CozyDesk…');
+    location.reload();
+  } catch (err) {
+    console.warn('CozyDesk backup import failed:', err);
+    backupStatus('This file is not a valid CozyDesk backup.');
+  }
+};
+
 $('#resetAll').onclick = () => {
   if (confirm('Delete all CozyDesk data saved by this app on this device?')) {
     localStorage.removeItem(KEY);
