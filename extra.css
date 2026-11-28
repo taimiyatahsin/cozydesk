@@ -475,3 +475,115 @@ body.private #pet .bunny-mood-status{opacity:.72}
   body.private #evList,body.private #alList,body.private #stList,
   body.private #stSum,body.private #stClock{transition:none}
 }
+
+
+/* Kawaii polish pass — cohesive, lively and soft across every CozyDesk page */
+:root{
+  --kawaii-rose:#e995b7;
+  --kawaii-lilac:#b9a8e8;
+  --kawaii-ink:#75566f;
+  --kawaii-glass:rgba(255,255,255,.78)
+}
+html{scroll-behavior:smooth;scrollbar-color:#e7bfd3 #fff5fa;scrollbar-width:thin}
+#app{isolation:isolate}
+nav{
+  border:1px solid rgba(235,205,222,.95);
+  box-shadow:0 12px 32px rgba(173,116,151,.10),inset 0 1px 0 #fff;
+}
+nav h1{position:relative}
+nav h1:after{
+  content:"✦";position:absolute;top:-7px;right:-9px;
+  color:#d8b3e8;font-size:11px;animation:cozySparkle 3.2s ease-in-out infinite
+}
+nav .nav-group>summary{
+  border:1px solid transparent;border-radius:13px;color:#8b6a82;
+  font-weight:750;cursor:pointer;transition:background .2s,border-color .2s,transform .2s
+}
+nav .nav-group>summary:hover,nav .nav-group[open]>summary{
+  background:linear-gradient(135deg,#fff0f6,#f1edff);
+  border-color:#efd6e5;color:#9b6282
+}
+nav .nav-menu{
+  border-color:#e9d3e3;
+  background:rgba(255,251,255,.97);
+  box-shadow:0 18px 42px rgba(120,82,111,.17),inset 0 1px #fff
+}
+nav .quick-modes button{
+  border:1px solid #eddae7;background:rgba(255,255,255,.78);
+  color:#886b80;box-shadow:0 3px 9px rgba(171,119,151,.07)
+}
+nav .quick-modes button.on,nav .quick-modes button.active{
+  background:linear-gradient(135deg,#f8d7e5,#eee6ff);border-color:#e5bad0
+}
+#pet{isolation:isolate}
+#pet:before,#pet:after{z-index:0;pointer-events:none}
+#pet .home-bunny-moods,#pet .bunny-stage,#pet .bunny-mood-status,#pet #stats,#bubble{position:relative;z-index:1}
+#pet .home-mood-btn{border-radius:999px!important}
+#pet .home-mood-btn:hover{transform:translateY(-2px) scale(1.025)}
+#pet .bunny-stage:after{
+  content:"♡";position:absolute;z-index:0;right:9%;bottom:17%;
+  color:#edaac6;font-size:27px;opacity:.7;
+  animation:cozyFloat 4.8s ease-in-out infinite;pointer-events:none
+}
+#pet svg#bunny.cozy-bunny-character{filter:drop-shadow(0 12px 12px rgba(177,123,157,.20))}
+#pet #bubble{border-radius:18px 18px 18px 7px}
+#panel{
+  position:relative;isolation:isolate;
+  background:linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,251,254,.84));
+}
+#panel:before{
+  content:"";position:absolute;z-index:-1;top:0;right:0;width:170px;height:150px;
+  background:radial-gradient(circle at 100% 0,rgba(237,218,255,.22),transparent 70%);
+  pointer-events:none
+}
+#panel .tab h2{position:relative;display:inline-block;padding-bottom:7px}
+#panel .tab h2:after{
+  content:"";position:absolute;left:1px;bottom:0;width:48px;height:3px;
+  border-radius:9px;background:linear-gradient(90deg,#efa5c2,#c8b5f1)
+}
+#panel h3{display:flex;align-items:center;gap:8px}
+#panel h3:before{content:"✿";font-size:13px;color:#d89bb9}
+#panel button:not(.home-mood-btn){transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}
+#panel button:not(.home-mood-btn):hover{filter:saturate(1.06)}
+#panel .row{align-items:center}
+#panel ul{padding:2px}
+#panel li{
+  border-radius:16px;border-color:#f0dce8;
+  box-shadow:0 5px 15px rgba(174,126,155,.065),inset 0 1px #fff
+}
+#panel li:hover{border-color:#e8bfd2;box-shadow:0 8px 20px rgba(174,126,155,.11)}
+#panel input[type="checkbox"]{accent-color:#d982a7}
+#panel input[type="date"]{color:#80647a}
+#panel textarea{background:linear-gradient(145deg,#fff,#fff8fc)}
+#tab-home .home-stat{position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+#tab-home .home-stat:after{
+  content:"✧";position:absolute;right:10px;top:7px;color:#e4b5ce;font-size:16px;opacity:.75
+}
+#tab-home .home-stat:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(175,129,158,.13)}
+#clock{display:inline-block;padding:5px 20px;border:1px solid #f0dce8;border-radius:24px;background:linear-gradient(135deg,#fff8fc,#f5f0ff);box-shadow:0 10px 28px rgba(202,148,177,.12)}
+.room{border:1px solid #eed9e7;background:#fff9fd}
+.room-toolbar,.room-actions{gap:8px}
+.room-actions button{border-radius:999px}
+#tab-shopping .shopping-tiles article,#tab-shopping .shopping-heading{border-radius:20px}
+#tab-calendar .cgrid .day,#calGrid .day{box-shadow:0 3px 10px rgba(173,119,151,.06)}
+#tab-study .study-card,#tab-wellness .well-card,#tab-faith .faith-card{border-radius:18px}
+#panel :focus-visible{outline:3px solid rgba(224,157,190,.7);outline-offset:3px}
+#panel::-webkit-scrollbar{width:9px}
+#panel::-webkit-scrollbar-thumb{background:#e8c6d8;border:2px solid #fff8fc;border-radius:99px}
+@keyframes cozySparkle{0%,100%{opacity:.45;transform:scale(.85) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(20deg)}}
+@keyframes cozyFloat{0%,100%{transform:translateY(0) rotate(-8deg);opacity:.45}50%{transform:translateY(-9px) rotate(8deg);opacity:.9}}
+@media(max-width:900px){
+  #panel{min-height:0}
+  nav .nav-group>summary{padding:8px 10px}
+}
+@media(max-width:560px){
+  nav .nav-group{flex:1 1 auto}
+  nav .nav-group>summary{width:100%;font-size:12px}
+  #pet .bunny-stage:after{right:5%;bottom:15%}
+  #panel .tab h2{font-size:25px}
+  #panel .row>*{flex:1 1 auto}
+}
+@media(prefers-reduced-motion:reduce){
+  nav h1:after,#pet .bunny-stage:after{animation:none!important}
+  #tab-home .home-stat{transition:none}
+}
